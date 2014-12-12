@@ -2,8 +2,8 @@
 
 title:
 locale:           en_US
-#url:              http://mauriciosousa.github.io
-url:              http://127.0.0.1:4000
+url:              http://mauriciosousa.github.io
+#url:              http://127.0.0.1:4000
 
 
 # Jekyll configuration
