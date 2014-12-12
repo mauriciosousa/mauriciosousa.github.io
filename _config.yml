@@ -2,7 +2,8 @@
 
 title:
 locale:           en_US
-url:              http://mauriciosousa.github.io
+#url:              http://mauriciosousa.github.io
+url:              http://127.0.0.1:4000
 
 
 # Jekyll configuration
@@ -28,11 +29,11 @@ kramdown:
 owner:
   name: Maurício Sousa
   avatar: bio-photo.jpg
-  bio: "MSc and BSc IST"
+  bio: ""
   email: antonio.sousa@ist.utl.pt
   disqus-shortname:
-  twitter: #vivaomauricio
-  facebook: #username
+  twitter: vivaomauricio
+  facebook: vivaomauricio
   google:
     plus: #username
     analytics:
@@ -40,10 +41,10 @@ owner:
     ad-client:
     ad-slot:
   bing-verify:
-  github: #username
+  github: mauriciosousa
   stackoverflow: #http://stackoverflow.com/users/123456/username
   linkedin: #username
-  instagram: #username
+  instagram: vivaomauricio
   lastfm: #username
   tumblr: #username
   pinterest: #username

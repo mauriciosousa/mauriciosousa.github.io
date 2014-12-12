@@ -71,11 +71,6 @@ image:
 
 ### <a name="contacts"></a> Contacts
 
-<div class="content">
-<a href="http://sites.google.com/site/oilcedar/" target="_blank"><img src="images/facebook.png" style="width: 80px; height: 80px;"></a>
-<a href="http://tecton3d.ist.utl.pt/" target="_blank"><img src="images/twitter.png" style="width: 80px; height: 80px;"></a>
-</div>
-
 
 
 <div>
