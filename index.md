@@ -10,14 +10,14 @@ image:
 
 ### <a name="aboutme"></a> About Me
 
-<span style="font-size:11px;">I&#39;m researcher at the Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon. I received both my MSc and BSc degrees in Information Systems and Computer Science from T&eacute;cnico Lisboa / Technical University of Lisbon. My main interest areas are Interaction Design, 3D user interfaces and collaboration using multiple surfaces.</span>
+<span style="font-size:11px;">I&#39;m researcher at the Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon. I received both my MSc and BSc degrees in Information Systems and Computer Science from T&eacute;cnico Lisboa / University of Lisbon. My main interest areas are Interaction Design, 3D user interfaces and collaboration using multiple surfaces.</span>
 
 
 ### <a name="projects"></a> Projects
 
 <div class="content">
-<a href="http://sites.google.com/site/oilcedar/" target="_blank"><img src="images/cedar.jpg" style="height:80px;"></a>
 <a href="http://tecton3d.ist.utl.pt/" target="_blank"><img src="images/tecton.png" style="height:80px;"></a>
+<a href="http://sites.google.com/site/oilcedar/" target="_blank"><img src="images/cedar.jpg" style="height:80px;"></a>
 </div>
 
 ### <a name="publications"></a> Publications
