@@ -1,8 +1,8 @@
 # Site wide configuration
 
-title:            
+title:
 locale:           en_US
-url:              http://localhost:4000
+url:              http://mauriciosousa.github.io
 
 
 # Jekyll configuration
