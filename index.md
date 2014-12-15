@@ -8,6 +8,7 @@ image:
 <!--- veodesign.com --->
 
 
+
 ### <a name="aboutme"></a> About Me
 
 <span style="font-size:11px;">I&#39;m researcher at the Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon. I received both my MSc and BSc degrees in Information Systems and Computer Science from T&eacute;cnico Lisboa / University of Lisbon. My main interest areas are Interaction Design, 3D user interfaces and collaboration using multiple surfaces.</span>
