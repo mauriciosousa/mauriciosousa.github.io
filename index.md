@@ -53,6 +53,13 @@ image:
 
 <div>&nbsp;</div>
 
+<div><div><span style="font-size: 11px;"><strong>Remote Proxemics for Collaborative Virtual Environments</strong></span></div>
+<div><span style="font-size: 11px;"><em>Maurício Sousa</em></span></div>
+<div><span style="font-size: 11px;"><em>MSc Thesis</em></span></div>
+<div><span style="font-size: 11px;">[<a href="http://web.ist.utl.pt/antonio.sousa/publications/MSc-mauriciosousa.pdf">paper</a>]</span></div></div>
+
+<div>&nbsp;</div>
+
 > 2013
 
 <div><div><span style="font-size: 11px;"><strong>Binding an Handheld Device with its Owner</strong></span></div>
