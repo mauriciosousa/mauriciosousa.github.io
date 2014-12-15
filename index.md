@@ -28,7 +28,7 @@ image:
 <div><span style="font-size:12px;"><strong>Beyond Post-It: Structured Multimedia Annotations for Collaborative VEs</strong></span></div>
 <div><span style="font-size:12px;"><em>João Guerreiro, Daniel Pires, Maurício Sousa, Daniel Mendes, Ismael Santos, Alberto Raposo and Joaquim Jorge</em></span></div>
 <div><span style="font-size:12px;"><em>EGVE 2014</em></span></div>
-<div><span style="font-size:12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/ICAT-EGVE2014-Beyond.pdf">pdf</a>]</span></div>
+<div><span style="font-size:12px;"><a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/ICAT-EGVE2014-Beyond.pdf"><img src="images/pdf_icon.png" style="height:10px;"></a></span></div>
 
 <div>&nbsp;</div>
 
