@@ -24,6 +24,14 @@ image:
 
 ### <a name="publications"></a> Publications
 
+> 2015
+
+<div><span style="font-size:11px;"><strong>Beyond Eery Space: Facilitating Virtual Meetings Through Remote Proxemics</strong></span></div>
+<div><span style="font-size:11px;"><em>Maurício Sousa, Daniel Mendes, Alfredo Ferreira, João Madeiras Pereira and Joaquim Jorge</em></span></div>
+<div><span style="font-size:11px;"><em>INTERACT 2015 (ACCEPTED)</em></span></div>
+
+<div>&nbsp;</div>
+
 > 2014
 
 <div><div><span style="font-size: 12px;"><strong>Beyond Post-It: Structured Multimedia Annotations for Collaborative VEs</strong></span></div>
