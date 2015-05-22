@@ -26,7 +26,7 @@ image:
 
 > 2015
 
-<div><span style="font-size:11px;"><strong>Beyond Eery Space: Facilitating Virtual Meetings Through Remote Proxemics</strong></span></div>
+<div><span style="font-size:11px;"><strong>Eery Space: Facilitating Virtual Meetings Through Remote Proxemics</strong></span></div>
 <div><span style="font-size:11px;"><em>Maurício Sousa, Daniel Mendes, Alfredo Ferreira, João Madeiras Pereira and Joaquim Jorge</em></span></div>
 <div><span style="font-size:11px;"><em>INTERACT 2015 (ACCEPTED)</em></span></div>
 
