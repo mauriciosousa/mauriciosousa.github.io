@@ -26,6 +26,12 @@ image:
 
 > 2015
 
+<div><span style="font-size:11px;"><strong>Augmented Reality for Rehabilitation Using Multimodal Feedback</strong></span></div>
+<div><span style="font-size:11px;"><em>João Vieira, Maurício Sousa, Artur Arsenio and Joaquim Jorge</em></span></div>
+<div><span style="font-size:11px;"><em>REHAB2015 Workshop (ACCEPTED)</em></span></div>
+
+<div>&nbsp;</div>
+
 <div><span style="font-size:11px;"><strong>Eery Space: Facilitating Virtual Meetings Through Remote Proxemics</strong></span></div>
 <div><span style="font-size:11px;"><em>Maurício Sousa, Daniel Mendes, Alfredo Ferreira, João Madeiras Pereira and Joaquim Jorge</em></span></div>
 <div><span style="font-size:11px;"><em>INTERACT 2015 (ACCEPTED)</em></span></div>
