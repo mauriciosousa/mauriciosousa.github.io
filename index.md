@@ -12,7 +12,7 @@ image:
 ### <a name="aboutme"></a> About Me
 
 
-<span style="font-size:12px;">I&#39;m researcher at the <a target="_blank" href="http://vimmi.inesc-id.pt/">Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon</a> under the supervision of Professor <a target="_blank" href="http://web.ist.utl.pt/jorgej/">Joaquim Jorge</a>. I received both my MSc and BSc degrees in Information Systems and Computer Science from T&eacute;cnico Lisboa / University of Lisbon. My main interest areas are Interaction Design, 3D user interfaces and collaboration using multiple surfaces.</span>
+<span style="font-size:12px;">I&#39;m researcher at the <a target="_blank" href="http://vimmi.inesc-id.pt/">Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon</a> under the supervision of Professor <a target="_blank" href="http://web.ist.utl.pt/jorgej/">Joaquim Jorge</a>. I received both my MSc and BSc degrees in Information Systems and Computer Science from T&eacute;cnico Lisboa / University of Lisbon. My main interest areas are Interaction Design, 3D user interfaces and collaboration using multiple surfaces. I read comics.</span>
 
 
 ### <a name="projects"></a> Projects
@@ -35,7 +35,7 @@ image:
 <div><span style="font-size:11px;"><strong>Eery Space: Facilitating Virtual Meetings Through Remote Proxemics</strong></span></div>
 <div><span style="font-size:11px;"><em>Maurício Sousa, Daniel Mendes, Alfredo Ferreira, João Madeiras Pereira and Joaquim Jorge</em></span></div>
 <div><span style="font-size:11px;"><em>INTERACT 2015</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://link.springer.com/chapter/10.1007/978-3-319-22698-9_43">springerlink</a>]</span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://link.springer.com/chapter/10.1007/978-3-319-22698-9_43">springerlink</a>][<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/92980043.pdf">pdf</a>][<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/92980043.bib">bib</a>]</span></div>
 
 
 <div>&nbsp;</div>
