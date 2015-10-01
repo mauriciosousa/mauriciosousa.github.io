@@ -29,6 +29,8 @@ image:
 <div><span style="font-size:11px;"><strong>Augmented Reality for Rehabilitation Using Multimodal Feedback</strong></span></div>
 <div><span style="font-size:11px;"><em>João Vieira, Maurício Sousa, Artur Arsenio and Joaquim Jorge</em></span></div>
 <div><span style="font-size:11px;"><em>REHAB2015 Workshop (ACCEPTED)</em></span></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/REAHB2015-SleeveAR.pdf">pdf</a>]</span></div></div>
+
 
 <div>&nbsp;</div>
 
