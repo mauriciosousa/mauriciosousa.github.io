@@ -2,7 +2,7 @@
 layout: page
 tags: [Jekyll, theme, responsive, blog, template]
 image:
-  feature: topimage2.jpg
+  feature: topimage3.jpg
 ---
 
 <!--- veodesign.com --->
