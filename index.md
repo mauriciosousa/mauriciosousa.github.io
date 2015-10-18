@@ -26,8 +26,16 @@ image:
 
 > 2015
 
+<div><div><span style="font-size: 12px;"><strong>Beyond Eery Space: Applying GradualEngagement to Remote Proxemics</strong></span></div>
+<div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Medeiros, Alberto Raposo and Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>CmIS Workshop (ITS 2015)</em></span></div>
+<div><span style="font-size: 12px;">[Soon]</span></div></div>
+
+<div>&nbsp;</div>
+
+
 <div><span style="font-size:11px;"><strong>Augmented Reality for Rehabilitation Using Multimodal Feedback</strong></span></div>
-<div><span style="font-size:11px;"><em>João Vieira, Maurício Sousa, Artur Arsenio and Joaquim Jorge</em></span></div>
+<div><span style="font-size:11px;"><em>João Vieira, Maurício Sousa, Artur Arsénio and Joaquim Jorge</em></span></div>
 <div><span style="font-size:11px;"><em>REHAB2015 Workshop</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/REAHB2015-SleeveAR.pdf">pdf</a>]</span></div>
 
