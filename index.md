@@ -29,7 +29,7 @@ image:
 <div><div><span style="font-size: 12px;"><strong>Beyond Eery Space: Applying GradualEngagement to Remote Proxemics</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Medeiros, Alberto Raposo and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>CmIS Workshop (ITS 2015)</em></span></div>
-<div><span style="font-size: 12px;">[Soon]</span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/cmis2015-sousa.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
