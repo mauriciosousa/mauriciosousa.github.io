@@ -43,7 +43,6 @@ image:
 <div><span style="font-size:11px;"><strong>From Tecton to Teknos: Going back to the Classical Roots of Architecture.</strong></span></div>
 <div><span style="font-size:11px;"><em>Daniel Mateus, Maurício Sousa, Rui de Klerk, Sandra Gama, Joaquim Jorge, José Duarte</em></span></div>
 <div><span style="font-size:11px;"><em>eCAADe 2015</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/REAHB2015-SleeveAR.pdf">pdf</a>]</span></div>
 
 <div>&nbsp;</div>
 
