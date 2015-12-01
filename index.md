@@ -14,6 +14,7 @@ image:
 
 <span style="font-size:12px;">I&#39;m researcher at the <a target="_blank" href="http://vimmi.inesc-id.pt/">Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon</a> under the supervision of Professor <a target="_blank" href="http://web.ist.utl.pt/jorgej/">Joaquim Jorge</a>. I received both my MSc and BSc degrees in Information Systems and Computer Science from T&eacute;cnico Lisboa / University of Lisbon. My main interest areas are Interaction Design, 3D user interfaces and collaboration using multiple surfaces. I read comics.</span>
 
+<div>&nbsp;</div>
 
 ### <a name="projects"></a> Projects
 
@@ -21,6 +22,8 @@ image:
 <a href="http://tecton3d.ist.utl.pt/" target="_blank"><img src="images/tecton.png" style="height:80px;"></a>
 <a href="http://sites.google.com/site/oilcedar/" target="_blank"><img src="images/cedar.jpg" style="height:80px;"></a>
 </div>
+
+<div>&nbsp;</div>
 
 ### <a name="publications"></a> Publications
 
@@ -106,6 +109,7 @@ image:
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/CHI2013-PowerwallWorkshop-Collaboration.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
+
 
 ### <a name="contacts"></a> Contacts
 
