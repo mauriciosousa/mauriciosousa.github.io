@@ -39,7 +39,7 @@ image:
 <div><span style="font-size:11px;"><strong>Augmented Reality for Rehabilitation Using Multimodal Feedback</strong></span></div>
 <div><span style="font-size:11px;"><em>João Vieira, Maurício Sousa, Artur Arsénio and Joaquim Jorge</em></span></div>
 <div><span style="font-size:11px;"><em>REHAB2015 Workshop</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/REAHB2015-SleeveAR.pdf">pdf</a>]</span></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://dl.acm.org/citation.cfm?id=2838954&CFID=570073357&CFTOKEN=56549813">ACM DL</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/REAHB2015-SleeveAR.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/REAHB2015-SleeveAR.bib">bibtex</a>]</span></div>
 
 <div>&nbsp;</div>
 
@@ -76,7 +76,7 @@ image:
 <div><div><span style="font-size: 12px;"><strong>ThumbCam: Returning to single touch interactions to explore 3D virtual environments</strong></span></div>
 <div><span style="font-size: 12px;"><em>Daniel Mendes, Maurício Sousa, Alfredo Ferreira, Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ITS 2014</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/IST2014-ThumbCam.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/IST2014-ThumbCam.bib">bib</a> ]</span></div></div>
+<div><span style="font-size: 12px;">[[<a target="_blank" href="http://dl.acm.org/citation.cfm?id=2669554&CFID=570073357&CFTOKEN=56549813">ACM DL</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/IST2014-ThumbCam.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/IST2014-ThumbCam.bib">bibtex</a> ]</span></div></div>
 
 <div>&nbsp;</div>
 
