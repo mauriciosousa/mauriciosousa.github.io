@@ -31,14 +31,16 @@ image:
 
 <div><div><span style="font-size: 12px;"><strong>SleeveAR: Augmented Reality for Rehabilitation using Realtime Feedback</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, João Vieira, Daniel Medeiros, Artur Arsénio and Joaquim Jorge</em></span></div>
-<div><span style="font-size: 12px;"><em>IUI 2016</em></span></div>
+<div><span style="font-size: 12px;"><em>ACM Intelligent User Interfaces(IUI), 2016</em></span></div>
 <div><span style="font-size: 12px;">[Soon]</span></div></div>
+
+<div>&nbsp;</div>
 
 > 2015
 
 <div><div><span style="font-size: 12px;"><strong>Beyond Eery Space: Applying Gradual Engagement to Remote Proxemics</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Medeiros, Alberto Raposo and Joaquim Jorge</em></span></div>
-<div><span style="font-size: 12px;"><em>CmIS Workshop (ITS 2015)</em></span></div>
+<div><span style="font-size: 12px;"><em>Collaboration meets Interactive Surfaces Workshop, ACM Interactive Tabletops and Surfaces(ITS), 2015)</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/cmis2015-sousa.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
@@ -52,13 +54,13 @@ image:
 
 <div><span style="font-size:11px;"><strong>From Tecton to Teknos: Going back to the Classical Roots of Architecture.</strong></span></div>
 <div><span style="font-size:11px;"><em>Daniel Mateus, Maurício Sousa, Rui de Klerk, Sandra Gama, Joaquim Jorge, José Duarte</em></span></div>
-<div><span style="font-size:11px;"><em>eCAADe 2015</em></span></div>
+<div><span style="font-size:11px;"><em>Education and research in Computer Aided Architectural Design in Europe(eCAADe) 2015</em></span></div>
 
 <div>&nbsp;</div>
 
 <div><span style="font-size:11px;"><strong>Eery Space: Facilitating Virtual Meetings Through Remote Proxemics</strong></span></div>
 <div><span style="font-size:11px;"><em>Maurício Sousa, Daniel Mendes, Alfredo Ferreira, João Madeiras Pereira and Joaquim Jorge</em></span></div>
-<div><span style="font-size:11px;"><em>INTERACT 2015</em></span></div>
+<div><span style="font-size:11px;"><em>INTERACT, 2015</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://link.springer.com/chapter/10.1007/978-3-319-22698-9_43">springer</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/92980043.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/92980043.bib">bib</a>]</span></div>
 
 
@@ -68,28 +70,28 @@ image:
 
 <div><div><span style="font-size: 12px;"><strong>Beyond Post-It: Structured Multimedia Annotations for Collaborative VEs</strong></span></div>
 <div><span style="font-size: 12px;"><em>João Guerreiro, Daniel Pires, Maurício Sousa, Daniel Mendes, Ismael Santos, Alberto Raposo and Joaquim Jorge</em></span></div>
-<div><span style="font-size: 12px;"><em>EGVE 2014</em></span></div>
+<div><span style="font-size: 12px;"><em>Eurographics Symposium on Virtual Environments(EGVE), 2014</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/ICAT-EGVE2014-Beyond.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>Enabling Remote Proxemics through Multiple Surfaces</strong></span></div>
 <div><span style="font-size: 12px;"><em>Daniel Mendes, Maurício Sousa, João Madeiras Pereira, Alfredo Ferreira and Joaquim Jorge</em></span></div>
-<div><span style="font-size: 12px;"><em>CmIS Workshop (ITS 2014)</em></span></div>
+<div><span style="font-size: 12px;"><em>Collaboration meets Interactive Surfaces Workshop, ACM Interactive Tabletops and Surfaces(ITS), 2014</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/ITS2014-CmISWorkshop-Enabling.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>ThumbCam: Returning to single touch interactions to explore 3D virtual environments</strong></span></div>
 <div><span style="font-size: 12px;"><em>Daniel Mendes, Maurício Sousa, Alfredo Ferreira, Joaquim Jorge</em></span></div>
-<div><span style="font-size: 12px;"><em>ITS 2014</em></span></div>
+<div><span style="font-size: 12px;"><em>ACM Interactive Tabletops and Surfaces(ITS), 2014</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://dl.acm.org/citation.cfm?id=2669554&CFID=570073357&CFTOKEN=56549813">acm</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/IST2014-ThumbCam.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/IST2014-ThumbCam.bib">bib</a> ]</span></div></div>
 
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>Eery Proxemics: Proximidade à Distância usando Múliplas Superfícies</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, João Madeiras Pereira, Alfredo Ferreira and Joaquim Jorge</em></span></div>
-<div><span style="font-size: 12px;"><em>EPCG 2014</em></span></div>
+<div><span style="font-size: 12px;"><em>Encontro Português de Computação Gráfica(EPCG), 2014</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/EPCG2014-Eery.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
@@ -105,14 +107,14 @@ image:
 
 <div><div><span style="font-size: 12px;"><strong>Binding an Handheld Device with its Owner</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa and Joaquim Jorge</em></span></div>
-<div><span style="font-size: 12px;"><em>CmIS Workshop (ITS 2013)</em></span></div>
+<div><span style="font-size: 12px;"><em>Collaboration meets Interactive Surfaces Workshop, ACM Interactive Tabletops and Surfaces(ITS), 2013</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/ITS2013-CmISWorkshop-Binding.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>Collaborative 3D Visualization on Large Screen Displays</strong></span></div>
 <div><span style="font-size: 12px;"><em>Daniel Mendes, Maurício Sousa, Bruno Araújo, Alfredo Ferreira, Hildegardo Noronha, Pedro Campos, Luciano Soares, Alberto Raposo, Joaquim Jorge</em></span></div>
-<div><span style="font-size: 12px;"><em>Powerwall Workshop (CHI 2013)</em></span></div>
+<div><span style="font-size: 12px;"><em>Powerwall Workshop, SIGCHI Conference on Human Factors in Computing Systems(CHI), 2013</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/CHI2013-PowerwallWorkshop-Collaboration.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
