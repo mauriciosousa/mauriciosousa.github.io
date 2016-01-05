@@ -27,6 +27,13 @@ image:
 
 ### <a name="publications"></a> Publications
 
+> 2016
+
+<div><div><span style="font-size: 12px;"><strong>SleeveAR: Augmented Reality for Rehabilitation using Realtime Feedback</strong></span></div>
+<div><span style="font-size: 12px;"><em>Maurício Sousa, João Vieira, Daniel Medeiros, Artur Arsénio and Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>IUI 2016</em></span></div>
+<div><span style="font-size: 12px;">[Soon]</span></div></div>
+
 > 2015
 
 <div><div><span style="font-size: 12px;"><strong>Beyond Eery Space: Applying Gradual Engagement to Remote Proxemics</strong></span></div>
