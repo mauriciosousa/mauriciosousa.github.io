@@ -40,7 +40,7 @@ image:
 
 <div><div><span style="font-size: 12px;"><strong>Beyond Eery Space: Applying Gradual Engagement to Remote Proxemics</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Medeiros, Alberto Raposo and Joaquim Jorge</em></span></div>
-<div><span style="font-size: 12px;"><em>Collaboration meets Interactive Surfaces Workshop, ACM Interactive Tabletops and Surfaces(ITS), 2015)</em></span></div>
+<div><span style="font-size: 12px;"><em>Collaboration meets Interactive Surfaces Workshop, ACM Interactive Tabletops and Surfaces(ITS), 2015</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/cmis2015-sousa.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
@@ -54,7 +54,7 @@ image:
 
 <div><span style="font-size:11px;"><strong>From Tecton to Teknos: Going back to the Classical Roots of Architecture.</strong></span></div>
 <div><span style="font-size:11px;"><em>Daniel Mateus, Maurício Sousa, Rui de Klerk, Sandra Gama, Joaquim Jorge, José Duarte</em></span></div>
-<div><span style="font-size:11px;"><em>Education and research in Computer Aided Architectural Design in Europe(eCAADe) 2015</em></span></div>
+<div><span style="font-size:11px;"><em>Education and research in Computer Aided Architectural Design in Europe(eCAADe), 2015</em></span></div>
 
 <div>&nbsp;</div>
 
