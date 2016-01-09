@@ -134,7 +134,7 @@ image:
 <span style="font-size:12px;"><span style="color: rgb(51, 51, 50); font-family: 'PT Serif', serif; background-color: rgb(255, 255, 255);">IST / University of Lisbon </span></span>
 </div>
 <div>
-<span style="font-size:12px;"><span style="color: rgb(51, 51, 50); font-family: 'PT Serif', serif; background-color: rgb(255, 255, 255);">Avenida Professor Cavaco Silva, Room 2-N9.21 2744-016 Porto Salvo Portugal</span></span>
+<span style="font-size:12px;"><span style="color: rgb(51, 51, 50); font-family: 'PT Serif', serif; background-color: rgb(255, 255, 255);">Avenida Professor Cavaco Silva, Room 2-N9.25 2744-016 Porto Salvo Portugal</span></span>
 </div>
 <div>
 <span style="font-size:12px;">email: <span style="font-family:courier new,courier,monospace;">antonio.sousa at ist.utl.pt</span></span>
