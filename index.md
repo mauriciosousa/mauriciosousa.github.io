@@ -31,6 +31,13 @@ image:
 
 > 2016
 
+<div><div><span style="font-size: 12px;"><strong> Expeditious Illustration of Layer-Cake Models On and Above a Tactile Surface</strong></span></div>
+<div><span style="font-size: 12px;"><em>Daniel S. Lopes, Daniel Mendes, Maurício Sousa, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Computers & Geosciences (in press), 2016</em></span></div>
+<div><span style="font-size: 12px;">[Soon]</span></div></div>
+
+<div>&nbsp;</div>
+
 <div><div><span style="font-size: 12px;"><strong>SleeveAR: Augmented Reality for Rehabilitation using Realtime Feedback</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, João Vieira, Daniel Medeiros, Artur Arsénio and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Intelligent User Interfaces(IUI), 2016</em></span></div>
