@@ -41,7 +41,7 @@ image:
 <div><div><span style="font-size: 12px;"><strong> Expeditious Illustration of Layer-Cake Models On and Above a Tactile Surface</strong></span></div>
 <div><span style="font-size: 12px;"><em>Daniel S. Lopes, Daniel Mendes, Maurício Sousa, Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Computers & Geosciences (in press), 2016</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S0098300416300334">Science Direct</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/Lopes2016.bib">bib</a>]</span></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S0098300416300334">Science Direct</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/Lopes2016.bib">bib</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
