@@ -34,7 +34,7 @@ image:
 <div><div><span style="font-size: 12px;"><strong>SleeveAR: Augmented Reality for Rehabilitation using Realtime Feedback</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, João Vieira, Daniel Medeiros, Artur Arsénio and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Intelligent User Interfaces(IUI), 2016</em></span></div>
-<div><span style="font-size: 12px;">[Soon]</span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/iuifp0186-sousaATS.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
