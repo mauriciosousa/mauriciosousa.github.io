@@ -34,14 +34,14 @@ image:
 <div><div><span style="font-size: 12px;"><strong>SleeveAR: Augmented Reality for Rehabilitation using Realtime Feedback</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, João Vieira, Daniel Medeiros, Artur Arsénio and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Intelligent User Interfaces(IUI), 2016</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://dl.acm.org/citation.cfm?id=2856773&CFID=589235121&CFTOKEN=67050946">acm</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/iuifp0186-sousaATS.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/iuifp0186-sousaATS.bib">bib</a>]</span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://dl.acm.org/citation.cfm?id=2856773&CFID=589235121&CFTOKEN=67050946">acm</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/iuifp0186-sousaATS.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/iuifp0186-sousaATS.bib">bib</a>]</span></div>
 
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong> Expeditious Illustration of Layer-Cake Models On and Above a Tactile Surface</strong></span></div>
 <div><span style="font-size: 12px;"><em>Daniel S. Lopes, Daniel Mendes, Maurício Sousa, Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Computers & Geosciences (in press), 2016</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S0098300416300334">Science Direct</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/Lopes2016.bib">bib</a>]</span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S0098300416300334">Science Direct</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/Lopes2016.bib">bib</a>]</span></div>
 
 <div>&nbsp;</div>
 
