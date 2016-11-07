@@ -31,10 +31,17 @@ image:
 
 > 2016
 
+<div><div><span style="font-size: 12px;"><strong>Effects of Speed and Transitions on Target-based Travel Techniques</strong></span></div>
+<div><span style="font-size: 12px;"><em>Daniel Medeiros, Eduardo Cordeiro, Daniel Mendes, Maurício Sousa, Alberto Raposo, Alfredo Ferreira and Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>ACM Symposium on Virtual Reality Software and Technology (VRST), 2016</em></span></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/327-59-0228-medeiros.pdf">pdf</a>]</span></div></div>
+
+<div>&nbsp;</div>
+
 <div><div><span style="font-size: 12px;"><strong>Perceiving Depth: Optical versus Video See-through</strong></span></div>
 <div><span style="font-size: 12px;"><em>Daniel Medeiros, Maurício Sousa, Daniel Mendes, Alberto Raposo and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Symposium on Virtual Reality Software and Technology (VRST), 2016</em></span></div>
-<div><span style="font-size: 12px;">[SOON] </span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/237-33-0191-medeiros.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
