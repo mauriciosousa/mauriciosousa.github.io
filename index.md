@@ -31,8 +31,6 @@ image:
 
 > 2016
 
-EPCGI'16
-
 <div><div><span style="font-size: 12px;"><strong>Efeitos da Velocidade e das Transições em Técnicas para Viajar em Realidade Virtual</strong></span></div>
 <div><span style="font-size: 12px;"><em>Eduardo Cordeiro, Daniel Medeiros, Daniel Mendes, Maurício Sousa, Alberto Raposo, Alfredo Ferreira, Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Encontro Português de Computação Gráfica(EPCG), 2016</em></span></div>
