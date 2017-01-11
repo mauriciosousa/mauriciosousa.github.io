@@ -34,7 +34,7 @@ image:
 <div><div><span style="font-size: 12px;"><strong>Remote Proxemics</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Daniel Medeiros, Alfredo Ferreira, João Madeiras Pereira, Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Chapter in Collaboration Meets Interactive Spaces, Springer, 2016</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://dx.doi.org/10.1007/978-3-319-45853-3_4">springer</a>]</span></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://dx.doi.org/10.1007/978-3-319-45853-3_4">springer</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
