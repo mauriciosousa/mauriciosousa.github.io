@@ -7,13 +7,14 @@ image:
 
 <!--- veodesign.com --->
 
+### Stuff
 
 ### <a name="aboutme"></a> About Me          
 
 
 <div align="right "><a href="http://orcid.org/0000-0003-1438-2882" target="_blank"><img src="images/orcid.png" style="height:20px;"></a></div>
 
-<span style="font-size:12px;">I am a researcher at the <a target="_blank" href="http://vimmi.inesc-id.pt/">Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon</a> under the supervision of Professor <a target="_blank" href="http://web.ist.utl.pt/jorgej/">Joaquim Jorge</a>. I received both my MSc and BSc degrees in Information Systems and Computer Science from T&eacute;cnico Lisboa / University of Lisbon. My main interest areas are Interaction Design, 3D user interfaces and collaboration using multiple surfaces. I read comics.</span>
+<span style="font-size:12px;">I'm a researcher at the <a target="_blank" href="http://vimmi.inesc-id.pt/">Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon</a> under the supervision of Professor <a target="_blank" href="http://web.ist.utl.pt/jorgej/">Joaquim Jorge</a>. I received both my MSc and BSc degrees in Information Systems and Computer Science from T&eacute;cnico Lisboa / University of Lisbon. My main interest areas are Interaction Design, 3D user interfaces and collaboration using multiple surfaces. I read comics.</span>
 
 <div>&nbsp;</div>
 
@@ -28,6 +29,14 @@ image:
 
 ### <a name="publications"></a> Publications
 
+> 2017
+
+<div><div><span style="font-size: 12px;"><strong>VRRRRoom: Virtual Reality for Radiologists in the Reading Room</strong></span></div>
+<div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, Daniel Simões Lopes</em></span></div>
+<div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2017</em></span></div>
+<div><span style="font-size: 12px;">[Soon]</span></div></div>
+
+<div>&nbsp;</div>
 
 > 2016
 
