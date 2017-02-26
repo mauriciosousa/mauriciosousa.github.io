@@ -7,7 +7,8 @@ image:
 
 <!--- veodesign.com --->
 
-### Stuff
+
+
 
 ### <a name="aboutme"></a> About Me          
 
