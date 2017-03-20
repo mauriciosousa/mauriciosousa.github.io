@@ -33,7 +33,7 @@ image:
 > 2017
 
 <div><div><span style="font-size: 12px;"><strong>Hip-directed walking-in-place using a single depth camera</strong></span></div>
-<div><span style="font-size: 12px;"><em>Luís Bruno, Maurício Sousa, Alfredo Ferreira, João Madeiras Pereira, Joaquim Jorge/em></span></div>
+<div><span style="font-size: 12px;"><em>Luís Bruno, Maurício Sousa, Alfredo Ferreira, João Madeiras Pereira, Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>International Journal of Human-Computer Studies (IJHCS), Elsevier, 2017</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://dx.doi.org/10.1016/j.ijhcs.2017.03.006">doi</a>]</span></div></div>
 
