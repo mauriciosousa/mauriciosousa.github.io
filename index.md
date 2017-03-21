@@ -32,17 +32,31 @@ image:
 
 > 2017
 
-<div><div><span style="font-size: 12px;"><strong>Hip-directed walking-in-place using a single depth camera</strong></span></div>
-<div><span style="font-size: 12px;"><em>Luís Bruno, Maurício Sousa, Alfredo Ferreira, João Madeiras Pereira, Joaquim Jorge</em></span></div>
-<div><span style="font-size: 12px;"><em>International Journal of Human-Computer Studies (IJHCS), Elsevier, 2017</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://dx.doi.org/10.1016/j.ijhcs.2017.03.006">ScienceDirect</a>]</span></div></div>
-
-<div>&nbsp;</div>
-
 <div><div><span style="font-size: 12px;"><strong>VRRRRoom: Virtual Reality for Radiologists in the Reading Room</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, Daniel Simões Lopes</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2017</em></span></div>
 <div><span style="font-size: 12px;">[Soon]</span></div></div>
+
+<div>&nbsp;</div>
+
+<div><div><span style="font-size: 12px;"><strong>PRECIOUS! Out-of-reach Selection using Iterative Refinement in VR</strong></span></div>
+<div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Eduardo Cordeiro, Maurício Sousa, Alfredo Ferreira, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>IEEE Symposium on 3D User Interfaces (3DUI), 2017</em></span></div>
+<div><span style="font-size: 12px;">[Soon]</span></div></div>
+
+<div>&nbsp;</div>
+
+<div><div><span style="font-size: 12px;"><strong>Mid-air Modeling with Boolean Operations in VR</strong></span></div>
+<div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Maurício Sousa, Ricardo Ferreira, Alberto Barbosa Raposo, Alfredo Ferreira, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em> IEEE Symposium on 3D User Interfaces (3DUI), 2017</em></span></div>
+<div><span style="font-size: 12px;">[Soon]</span></div></div>
+
+<div>&nbsp;</div>
+
+<div><div><span style="font-size: 12px;"><strong>Hip-directed walking-in-place using a single depth camera</strong></span></div>
+<div><span style="font-size: 12px;"><em>Luís Bruno, Maurício Sousa, Alfredo Ferreira, João Madeiras Pereira, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>International Journal of Human-Computer Studies (IJHCS), Elsevier, 2017</em></span></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://dx.doi.org/10.1016/j.ijhcs.2017.03.006">ScienceDirect</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
