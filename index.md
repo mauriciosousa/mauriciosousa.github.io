@@ -35,7 +35,7 @@ image:
 <div><div><span style="font-size: 12px;"><strong>VRRRRoom: Virtual Reality for Radiologists in the Reading Room</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, Daniel Simões Lopes</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2017</em></span></div>
-<div><span style="font-size: 12px;">[Soon]</span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="https://youtu.be/7sFT-vO27XQ">Video</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
