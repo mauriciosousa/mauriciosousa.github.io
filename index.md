@@ -22,9 +22,9 @@ image:
 ### <a name="projects"></a> Projects
 
 <div class="content">
-<a href="http://it-medex.inesc-id.pt/" target="_blank"><img src="images/itmedex.png" style="height:80px;"></a>
-<a href="http://tecton3d.ist.utl.pt/" target="_blank"><img src="images/tecton.png" style="height:80px;"></a>
-<a href="http://sites.google.com/site/oilcedar/" target="_blank"><img src="images/cedar.jpg" style="height:80px;"></a>
+<a href="http://it-medex.inesc-id.pt/" target="_blank"><img src="images/itmedex.png" style="height:30px;"></a>
+<a href="http://tecton3d.ist.utl.pt/" target="_blank"><img src="images/tecton.png" style="height:30px;"></a>
+<a href="http://sites.google.com/site/oilcedar/" target="_blank"><img src="images/cedar.jpg" style="height:30px;"></a>
 </div>
 
 <div>&nbsp;</div>
