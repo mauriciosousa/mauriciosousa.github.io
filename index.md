@@ -34,7 +34,7 @@ image:
 > 2017
 
 <div><div><span style="font-size: 12px;"><strong>Design and evaluation of novel out-of-reach selection techniques for VR using iterative refinement</strong></span></div>
-<div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Maurício Sousa, Alfredo Ferreira, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Maurício Sousa, Eduardo Cordeiro, Alfredo Ferreira, Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Computers & Graphics, 2017</em></span></div>
 <div><span style="font-size: 12px;">[Soon]</span></div></div>
 
