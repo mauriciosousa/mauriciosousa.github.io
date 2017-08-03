@@ -44,7 +44,7 @@ image:
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, Daniel Simões Lopes</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2017</em></span></div>
 <div><span style="font-size: 12px;">
-[<a target="_blank" href="https://doi.org/10.1145/3025453.3025566">acm</a>|<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.pdf">pdf</a>|<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.bib">bib</a>|<a target="_blank" href="https://youtu.be/7sFT-vO27XQ">video</a>|<a target="_blank" href="https://youtu.be/nBl6RPLRKcc">presentation</a>]
+[<a target="_blank" href="https://doi.org/10.1145/3025453.3025566">acm</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.bib">bib</a> | <a target="_blank" href="https://youtu.be/7sFT-vO27XQ">video</a> | <a target="_blank" href="https://youtu.be/nBl6RPLRKcc">presentation</a>]
 </span></div></div>
 
 
