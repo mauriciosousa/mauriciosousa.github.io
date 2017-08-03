@@ -72,7 +72,7 @@ image:
 <div><div><span style="font-size: 12px;"><strong>Hip-directed walking-in-place using a single depth camera</strong></span></div>
 <div><span style="font-size: 12px;"><em>Luís Bruno, Maurício Sousa, Alfredo Ferreira, João Madeiras Pereira, Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>International Journal of Human-Computer Studies (IJHCS), Elsevier, 2017</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://dx.doi.org/10.1016/j.ijhcs.2017.03.006">ScienceDirect</a>]</span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://dx.doi.org/10.1016/j.ijhcs.2017.03.006">science direct</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
@@ -117,7 +117,7 @@ image:
 <div><div><span style="font-size: 12px;"><strong> Expeditious Illustration of Layer-Cake Models On and Above a Tactile Surface</strong></span></div>
 <div><span style="font-size: 12px;"><em>Daniel S. Lopes, Daniel Mendes, Maurício Sousa, Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Computers & Geosciences (in press), 2016</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/1-s2.0-S0098300416300334-main.pdf">pdf</a> | <a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S0098300416300334">Science Direct</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/Lopes2016.bib">bib</a>]</span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/1-s2.0-S0098300416300334-main.pdf">pdf</a> | <a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S0098300416300334">science direct</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/Lopes2016.bib">bib</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
