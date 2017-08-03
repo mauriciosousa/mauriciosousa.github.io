@@ -87,10 +87,11 @@ image:
 
 <div>&nbsp;</div>
 
-<div><div><span style="font-size: 12px;"><strong>Efeitos da Velocidade e das Transições em Técnicas para Viajar em Realidade Virtual</strong></span></div>
+<div><div><span style="font-size: 12px;"><strong>Evaluation of Travel Techniques for Virtual Reality</strong></span></div>
 <div><span style="font-size: 12px;"><em>Eduardo Cordeiro, Daniel Medeiros, Daniel Mendes, Maurício Sousa, Alberto Raposo, Alfredo Ferreira, Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Encontro Português de Computação Gráfica(EPCG), 2016</em></span></div>
-<div><span style="font-size: 12px;">[<a>SOON</a>]</span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/CoordeiroEPCGI16.pdf">pdf</a>]</span></div></div>
+
 
 <div>&nbsp;</div>
 
