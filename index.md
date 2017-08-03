@@ -44,7 +44,8 @@ image:
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, Daniel Simões Lopes</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2017</em></span></div>
 <div><span style="font-size: 12px;">
-[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.pdf">Pdf</a>]
+[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.pdf">P
+pdf</a>]
 [<a target="_blank" href="https://youtu.be/7sFT-vO27XQ">Video</a>]
 [<a target="_blank" href="https://youtu.be/nBl6RPLRKcc">Presentation</a>]
 </span></div></div>
@@ -57,7 +58,9 @@ image:
 <div><div><span style="font-size: 12px;"><strong>PRECIOUS! Out-of-reach Selection using Iterative Refinement in VR</strong></span></div>
 <div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Eduardo Cordeiro, Maurício Sousa, Alfredo Ferreira, Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>IEEE Symposium on 3D User Interfaces (3DUI), 2017</em></span></div>
-<div><span style="font-size: 12px;">[Soon]</span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p237-mendes.pdf">P
+pdf</a>]</span></div></div>
+
 
 <div>&nbsp;</div>
 
