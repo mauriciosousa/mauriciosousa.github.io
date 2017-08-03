@@ -44,7 +44,7 @@ image:
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, Daniel Simões Lopes</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2017</em></span></div>
 <div><span style="font-size: 12px;">
-[<a target="_blank" href="https://doi.org/10.1145/3025453.3025566">acm</a>|<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.pdf">pdf</a>|<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.bib">bib</a>|<a target="_blank" href="https://youtu.be/7sFT-vO27XQ">Video</a>|<a target="_blank" href="https://youtu.be/nBl6RPLRKcc">Presentation</a>]
+[<a target="_blank" href="https://doi.org/10.1145/3025453.3025566">acm</a>|<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.pdf">pdf</a>|<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.bib">bib</a>|<a target="_blank" href="https://youtu.be/7sFT-vO27XQ">video</a>|<a target="_blank" href="https://youtu.be/nBl6RPLRKcc">presentation</a>]
 </span></div></div>
 
 
@@ -110,7 +110,7 @@ image:
 <div><div><span style="font-size: 12px;"><strong>SleeveAR: Augmented Reality for Rehabilitation using Realtime Feedback</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, João Vieira, Daniel Medeiros, Artur Arsénio and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Intelligent User Interfaces (IUI), 2016</em></span></div>
-<div><span style="font-size: 12px;">[<a target="_blank" href="http://dl.acm.org/citation.cfm?id=2856773&CFID=589235121&CFTOKEN=67050946">acm</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/iuifp0186-sousaATS.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/iuifp0186-sousaATS.bib">bib</a> | <a target="_blank" href="https://youtu.be/66jV4I0Pal0">Presentation</a>] </span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="http://dl.acm.org/citation.cfm?id=2856773&CFID=589235121&CFTOKEN=67050946">acm</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/iuifp0186-sousaATS.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/iuifp0186-sousaATS.bib">bib</a> | <a target="_blank" href="https://youtu.be/66jV4I0Pal0">presentation</a>] </span></div></div>
 
 <div>&nbsp;</div>
 
