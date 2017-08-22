@@ -31,8 +31,10 @@ $info				  : #308cbc;
 //$linkcolor 		    : #343434;
 $linkcolor 		    : #007aff;
 $link-color       : $linkcolor;
-$linkcolorhover 	: darken($linkcolor, 10);
-$linkcolorvisited : lighten($linkcolorhover, 20);
+//$linkcolorhover 	: darken($linkcolor, 10);
+$linkcolorhover 	: #ff2d55;
+//$linkcolorvisited : lighten($linkcolorhover, 20);
+$linkcolorvisited : $linkcolorhover;
 $linkcolorfocus 	: darken($linkcolorvisited, 10);
 
 // Media Queries
