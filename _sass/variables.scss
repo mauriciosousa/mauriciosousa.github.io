@@ -34,7 +34,7 @@ $link-color       : $linkcolor;
 //$linkcolorhover 	: darken($linkcolor, 10);
 $linkcolorhover 	: #ff2d55;
 //$linkcolorvisited : lighten($linkcolorhover, 20);
-$linkcolorvisited : $linkcolorhover;
+$linkcolorvisited : $linkcolor;
 $linkcolorfocus 	: darken($linkcolorvisited, 10);
 
 // Media Queries
