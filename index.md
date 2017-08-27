@@ -34,14 +34,14 @@ image:
 > 2017
 
 <div><div><span style="font-size: 12px;"><strong>Design and evaluation of novel out-of-reach selection techniques for VR using iterative refinement</strong></span></div>
-<div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Maurício Sousa, Eduardo Cordeiro, Alfredo Ferreira, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Maurício Sousa, Eduardo Cordeiro, Alfredo Ferreira and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Computers & Graphics, 2017</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/1-s2.0-S0097849317300778-main.pdf">pdf</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>VRRRRoom: Virtual Reality for Radiologists in the Reading Room</strong></span></div>
-<div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, Daniel Simões Lopes</em></span></div>
+<div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge and Daniel Simões Lopes</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2017</em></span></div>
 <div><span style="font-size: 12px;">
 [<a target="_blank" href="https://doi.org/10.1145/3025453.3025566">acm</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.bib">bib</a> | <a target="_blank" href="https://youtu.be/7sFT-vO27XQ">video</a> | <a target="_blank" href="https://youtu.be/nBl6RPLRKcc">presentation</a>]
@@ -53,7 +53,7 @@ image:
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>PRECIOUS! Out-of-reach Selection using Iterative Refinement in VR</strong></span></div>
-<div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Eduardo Cordeiro, Maurício Sousa, Alfredo Ferreira, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Eduardo Cordeiro, Maurício Sousa, Alfredo Ferreira and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>IEEE Symposium on 3D User Interfaces (3DUI), 2017</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p237-mendes.pdf">pdf</a>]</span></div></div>
 
@@ -61,7 +61,7 @@ image:
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>Mid-air Modeling with Boolean Operations in VR</strong></span></div>
-<div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Maurício Sousa, Ricardo Ferreira, Alberto Barbosa Raposo, Alfredo Ferreira, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Maurício Sousa, Ricardo Ferreira, Alberto Barbosa Raposo, Alfredo Ferreira and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em> IEEE Symposium on 3D User Interfaces (3DUI), 2017</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p154-mendes.pdf">pdf</a>]</span></div></div>
 
@@ -70,7 +70,7 @@ image:
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>Hip-directed walking-in-place using a single depth camera</strong></span></div>
-<div><span style="font-size: 12px;"><em>Luís Bruno, Maurício Sousa, Alfredo Ferreira, João Madeiras Pereira, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Luís Bruno, Maurício Sousa, Alfredo Ferreira, João Madeiras Pereira and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>International Journal of Human-Computer Studies (IJHCS), Elsevier, 2017</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://dx.doi.org/10.1016/j.ijhcs.2017.03.006">science direct</a>]</span></div></div>
 
@@ -79,14 +79,14 @@ image:
 > 2016
 
 <div><div><span style="font-size: 12px;"><strong>Remote Proxemics</strong></span></div>
-<div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Daniel Medeiros, Alfredo Ferreira, João Madeiras Pereira, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Daniel Medeiros, Alfredo Ferreira, João Madeiras Pereira and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Chapter in Collaboration Meets Interactive Spaces, Springer, 2016</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://dx.doi.org/10.1007/978-3-319-45853-3_4">springer</a>]</span></div></div>
 
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>Evaluation of Travel Techniques for Virtual Reality</strong></span></div>
-<div><span style="font-size: 12px;"><em>Eduardo Cordeiro, Daniel Medeiros, Daniel Mendes, Maurício Sousa, Alberto Raposo, Alfredo Ferreira, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Eduardo Cordeiro, Daniel Medeiros, Daniel Mendes, Maurício Sousa, Alberto Raposo, Alfredo Ferreira and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Encontro Português de Computação Gráfica(EPCG), 2016</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/CoordeiroEPCGI16.pdf">pdf</a>]</span></div></div>
 
@@ -115,7 +115,7 @@ image:
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong> Expeditious Illustration of Layer-Cake Models On and Above a Tactile Surface</strong></span></div>
-<div><span style="font-size: 12px;"><em>Daniel S. Lopes, Daniel Mendes, Maurício Sousa, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Daniel S. Lopes, Daniel Mendes, Maurício Sousa and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Computers & Geosciences (in press), 2016</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/1-s2.0-S0098300416300334-main.pdf">pdf</a> | <a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S0098300416300334">science direct</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/Lopes2016.bib">bib</a>]</span></div></div>
 
@@ -138,7 +138,7 @@ image:
 <div>&nbsp;</div>
 
 <div><span style="font-size:11px;"><strong>From Tecton to Teknos: Going back to the Classical Roots of Architecture.</strong></span></div>
-<div><span style="font-size:11px;"><em>Daniel Mateus, Maurício Sousa, Rui de Klerk, Sandra Gama, Joaquim Jorge, José Duarte</em></span></div>
+<div><span style="font-size:11px;"><em>Daniel Mateus, Maurício Sousa, Rui de Klerk, Sandra Gama, Joaquim Jorge and José Duarte</em></span></div>
 <div><span style="font-size:11px;"><em>Education and research in Computer Aided Architectural Design in Europe(eCAADe), 2015</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/ecaade2015_181.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/ecaade2015_181.bib">bib</a>]</span></div>
 
@@ -169,7 +169,7 @@ image:
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>ThumbCam: Returning to single touch interactions to explore 3D virtual environments</strong></span></div>
-<div><span style="font-size: 12px;"><em>Daniel Mendes, Maurício Sousa, Alfredo Ferreira, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Daniel Mendes, Maurício Sousa, Alfredo Ferreira and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Interactive Tabletops and Surfaces(ITS), 2014</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://dl.acm.org/citation.cfm?id=2669554&CFID=570073357&CFTOKEN=56549813">acm</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/IST2014-ThumbCam.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/IST2014-ThumbCam.bib">bib</a> ]</span></div></div>
 
@@ -199,7 +199,7 @@ image:
 <div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>Collaborative 3D Visualization on Large Screen Displays</strong></span></div>
-<div><span style="font-size: 12px;"><em>Daniel Mendes, Maurício Sousa, Bruno Araújo, Alfredo Ferreira, Hildegardo Noronha, Pedro Campos, Luciano Soares, Alberto Raposo, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Daniel Mendes, Maurício Sousa, Bruno Araújo, Alfredo Ferreira, Hildegardo Noronha, Pedro Campos, Luciano Soares, Alberto Raposo and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Powerwall Workshop, SIGCHI Conference on Human Factors in Computing Systems(CHI), 2013</em></span></div>
 <div><span style="font-size: 12px;">[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/CHI2013-PowerwallWorkshop-Collaboration.pdf">pdf</a>]</span></div></div>
 
