@@ -33,6 +33,21 @@ image:
 
 > 2017
 
+
+<div><div><span style="font-size: 12px;"><strong>Using Custom Transformation Axes for Mid-Air Manipulation of 3D Virtual Objects</strong></span></div>
+<div><span style="font-size: 12px;"><em>Daniel Mendes, Maurício Sousa, Rodrigo Lorena, Alfredo Ferreira and Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>ACM Symposium on Virtual Reality Software and Technology (VRST), 2017</em></span></div>
+<div><span style="font-size: 12px;">[Soon]</span></div></div>
+
+<div>&nbsp;</div>
+
+<div><div><span style="font-size: 12px;"><strong>Creepy Tracker Toolkit for Context-aware Interfaces</strong></span></div>
+<div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Rafael Kuffner dos Anjos, Daniel Medeiros, Alberto Raposo, Alfredo Ferreira, João Pereira and Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>ACM Interactive Surfaces and Spaces (ISS), 2017</em></span></div>
+<div><span style="font-size: 12px;">[Soon]</span></div></div>
+
+<div>&nbsp;</div>
+
 <div><div><span style="font-size: 12px;"><strong>Design and evaluation of novel out-of-reach selection techniques for VR using iterative refinement</strong></span></div>
 <div><span style="font-size: 12px;"><em>Daniel Mendes, Daniel Medeiros, Maurício Sousa, Eduardo Cordeiro, Alfredo Ferreira and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>Computers & Graphics, 2017</em></span></div>
