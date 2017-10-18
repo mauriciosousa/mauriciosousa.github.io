@@ -44,7 +44,9 @@ image:
 <div><div><span style="font-size: 12px;"><strong>Creepy Tracker Toolkit for Context-aware Interfaces</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Rafael Kuffner dos Anjos, Daniel Medeiros, Alberto Raposo, Alfredo Ferreira, João Pereira and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Interactive Surfaces and Spaces (ISS), 2017</em></span></div>
-<div><span style="font-size: 12px;">[Soon]</span></div></div>
+<div><span style="font-size: 12px;">
+[<a target="_blank" href="https://doi.org/10.1145/3132272.3134113">acm</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p191-sousa.pdf">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/p191-sousa.bib">bib</a> | <a target="_blank" href="https://youtu.be/4F423Cv-lWE">video</a>]
+</span></div></div>
 
 <div>&nbsp;</div>
 
