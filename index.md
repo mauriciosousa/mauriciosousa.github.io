@@ -45,7 +45,9 @@ image:
 <div><div><span style="font-size: 12px;"><strong>Using Custom Transformation Axes for Mid-Air Manipulation of 3D Virtual Objects</strong></span></div>
 <div><span style="font-size: 12px;"><em>Daniel Mendes, Maurício Sousa, Rodrigo Lorena, Alfredo Ferreira and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Symposium on Virtual Reality Software and Technology (VRST), 2017</em></span></div>
-<div><span style="font-size: 12px;">[Soon]</span></div></div>
+<div><span style="font-size: 12px;">[<a target="_blank" href="https://doi.org/10.1145/3139131.3139157">acm</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/27-0326-mendes.pdf">pdf</a>]</span></div></div>
+
+
 
 <div>&nbsp;</div>
 
