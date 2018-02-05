@@ -19,6 +19,10 @@ image:
 
 <div>&nbsp;</div>
 
+<div><a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/mauriciosousa-resume-web.pdf">resume</a></div>
+
+<div>&nbsp;</div>
+
 ### <a name="projects"></a> Projects
 
 <div class="content">
