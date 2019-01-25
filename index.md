@@ -34,6 +34,24 @@ image:
 
 ### <a name="publications"></a> Publications
 
+> 2019
+
+<div><div><span style="font-size: 12px;"><strong>Warping Deixis: Distorting Gestures to Enhance Collaboration</strong></span></div>
+<div><span style="font-size: 12px;"><em>Maurício Sousa, Rafael Kuffner Dos Anjos, Daniel Mendes, Mark Billinghurst, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2019</em></span></div>
+<div><span style="font-size: 12px;">
+[SOON]
+</span></div></div>
+
+> 2018
+
+<div><div><span style="font-size: 12px;"><strong>Investigating Workspace Awareness in 3D Face-to-Face Remote Collaboration</strong></span></div>
+<div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Rafael Kuffner dos Anjos and Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>ICGI 2018</em></span></div><div><span style="font-size: 12px;">
+[<a target="_blank" href="http://web.ist.utl.pt/danielmendes/papers/2018/icgi_2018-190-191.pdf">pdf</a>]
+  </span></div></div>
+
+
 > 2017
 
 
