@@ -34,7 +34,11 @@ image:
 
 ### <a name="publications"></a> Publications
 
+<div>&nbsp;</div>
+
 > 2019
+
+<div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>Warping Deixis: Distorting Gestures to Enhance Collaboration</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Rafael Kuffner Dos Anjos, Daniel Mendes, Mark Billinghurst, Joaquim Jorge</em></span></div>
@@ -43,7 +47,11 @@ image:
 [SOON]
 </span></div></div>
 
+<div>&nbsp;</div>
+
 > 2018
+
+<div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>Investigating Workspace Awareness in 3D Face-to-Face Remote Collaboration</strong></span></div>
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Daniel Mendes, Rafael Kuffner dos Anjos and Joaquim Jorge</em></span></div>
@@ -51,9 +59,11 @@ image:
 [<a target="_blank" href="http://web.ist.utl.pt/danielmendes/papers/2018/icgi_2018-190-191.pdf">pdf</a>]
   </span></div></div>
 
+<div>&nbsp;</div>
 
 > 2017
 
+<div>&nbsp;</div>
 
 <div><div><span style="font-size: 12px;"><strong>Demo hour</strong></span></div>
 <div><span style="font-size: 12px;"><em>Paden Shorey, Audrey Girouard, Sang Ho Yoon, Yunbo Zhang, Ke Huo, Karthik Ramani, Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, Daniel Simões Lopes, Dirk Wenig, Johannes Schöning, Alex Olwal, Mathias Oben, and Rainer Malaka</em></span></div>
