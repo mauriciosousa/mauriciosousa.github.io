@@ -38,9 +38,20 @@ image:
 
 > 2019
 
+<div><div><span style="font-size: 12px;"><strong>Magic Carpet: Interaction Fidelity for Flying in VR</strong></span></div>
+<div><span style="font-size: 12px;"><em>Daniel Medeiros, Maurício Sousa, Alberto Raposo and Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>IEEE Transactions on Visualization and Computer Graphics (TVCG), 2019</em></span></div>
+<div><span style="font-size: 12px;">
+[SOON]
+</span></div></div>
+
+
+<div>&nbsp;</div>
+
+
 
 <div><div><span style="font-size: 12px;"><strong>Warping Deixis: Distorting Gestures to Enhance Collaboration</strong></span></div>
-<div><span style="font-size: 12px;"><em>Maurício Sousa, Rafael Kuffner Dos Anjos, Daniel Mendes, Mark Billinghurst, Joaquim Jorge</em></span></div>
+<div><span style="font-size: 12px;"><em>Maurício Sousa, Rafael Kuffner Dos Anjos, Daniel Mendes, Mark Billinghurst and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2019</em></span></div>
 <div><span style="font-size: 12px;">
 [SOON]
