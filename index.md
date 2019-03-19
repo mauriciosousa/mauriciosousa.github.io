@@ -55,7 +55,6 @@ image:
 <div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2019</em></span></div>
 <div><span style="font-size: 12px;">
 [<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/acmchi2019-warping-deixis-preprint.pdf">preprint</a>]
-  </span></div></div>
 </span></div></div>
 
 
