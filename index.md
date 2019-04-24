@@ -54,7 +54,7 @@ image:
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Rafael Kuffner Dos Anjos, Daniel Mendes, Mark Billinghurst and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2019</em></span></div>
 <div><span style="font-size: 12px;">
-[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/acmchi2019-warping-deixis-preprint.pdf">preprint</a>]
+[<a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/acmchi2019-warping-deixis-preprint.pdf">preprint</a> | <a target="_blank" href="https://youtu.be/TGLCiQ2SZAY">video</a>]
 </span></div></div>
 
 
