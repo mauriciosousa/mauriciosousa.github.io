@@ -54,7 +54,7 @@ image:
 <div><span style="font-size: 12px;"><em>Maurício Sousa, Rafael Kuffner Dos Anjos, Daniel Mendes, Mark Billinghurst and Joaquim Jorge</em></span></div>
 <div><span style="font-size: 12px;"><em>ACM Conference on Human Factors in Computing Systems (CHI), 2019</em></span></div>
 <div><span style="font-size: 12px;">
-[<a target="_blank" href="https://doi.org/10.1145/3290605.3300838">acm</a> | <a target="_blank" href="https://dl.acm.org/authorize?N672084">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/3300838.bib">bib</a> | <a target="_blank" href="https://youtu.be/TGLCiQ2SZAY">video</a> | <a target="_blank" href="https://www.dropbox.com/s/up7hlsjdxo9x8z3/recording-sigchi5_20190508_075709.mp4?dl=0">presentation</a>]
+[<a target="_blank" href="https://doi.org/10.1145/3290605.3300838">acm</a> | <a target="_blank" href="https://dl.acm.org/authorize?N672084">pdf</a> | <a target="_blank" href="http://web.ist.utl.pt/antonio.sousa/publications/3300838.bib">bib</a> | <a target="_blank" href="https://youtu.be/TGLCiQ2SZAY">video</a> | <a target="_blank" href="https://youtu.be/tlygIewA5Ww">presentation</a>]
 </span></div></div>
 
 
