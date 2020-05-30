@@ -1,13 +1,7 @@
-# Site navigation links
-
-- title: About Me
-  url: /#aboutme
-
-- title: Projects
-  url: /#projects
-
-- title: Publications
-  url: /#publications
-
-- title: Contacts
-  url: /#contacts
+main:
+  - title: "About me"
+    url: /#aboutme
+  - title: "Publications"
+    url: /#publications
+  - title: "Contacts"
+    url: /#contacts
