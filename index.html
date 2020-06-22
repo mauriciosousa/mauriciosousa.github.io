@@ -52,6 +52,32 @@ body {
     
 </style>
 
+
+
+<script type="text/javascript">
+
+    
+    
+    var txtFile = new XMLHttpRequest();
+    txtFile.onload = function() {
+        allText = txtFile.responseText;
+        allTextLines = allText.split(/\r\n|\n/);
+
+        for(var i = 0; i < allTextLines.length; i++) {
+            document.body.innerHTML += allTextLines[i];
+            document.body.innerHTML += '<br/>';
+        }
+
+    }
+
+    txtFile.open("get", "filename.csv", true);
+    txtFile.send();
+
+    
+</script>
+<noscript>Your browser does not support JavaScript!</noscript>
+
+
 <h2 id="aboutme"><i class="fas fa-user"></i> About me</h2>
 
 <span style="font-size:14px;">
@@ -375,7 +401,10 @@ body {
                 <b>Laparoscopy with Augmented Reality Adaptations.</b>
                 <i>Ezequiel Zorzal, José Miguel Gomes, Maurício Sousa, Pedro Belchior, Pedro G da Silva, Nuno Figueiredo, Daniel S Lopes, and Joaquim A Jorge.</i>
                 <i>Journal of Biomedical Informatics, 2020</i></br>
-                <i style="color: gray">Soon</i></br>    
+            
+            
+            
+                <i class="far fa-file-pdf"></i>&nbsp<a href="assets/publications/1-s2.0-S1532046420300915-main.pdf">Preprint</a>&nbsp   
                 </p>
             </div>
         </div>
@@ -406,7 +435,7 @@ body {
                 <i>Daniel Medeiros, Maurício Sousa, Alberto Raposo and Joaquim Jorge.</i>
                 <i>IEEE Transactions on Visualization and Computer Graphics (TVCG), 2019</i></br>
                 <i class="far fa-file-pdf"></i>&nbsp<a href="/assets/publications/08667739.pdf">Paper</a>&nbsp
-                <i class="fas fa-ellipsis-v"></i>  
+                <i class="fas fa-ellipsis-v"></i>&nbsp  
                 <i class="far fa-file-video"></i>&nbsp<a href="https://www.youtube.com/watch?v=bQxgUVlM-aw">Presentation</a>&nbsp
                 </p>
             </div>
@@ -576,6 +605,8 @@ body {
                 <i>Ph.D. Thesis. Instituto Superior Técnico, University of Lisbon.</i>
                 <i>2020</i></br>
                 <i class="far fa-file-pdf"></i>&nbsp<a href="assets/publications/phd-thesis-mauriciosousa.pdf">Thesis</a>&nbsp
+                <i class="fas fa-ellipsis-v"></i>&nbsp  
+                <i class="far fa-file-video"></i>&nbsp<a href="https://youtu.be/vE94eCm20kQ">Presentation</a>&nbsp
                 </p>
             </div>
         </div>
