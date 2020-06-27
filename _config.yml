@@ -49,7 +49,7 @@ comments:
 reCaptcha:
   siteKey                :
   secret                 :
-atom_feed:
+atom_feed:               false
   path                   : # blank (default) uses feed.xml
 search                   : # true, false (default)
 search_full_content      : # true, false (default)
@@ -121,9 +121,6 @@ author:
     - label: "Google Scholar"
       icon: "fas fa-graduation-cap"
       url: "https://scholar.google.pt/citations?hl=en&user=3sC4E1cAAAAJ&view_op=list_works&gmla=AJsN-F4fub5p9UzWa051J4lf5biaPfQLf3oU14IiUKim376ylTaLTDI1BJH3iZANTBlYOUWGPr_qpy9QaLoa2mEYg8YhFFsk6nUGGFNhzKdPYEwZ7cVdWt8"
-    - label: "CV"
-      icon: "fas fa-file"
-      url: "/assets/publications/mauriciosousa-cv.pdf"
 
 # Site Footer
 footer:

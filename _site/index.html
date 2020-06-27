@@ -334,6 +334,26 @@
 
       <section class="page__content" itemprop="text">
         
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Contents</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#aboutme"> About me</a></li>
+  <li><a href="#publications"> Publications</a>
+    <ul>
+      <li><a href="#conference">  Conference Papers</a></li>
+      <li><a href="#journal">  Journal Articles</a></li>
+      <li><a href="#book">  Book Chapters</a></li>
+      <li><a href="#other">  Other Peer Reviewed Publications</a></li>
+      <li><a href="#theses">  Theses</a></li>
+    </ul>
+  </li>
+  <li><a href="#contacts"> Contacts</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
         <style>    
  
 
@@ -379,45 +399,62 @@ body {
 </style>
 
 
+<button onclick="topFunction()" id="myBtnTop" title="Go to top">Top</button>
 
 <script type="text/javascript">
+  
+    var mybutton = document.getElementById("myBtnTop");
 
-    
-    
-    var txtFile = new XMLHttpRequest();
-    txtFile.onload = function() {
-        allText = txtFile.responseText;
-        allTextLines = allText.split(/\r\n|\n/);
+    window.onscroll = function() {scrollFunction()};
 
-        for(var i = 0; i < allTextLines.length; i++) {
-            document.body.innerHTML += allTextLines[i];
-            document.body.innerHTML += '<br/>';
-        }
-
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
     }
 
-    txtFile.open("get", "filename.csv", true);
-    txtFile.send();
-
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+    
     
 </script>
-<noscript>Your browser does not support JavaScript!</noscript>
 
 
-<h2 id="aboutme"><i class="fas fa-user"></i> About me</h2>
+
+<div class="notice--danger">
+
+    <b>Latest Updates:</b><br>
+    <b>June, 2020 -</b> Paper <a href="#jbiAdaptations"> Laparoscopy with Augmented Reality Adaptations</a> published in the Elsevier Journal of Biomedical Informatics. 
+</div>
+<br>
+
+<h1 id="aboutme"><i class="fas fa-user"></i> About me</h1>
 
 <span style="font-size:14px;">
-<p>I am a HCI researcher. Previously I was a researcher at the <a target="_blank" href="http://lab-jlf.tecnico.ulisboa.pt">Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon</a> under the supervision of Professor <a target="_blank" href="http://web.ist.utl.pt/jorgej/">Joaquim Jorge</a>. Received my <a href="#theses">PhD</a>, <a href="#theses">MSc</a> and B.Sc. degrees in Computer Science and Engineering from T&eacute;cnico Lisboa / University of Lisbon. In my research, I have been designing and evaluating novel interaction techniques for the engineering, architecture and medical fields, focussing on computer supported remote collaborative work in Mixed Reality environments. I also have experience in 3D user interfaces, interactive spaces, touch and mid-air gestures. And I have been fortunate to see my research published in top international conferences and journals, such as ACM CHI, ACM ISS, ACM IUI, ACM VRST, INTERACT, IJHCS, and IEEE TVCG. I am currently a member of the  organising committee of the international conferences <a href="http://iss.acm.org/2020">ACM ISS</a> and IEEE VR.</p>
+    <p class="text-justify">
+        I am a HCI researcher. Previously I was a researcher at the <a target="_blank" href="http://lab-jlf.tecnico.ulisboa.pt">Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon</a> under the supervision of Professor <a target="_blank" href="http://web.ist.utl.pt/jorgej/">Joaquim Jorge</a>. Received my <a href="#theses">PhD</a>, <a href="#theses">MSc</a> and B.Sc. degrees in Computer Science and Engineering from T&eacute;cnico Lisboa / University of Lisbon. In my research, I have been designing and evaluating novel interaction techniques for the engineering, architecture and medical fields, focussing on computer supported remote collaborative work in Mixed Reality environments. I also have experience in 3D user interfaces, interactive spaces, touch and mid-air gestures. And I have been fortunate to see my research published in top international conferences and journals, such as ACM CHI, ACM ISS, ACM IUI, ACM VRST, INTERACT, IJHCS, and IEEE TVCG. I am currently a member of the  organising committee of the international conferences <a href="http://iss.acm.org/2020">ACM ISS</a> and <a href="http://ieeevr.org/2021/"> IEEE VR</a>.
+    </p>
 
+    
     <!--
     <span style="font-size:16px;"><div align="left "><i class="far fa-file"></i> <a target="_blank" href="/assets/publications/mauriciosousa-cv.pdf">RESUME</a></div></span>
     -->
-
+    
 </span>
 
-<h2 id="publications"><i class="fas fa-book-open"></i> Publications</h2>
+    <p class="text-center">
+        <a href="/assets/publications/mauriciosousa-cv.pdf" class="btn btn--primary"><i class="far fa-file-pdf"></i>&nbsp Download my CV</a>
+    </p>
 
-<h4 id="conference">  Conference Papers</h4>
+<br>
+
+<h1 id="publications"><i class="fas fa-book-open"></i> Publications</h1>
+
+<h2 id="conference">  Conference Papers</h2>
 
 <span style="font-size:14px;">
     <div class="container">
@@ -713,12 +750,12 @@ body {
 
 
 
-<h4 id="journal">  Journal Articles</h4>
+<h2 id="journal">  Journal Articles</h2>
 
 <span style="font-size:14px;">
     <div class="container">
         
-        <div class="card">
+        <div id="jbiAdaptations" class="card" >
             <div class="imgBx">
                 <img src="/assets/publications/jbiAdaptations.jpg" style="width:200px;" alt="Hologram Space">
             </div>
@@ -726,7 +763,7 @@ body {
                 <p>
                 <b>Laparoscopy with Augmented Reality Adaptations.</b>
                 <i>Ezequiel Zorzal, José Miguel Gomes, Maurício Sousa, Pedro Belchior, Pedro G da Silva, Nuno Figueiredo, Daniel S Lopes, and Joaquim A Jorge.</i>
-                <i>Journal of Biomedical Informatics, 2020</i></br>
+                <i>Elsevier Journal of Biomedical Informatics, 2020</i></br>
             
             
             
@@ -814,7 +851,7 @@ body {
 
 
 
-<h4 id="book">  Book Chapters</h4>
+<h2 id="book">  Book Chapters</h2>
 <span style="font-size:14px;">
     <div class="container">
 
@@ -837,7 +874,7 @@ body {
 
 
 
-<h4 id="other">  Other Peer Reviewed Publications</h4>
+<h2 id="other">  Other Peer Reviewed Publications</h2>
 <span style="font-size:14px;">
     <div class="container">
 
@@ -916,7 +953,7 @@ body {
 
 
 
-<h4 id="theses">  Theses</h4>
+<h2 id="theses">  Theses</h2>
 <span style="font-size:14px;">
     <div class="container">
 
@@ -956,9 +993,9 @@ body {
     </div>    
 </span>
 
+<br>
 
-
-<h2 id="contacts"><i class="fas fa-address-book"></i> Contacts</h2>
+<h1 id="contacts"><i class="fas fa-address-book"></i> Contacts</h1>
 
 <div>
 <span style="font-size:14px;">

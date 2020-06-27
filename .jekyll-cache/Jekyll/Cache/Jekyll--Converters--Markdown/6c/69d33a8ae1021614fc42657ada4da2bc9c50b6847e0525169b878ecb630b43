@@ -1,0 +1,14 @@
+I"ß<ul class="toc__menu">
+  <li><a href="#aboutme"> About me</a></li>
+  <li><a href="#publications"> Publications</a>
+    <ul>
+      <li><a href="#conference">  Conference Papers</a></li>
+      <li><a href="#journal">  Journal Articles</a></li>
+      <li><a href="#book">  Book Chapters</a></li>
+      <li><a href="#other">  Other Peer Reviewed Publications</a></li>
+      <li><a href="#theses">  Theses</a></li>
+    </ul>
+  </li>
+  <li><a href="#contacts"> Contacts</a></li>
+</ul>
+:ET
