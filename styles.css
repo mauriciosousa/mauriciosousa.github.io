@@ -219,15 +219,6 @@ a.anchor {
     clear: both;
 }
 
-@media all and (orientation:portrait) {
-
-}
-
-@media all and (orientation:landscape) {
-  #container {
-        width: 80%;
-    }
-}
 
 @media screen and (max-width: 1170px) {
 
