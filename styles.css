@@ -48,9 +48,13 @@ body {
     text-decoration: none;
 }
 
-#header a.logo:hover {
-    color: #333333;
-    background-color: white;
+
+
+@media(hover: hover) and (pointer: fine) {
+    #header a.logo:hover {
+        color: #333333;
+        background-color: white;
+    }
 }
 
 
@@ -235,10 +239,8 @@ a.anchor {
         width: 100%;
     }
 
-    #content p {
-       
-    }
-    
+    #content p {}
+
     .pub {
         text-align: left;
     }
@@ -268,10 +270,8 @@ a.anchor {
         width: 100%;
     }
 
-    #content p {
-       
-    }
-    
+    #content p {}
+
     .pub {
         text-align: left;
     }
@@ -307,20 +307,20 @@ a.anchor {
     font-weight: 600;
 }
 
-@media(hover: hover) and (pointer: fine){
+@media(hover: hover) and (pointer: fine) {
     #myBtn:hover {
-    background-color: #ff4e00;
+        background-color: #ff4e00;
     }
 }
 
 
 /* this solves the isso of the body text fonts too large in iphone, landscape*/
 @media only screen and (min-width : 320px) and (max-width : 560px) {
-	body {-webkit-text-size-adjust: none;}
+    body {
+        -webkit-text-size-adjust: none;
+    }
 }
 
 html {
     -webkit-text-size-adjust: 100%;
 }
-
-
