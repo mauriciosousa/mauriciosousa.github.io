@@ -50,6 +50,13 @@ body {
     text-decoration: none;
 }
 
+@media(hover: hover) and (pointer: fine) {
+    #header a.logo:hover {
+        color: white;
+        text-decoration: none;
+    }
+}
+
 
 
 .header-right {
