@@ -217,6 +217,8 @@ a.anchor {
 
 .pub span.venue {
     font-style: normal;
+    font-weight: 400;
+
 }
 
 .pub span.award {
