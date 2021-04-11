@@ -290,4 +290,8 @@ a.anchor {
 	body {-webkit-text-size-adjust: none;}
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
 
