@@ -82,25 +82,7 @@ body {
 }
 
 
-@media screen and (max-width: 800px) {
 
-    #container,
-    #header,
-    #content {
-        width: 100%;
-    }
-
-    #header a {
-        float: none;
-        display: block;
-        text-align: left;
-        font-size: 12px;
-    }
-
-    .header-right {
-        float: none;
-    }
-}
 
 #content img.splash {
     float: center;
@@ -194,6 +176,7 @@ a.anchor {
     float: left;
     width: 40%;
 }
+
 .column.right {
     float: left;
     width: 60%;
@@ -207,15 +190,19 @@ a.anchor {
     color: #333333;
     font-weight: 300;
 }
+
 .pub span.title {
     font-weight: 600;
 }
+
 .pub span.authors {
     font-style: oblique;
 }
+
 .pub span.venue {
     font-style: normal;
 }
+
 .pub span.award {
     font-style: normal;
     color: #f75f9a;
@@ -227,17 +214,53 @@ a.anchor {
 }
 
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
+
+@media screen and (max-width: 1200px) {
+
+    #container,
+    #header,
+    #content {
+        width: 80%;
+    }
+}
+
 @media screen and (max-width: 800px) {
-  .column.left, .column.right {
-    width: 100%;
-  }
+
+    #container,
+    #header,
+    #content {
+        width: 100%;
+    }
+
+    #content p {
+       
+    }
+    
+    .pub {
+        text-align: left;
+    }
+
+    #header a {
+        float: none;
+        /*display: block;*/
+        text-align: left;
+        font-size: 12px;
+    }
+
+    .header-right {
+        float: none;
+    }
+
+    .column.left,
+    .column.right {
+        width: 100%;
+    }
 }
-
-
+}
 
 /* go top button */
 #myBtn {
