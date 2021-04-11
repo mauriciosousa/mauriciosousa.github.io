@@ -1,7 +1,0 @@
-main:
-  - title: "About me"
-    url: /#aboutme
-  - title: "Publications"
-    url: /#publications
-  - title: "Contacts"
-    url: /#contacts

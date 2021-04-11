@@ -1,707 +1,696 @@
----
-layout: single
-author_profile: true
-toc: true
-toc_label: "Contents"
-toc_sticky: true
-title: "Mauricio Sousa"
-header:
-    image: /assets/images/teaser_adventures.jpg
-    caption: "Adventures in Hologram Space. VRST'19"
----
+<!doctype html>
 
-<style>
-    body {
-        display: flex;
-        justify-content: center;
-    }
+<html lang="en">
 
-    .container {
-        position: relative;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-    }
+<head>
+    <meta charset="utf-8">
 
-    .container .card {
-        position: relative;
-        max-width: 100%;
-        margin: 20px;
-        padding: 0px;
-        display: flex;
-        #background: #bc2828 #height: 400px;
+    <title>Maurício's Research</title>
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png" />
+    <meta name="description" content="Mauricio Research">
+    <meta name="author" content="Mauricio Sousa">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <link rel="stylesheet" href="styles.css">
 
-    }
+</head>
 
-    .container .card .imgBx {
-        max-width: 30%;
-        flex: 0 0 0 30%;
-    }
+<body>
 
-    .container .card .imgBx img {
-        max-width: 100%;
-    }
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+        var mybutton = document.getElementById("myBtn");
+        window.onscroll = function() {
+            scrollFunction()
+        };
 
-    .container .card .content {
-        margin-left: 15px;
-        width: 70%;
-    }
-
-</style>
-
-
-<button onclick="topFunction()" id="myBtnTop" title="Go to top">Top</button>
-
-<script type="text/javascript">
-    var mybutton = document.getElementById("myBtnTop");
-
-    window.onscroll = function() {
-        scrollFunction()
-    };
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
-        } else {
-            mybutton.style.display = "none";
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
         }
-    }
 
-    function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
 
-</script>
+    </script>
 
-
-
-<div class="notice--danger">
-
-    <b>Latest Updates:</b><br>
-    <b>January, 2021 - </b> Our paper on enhancing VR reality awareness was conditionally accepted at IEEE VR 2021.<br>
-    <b>December, 2020 - </b> Our paper on task allocation for human-robot collaboration was conditionally accepted at ACM CHI 2021.<br>
-    <b>June, 2020 - </b> Paper <a href="#jbiAdaptations"> Laparoscopy with Augmented Reality Adaptations</a> published in the Elsevier Journal of Biomedical Informatics.<br>
-    <b>April, 2020 -</b> You can read my PhD thesis <a href="#phd-doc">here</a>.
-</div>
-<br>
-
-<h1 id="aboutme"><i class="fas fa-user"></i> About me</h1>
-
-<span style="font-size:16px;">
-    <p class="text-justify">
-        I am an HCI Researcher and a Postdoctoral Fellow in the <a href="https://www.dgp.toronto.edu">Dynamic Graphics Project Lab</a> at the <a href="https://www.utoronto.ca">University of Toronto</a> working with Professor <a href="https://www.tovigrossman.com">Tovi Grossman</a>. Previously I was a researcher at the <a target="_blank" href="http://lab-jlf.tecnico.ulisboa.pt">Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon</a> under the supervision of Professor <a target="_blank" href="http://web.ist.utl.pt/jorgej/">Joaquim Jorge</a>. Received my <a href="#theses">PhD</a>, <a href="#theses">MSc</a> and B.Sc. degrees in Computer Science and Engineering from T&eacute;cnico Lisboa / University of Lisbon. In my research, I have been designing and evaluating novel interaction techniques for the engineering, architecture and medical fields, focussing on computer supported remote collaborative work in Mixed Reality environments. I also have experience in 3D user interfaces, interactive spaces, touch and mid-air gestures. And I have been fortunate to see my research published in top international conferences and journals, such as ACM CHI, ACM ISS, ACM IUI, ACM VRST, INTERACT, IJHCS, and IEEE TVCG. I am currently a member of the organising committee of the international conference <a href="http://ieeevr.org/2021/"> IEEE VR 2021</a>.
-    </p>
-
-
-    <!--
-    <span style="font-size:16px;"><div align="left "><i class="far fa-file"></i> <a target="_blank" href="/assets/publications/mauriciosousa-cv.pdf">RESUME</a></div></span>
-    -->
-
-</span>
-
-<p class="text-center">
-    <a href="/assets/publications/mauriciosousa-cv.pdf" class="btn btn--primary"><i class="far fa-file-pdf"></i>&nbsp Download my CV</a>
-</p>
-
-<br>
-
-<h1 id="publications"><i class="fas fa-book-open"></i> Publications</h1>
-<h2 id="conference"> Conference Papers</h2>
-
-<span style="font-size:14px;">
-    <div class="container">
-
-        
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/ieeevr2021.jpg" style="width:200px;" alt="">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Promoting Reality Awareness in Virtual Reality through Proxemics.</b>
-                    <i>Daniel Medeiros, Rafael dos Anjos, Nadia Pantidi, Kun Huang, Maurício Sousa, Craig Anslow, and Joaquim Jorge.</i>
-                    <i>IEEE Conference on Virtual Reality and 3D User Interfaces (VR), 2021</i><br/>
-                    <i>Paper Coming Soon!</i><br/>
-                    <!--
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="/assets/publications/3359997.3365737.pdf">Paper</a>&nbsp
-                    -->
-                </p>
+    <div id="container">
+        <div id="header">
+            <a href="#" class="logo">Maurício Sousa</a>
+            <div class="header-right">
+                <a class="active" href="#about">about me</a>
+                <a href="#publications">publications</a>
+                <a href="#contact">contact</a>
             </div>
         </div>
-        
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/chi2021.jpg" style="width:200px;" alt="">
-            </div>
-            <div class="content">
-                <p>
-                    <b>“Grip-that-there”: An Investigation of Explicit and Implicit Task Allocation Techniques for Human-Robot Collaboration.</b>
-                    <i>Karthik Mahadevan, Maurício Sousa, Anthony Tang, and Tovi Grossman.</i>
-                    <i>ACM CHI Conference on Human Factors in Computing Systems (CHI), 2021</i><br/>
-                    <i>Paper and Video Coming Soon!</i><br/>
-                    <!--
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="/assets/publications/3359997.3365737.pdf">Paper</a>&nbsp
-                    -->
-                </p>
-            </div>
-        </div>
-        
-        
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/3359997.3365737.jpg" style="width:200px;" alt="">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Safe Walking in VR.</b>
-                    <i>Maurício Sousa, Daniel Mendes, and Joaquim Jorge.</i>
-                    <i>ACM SIGGRAPH International Conference on Virtual-Reality Continuum and its Applications in Industry (VRCAI), 2019</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="/assets/publications/3359997.3365737.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
+        <div id="sidebar">
 
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/3359997.3365744.jpg" style="width:200px;" alt="">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Negative Space: Investigating Workspace Awareness in 3D Face-to-face Remote Collaboration.</b>
-                    <i>Maurício Sousa, Daniel Mendes, Rafael Kuffner dos Anjos, Daniel Simões Lopes, and Joaquim Jorge.</i>
-                    <i>ACM SIGGRAPH International Conference on Virtual-Reality Continuum and its Applications in Industry (VRCAI), 2019</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="/assets/publications/3359997.3365744.pdf">Paper</a>&nbsp
-                </p>
-            </div>
         </div>
+        <div id="content">
+            <div>
 
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/3359996.3364244.jpg" style="width:200px;" alt="">
-            </div>
-            <div class="content">
+                <img class="splash" src="assets/images/header2.jpg" />
+
                 <p>
-                    <b>Adventures in Hologram Space: Exploring the Design Space of Eye-to-eye Volumetric Telepresence.</b>
-                    <i>Rafael Kuffner dos Anjos, Maurício Sousa, Daniel Medeiros, Daniel Mendes, Mark Billinghurst, Craig Anslow, and Joaquim Jorge.</i>
-                    <i>ACM Symposium on Virtual Reality Software and Technology (VRST), 2019</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="/assets/publications/3359996.3364244.pdf">Paper</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>&nbsp
-                    <i class="far fa-file-video"></i>&nbsp<a href="https://www.youtube.com/watch?v=zk6OwuGyRZ0">Video</a>&nbsp
+                    <center>
+                        <a href="mailto:mauricio.sousa@utoronto.ca">email</a>
+                        - <a href="https://github.com/mauriciosousa">github</a>
+                        - <a href="https://scholar.google.pt/citations?hl=en&user=3sC4E1cAAAAJ&view_op=list_works&gmla=AJsN-F4fub5p9UzWa051J4lf5biaPfQLf3oU14IiUKim376ylTaLTDI1BJH3iZANTBlYOUWGPr_qpy9QaLoa2mEYg8YhFFsk6nUGGFNhzKdPYEwZ7cVdWt8">google scholar</a>
+                        - <a href="https://twitter.com/vivaomauricio">twitter</a>
+                    </center>
                 </p>
-            </div>
-        </div>
+                
+                <a class="anchor" id="about"></a>
+                <h1>About Me</h1>
+                
+
+                <p>
+                    I am an HCI Researcher and a Postdoctoral Fellow in the <a href="https://www.dgp.toronto.edu">Dynamic Graphics Project Lab</a> at the <a href="https://www.utoronto.ca">University of Toronto</a> working with Professor <a href="https://www.tovigrossman.com">Tovi Grossman</a>.
+                </p>
+                <p>
+                    Previously, I was a researcher at the <a target="_blank" href="http://lab-jlf.tecnico.ulisboa.pt">Visualization and Intelligent Multimodal Interfaces Group at INESC-ID Lisbon</a> under the supervision of Professor <a target="_blank" href="http://web.ist.utl.pt/jorgej/">Joaquim Jorge</a>.
+                </p>
+                <p>
+                    I received my <a href="#theses">PhD</a>, <a href="#theses">MSc</a> and B.Sc. degrees in Computer Science and Engineering from T&eacute;cnico Lisboa / University of Lisbon.
+                </p>
+                <p>
+                    In my research, I have been designing and evaluating novel interaction techniques for the engineering, architecture and medical fields, focussing on computer supported remote collaborative work in Mixed Reality environments. I also have experience in 3D user interfaces, interactive spaces, touch and mid-air gestures. And
+                </p>
+                <p>
+                    I have been fortunate to see my research published in top international conferences and journals, such as ACM CHI, ACM ISS, ACM IUI, ACM VRST, INTERACT, IJHCS, and IEEE TVCG. I am currently a member of the organising committee of the international conference <a href="http://ieeevr.org/2021/"> IEEE VR 2021</a>.
+                </p>
+
+                <p>
+                    Download my cv <a href="assets/publications/mauriciosousa-cv.pdf">here</a>.
+                </p>
 
 
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/3290605.3300838.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Warping Deixis: Distorting Gestures to Enhance Collaboration.</b>
-                    <i>Maurício Sousa, Rafael Kuffner dos Anjos, Daniel Mendes, Mark Billinghurst, and Joaquim Jorge.</i>
-                    <i>ACM Conference on Human Factors in Computing Systems (CHI), 2019</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="/assets/publications/3290605.3300838.pdf">Paper</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>&nbsp
-                    <i class="far fa-file-video"></i>&nbsp<a href="https://youtu.be/TGLCiQ2SZAY">Video</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>&nbsp
-                    <i class="far fa-file-video"></i>&nbsp<a href="https://youtu.be/tlygIewA5Ww">Presentation</a>&nbsp
-                </p>
+                <a class="anchor" id="publications"></a>
+                <h1>Publications</h1>
+
+
+                <h2>Conference Papers</h2>
+
+                <div class="publications">
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/ieeevr2021.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Promoting Reality Awareness in Virtual Reality through Proxemics.</span>
+                                <span class="authors">Daniel Medeiros, Rafael dos Anjos, Nadia Pantidi, Kun Huang, Maurício Sousa, Craig Anslow, and Joaquim Jorge.</span>
+                                <span class="venue">IEEE Conference on Virtual Reality and 3D User Interfaces (VR), 2021</span>
+                                <br />
+                                <i>Paper Coming Soon!</i><br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/chi2021.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">“Grip-that-there”: An Investigation of Explicit and Implicit Task Allocation Techniques for Human-Robot Collaboration.</span>
+                                <span class="authors">Karthik Mahadevan, Maurício Sousa, Anthony Tang, and Tovi Grossman.</span>
+                                <span class="venue">ACM CHI Conference on Human Factors in Computing Systems (CHI), 2021</span><br />
+                                <span class="award">&#10033 Honorable Mention Award</span><br />
+                                <i>Paper Coming Soon!</i><br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/3359997.3365737.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Safe Walking in VR.</span>
+                                <span class="authors">Maurício Sousa, Daniel Mendes, and Joaquim Jorge.</span>
+                                <span class="venue">ACM SIGGRAPH International Conference on Virtual-Reality Continuum and its Applications in Industry (VRCAI), 2019</span>
+                                <br />
+                                <a href="assets/publications/3359997.3365737.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/3359997.3365744.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Negative Space: Investigating Workspace Awareness in 3D Face-to-face Remote Collaboration.</span>
+                                <span class="authors">Maurício Sousa, Daniel Mendes, Rafael Kuffner dos Anjos, Daniel Simões Lopes, and Joaquim Jorge.</span>
+                                <span class="venue">ACM SIGGRAPH International Conference on Virtual-Reality Continuum and its Applications in Industry (VRCAI), 2019</span>
+                                <br />
+                                <a href="assets/publications/3359997.3365744.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/3359996.3364244.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Adventures in Hologram Space: Exploring the Design Space of Eye-to-eye Volumetric Telepresence.</span>
+                                <span class="authors">Rafael Kuffner dos Anjos, Maurício Sousa, Daniel Medeiros, Daniel Mendes, Mark Billinghurst, Craig Anslow, and Joaquim Jorge.</span>
+                                <span class="venue">ACM Symposium on Virtual Reality Software and Technology (VRST), 2019</span>
+                                <br />
+                                <a href="assets/publications/3359996.3364244.pdf">Paper</a>
+                                - <a href="https://www.youtube.com/watch?v=zk6OwuGyRZ0">Video</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/3290605.3300838.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Warping Deixis: Distorting Gestures to Enhance Collaboration.</span>
+                                <span class="authors">Maurício Sousa, Rafael Kuffner dos Anjos, Daniel Mendes, Mark Billinghurst, and Joaquim Jorge.</span>
+                                <span class="venue">ACM Conference on Human Factors in Computing Systems (CHI), 2019</span>
+                                <br />
+                                <span class="award">&#10033 Featured in the ’Best of CHI 2019’ event by IndiaHCI</span>
+                                <br />
+                                <a href="assets/publications/3290605.3300838.pdf">Paper</a>
+                                - <a href="https://youtu.be/TGLCiQ2SZAY">Video</a>
+                                - <a href="https://youtu.be/tlygIewA5Ww">Presentation</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/icgi_2018-190-191.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Investigating Workspace Awareness in 3D Face-to-Face Remote Collaboration.</span>
+                                <span class="authors">Maurício Sousa, Daniel Mendes, Rafael Kuffner dos Anjos, and Joaquim Jorge.</span>
+                                <span class="venue">International Conference on Graphics and Interaction (ICGI), 2018</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/danielmendes/papers/2018/icgi_2018-190-191.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/27-0326-mendes.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Using Custom Transformation Axes for Mid-Air Manipulation of 3D Virtual Objects.</span>
+                                <span class="authors">Daniel Mendes, Maurício Sousa, Rodrigo Lorena, Alfredo Ferreira, and Joaquim Jorge</span>
+                                <span class="venue">ACM Symposium on Virtual Reality Software and Technology (VRST), 2017</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/27-0326-mendes.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/p191-sousa.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Creepy Tracker Toolkit for Context-aware Interfaces.</span>
+                                <span class="authors">Maurício Sousa, Daniel Mendes, Rafael Kuffner dos Anjos, Daniel Medeiros, Alberto Raposo, Alfredo Ferreira, João Pereira, and Joaquim Jorge.</span>
+                                <span class="venue">ACM Interactive Surfaces and Spaces (ISS), 2017</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/p191-sousa.pdf">Paper</a>
+                                - <a href="https://youtu.be/4F423Cv-lWE">Video</a>
+                                - <a href="https://youtu.be/N77r8FGO-lw">Presentation</a>
+                                - <a href="https://github.com/vimmi3D/CreepyTracker">Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/p4057-sousa.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">VRRRRoom: Virtual Reality for Radiologists in the Reading Room.</span>
+                                <span class="authors">Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, and Daniel Simões Lopes.</span>
+                                <span class="venue">ACM Conference on Human Factors in Computing Systems (CHI), 2017</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.pdf">Paper</a>
+                                - <a href="https://youtu.be/7sFT-vO27XQ">Video</a>
+                                - <a href="https://youtu.be/nBl6RPLRKcc">Presentation</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/p237-mendes.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">PRECIOUS! Out-of-reach Selection using Iterative Refinement in VR.</span>
+                                <span class="authors">Daniel Mendes, Daniel Medeiros, Eduardo Cordeiro, Maurício Sousa, Alfredo Ferreira, and Joaquim Jorge.</span>
+                                <span class="venue">IEEE Symposium on 3D User Interfaces (3DUI), 2017</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/p237-mendes.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/p154-mendes.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Mid-air Modeling with Boolean Operations in VR.</span>
+                                <span class="authors">Daniel Mendes, Daniel Medeiros, Maurício Sousa, Ricardo Ferreira, Alberto Barbosa Raposo, Alfredo Ferreira, and Joaquim Jorge.</span>
+                                <span class="venue">IEEE Symposium on 3D User Interfaces (3DUI), 2017</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/p154-mendes.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/CoordeiroEPCGI16.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Evaluation of Travel Techniques for Virtual Reality.</span>
+                                <span class="authors">Eduardo Cordeiro, Daniel Medeiros, Daniel Mendes, Maurício Sousa, Alberto Raposo, Alfredo Ferreira, and Joaquim Jorge.</span>
+                                <span class="venue">Encontro Português de Computação Gráfica (EPCG), 2016</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/CoordeiroEPCGI16.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/327-59-0228-medeiros.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Effects of Speed and Transitions on Target-based Travel Techniques.</span>
+                                <span class="authors">ACM Symposium on Virtual Reality Software and Technology (VRST), 2016</span>
+                                <span class="venue">Encontro Português de Computação Gráfica (EPCG), 2016</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/327-59-0228-medeiros.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/237-33-0191-medeiros.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Perceiving Depth: Optical versus Video See-through.</span>
+                                <span class="authors">Daniel Medeiros, Maurício Sousa, Daniel Mendes, Alberto Raposo, and Joaquim Jorge.</span>
+                                <span class="venue">ACM Symposium on Virtual Reality Software and Technology (VRST), 2016</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/237-33-0191-medeiros.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/iuifp0186-sousaATS.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">SleeveAR: Augmented Reality for Rehabilitation using Realtime Feedback.</span>
+                                <span class="authors">Maurício Sousa, João Vieira, Daniel Medeiros, Artur Arsénio and Joaquim Jorge.</span>
+                                <span class="venue">ACM Intelligent User Interfaces (IUI), 2016</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/iuifp0186-sousaATS.pdf">Paper</a>
+                                - <a href="https://youtu.be/66jV4I0Pal0">Presentation</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/ecaade2015_181.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">From Tecton to Teknos: Going back to the Classical Roots of Architecture.</span>
+                                <span class="authors">Daniel Mateus, Maurício Sousa, Rui de Klerk, Sandra Gama, Joaquim Jorge, and José Duarte.</span>
+                                <span class="venue">Education and research in Computer Aided Architectural Design in Europe (eCAADe), 2015</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/ecaade2015_181.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/92980043.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Eery Space: Facilitating Virtual Meetings Through Remote Proxemics.</span>
+                                <span class="authors">Maurício Sousa, Daniel Mendes, Alfredo Ferreira, João Madeiras Pereira, and Joaquim Jorge.</span>
+                                <span class="venue">INTERACT, 2015</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/92980043.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/ICAT-EGVE2014-Beyond.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Beyond Post-It: Structured Multimedia Annotations for Collaborative VEs.</span>
+                                <span class="authors">João Guerreiro, Daniel Pires, Maurício Sousa, Daniel Mendes, Ismael Santos, Alberto Raposo, and Joaquim Jorge.</span>
+                                <span class="venue">Eurographics Symposium on Virtual Environments (EGVE), 2014</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/ICAT-EGVE2014-Beyond.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/IST2014-ThumbCam.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">ThumbCam: Returning to single touch interactions to explore 3D virtual environments.</span>
+                                <span class="authors">Daniel Mendes, Maurício Sousa, Alfredo Ferreira, and Joaquim Jorge.</span>
+                                <span class="venue">ACM Interactive Tabletops and Surfaces (ITS), 2014</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/IST2014-ThumbCam.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/EPCG2014-Eery.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Eery Proxemics: Proximidade à Distância usando Múltiplas Superfícies.</span>
+                                <span class="authors">Maurício Sousa, Daniel Mendes, João Madeiras Pereira, Alfredo Ferreira and Joaquim Jorge.</span>
+                                <span class="venue">Encontro Português de Computação Gráfica (EPCG), 2014</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/EPCG2014-Eery.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br />
+                <h2>Journal Articles</h2>
+
+                <div class="publications">
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/jbiAdaptations.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Laparoscopy with Augmented Reality Adaptations.</span>
+                                <span class="authors">Ezequiel Zorzal, José Miguel Gomes, Maurício Sousa, Pedro Belchior, Pedro G da Silva, Nuno Figueiredo, Daniel S Lopes, and Joaquim A Jorge.</span>
+                                <span class="venue">Elsevier Journal of Biomedical Informatics, 2020</span>
+                                <br />
+                                <a href="assets/publications/1-s2.0-S1532046420300915-main.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/1-s2.0-S0097849319301578-main.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Anatomy Studio: a Tool for Virtual Dissection Through Augmented 3D Reconstruction.</span>
+                                <span class="authors">Ezequiel Zorzal, Maurício Sousa, Daniel Mendes, Rafael dos Anjos, Daniel Medeiros, Soraia Paulo, Pedro Rodrigues, José Mendes, Vincent Delmas, Jean-Francois Uhl, José Mogorrónd, Joaquim Jorge, and Daniel Simões Lopes.</span>
+                                <span class="venue">Computers & Graphics (In Press), 2019</span>
+                                <br />
+                                <a href="assets/publications/1-s2.0-S0097849319301578-main.pdf">Paper</a>
+                                - <a href="https://www.youtube.com/watch?v=STGYNL4M5eY">Video</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/08667739.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Magic Carpet: Interaction Fidelity for Flying in VR.</span>
+                                <span class="authors">Daniel Medeiros, Maurício Sousa, Alberto Raposo and Joaquim Jorge.</span>
+                                <span class="venue">IEEE Transactions on Visualization and Computer Graphics (TVCG), 2019</span>
+                                <br />
+                                <span class="award">&#10033 Recipient of the Encarnação Award 2020, Eurographics Portuguese chapter</span>
+                                <br />
+                                <a href="assets/publications/08667739.pdf">Paper</a>
+                                - <a href="https://www.youtube.com/watch?v=bQxgUVlM-aw">Presentation</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/1-s2.0-S0097849317300778-main.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Design and evaluation of novel out-of-reach selection techniques for VR using iterative refinement.</span>
+                                <span class="authors">Daniel Mendes, Daniel Medeiros, Maurício Sousa, Eduardo Cordeiro, Alfredo Ferreira, and Joaquim Jorge.</span>
+                                <span class="venue">Computers & Graphics (In Press), 2017</span>
+                                <br />
+                                <span class="award">&#10033 Honourable Mention in the 33rd Spring Conference on Computer Graphics</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/1-s2.0-S0097849317300778-main.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/1-s2.0-S1071581917300460-main.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Hip-directed walking-in-place using a single depth camera.</span>
+                                <span class="authors">Luís Bruno, Maurício Sousa, Alfredo Ferreira, João Madeiras Pereira, and Joaquim Jorge.</span>
+                                <span class="venue">International Journal of Human-Computer Studies (IJHCS), Elsevier, 2017</span>
+                                <br />
+                                <a href="assets/publications/1-s2.0-S1071581917300460-main.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/1-s2.0-S0098300416300334-main.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Expeditious Illustration of Layer-Cake Models On and Above a Tactile Surface.</span>
+                                <span class="authors">Daniel S. Lopes, Daniel Mendes, Maurício Sousa, and Joaquim Jorge.</span>
+                                <span class="venue">Computers & Geosciences (in press), 2016</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/1-s2.0-S0098300416300334-main.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br />
+                <h2>Book Chapters</h2>
+
+                <div class="publications">
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/RemoteProxemics.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Remote Proxemics.</span>
+                                <span class="authors">Maurício Sousa, Daniel Mendes, Daniel Medeiros, Alfredo Ferreira, João Madeiras Pereira and Joaquim Jorge.</span>
+                                <span class="venue">Collaboration Meets Interactive Spaces, Springer, 2016</span>
+                                <br />
+                                <a href="assets/publications/RemoteProxemics.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br />
+                <h2>Other Peer Reviewed Publications</h2>
+
+                <div class="publications">
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/demohour.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Demo hour.</span>
+                                <span class="authors">Paden Shorey, Audrey Girouard, Sang Ho Yoon, Yunbo Zhang, Ke Huo, Karthik Ramani, Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, Daniel Simões Lopes, Dirk Wenig, Johannes Schöning, Alex Olwal, Mathias Oben, and Rainer Malaka.</span>
+                                <span class="venue">Demo hour. interactions 24, 6 (October 2017), 8-11</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/p8-shorey.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/cmis2015-sousa.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Beyond Eery Space: Applying Gradual Engagement to Remote Proxemics.</span>
+                                <span class="authors">Maurício Sousa, Daniel Medeiros, Alberto Raposo, and Joaquim Jorge.</span>
+                                <span class="venue">Collaboration meets Interactive Surfaces Workshop, ACM Interactive Tabletops and Surfaces(ITS), 2015</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/cmis2015-sousa.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/REAHB2015-SleeveAR.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Augmented Reality for Rehabilitation Using Multimodal Feedback.</span>
+                                <span class="authors">João Vieira, Maurício Sousa, Artur Arsénio, and Joaquim Jorge.</span>
+                                <span class="venue">REHAB2015 Workshop, 2015</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/REAHB2015-SleeveAR.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/ITS2014-CmISWorkshop-Enabling.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Enabling Remote Proxemics through Multiple Surfaces.</span>
+                                <span class="authors">Daniel Mendes, Maurício Sousa, João Madeiras Pereira, Alfredo Ferreira, and Joaquim Jorge.</span>
+                                <span class="venue">Collaboration meets Interactive Surfaces Workshop, ACM Interactive Tabletops and Surfaces (ITS), 2014</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/ITS2014-CmISWorkshop-Enabling.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/ITS2013-CmISWorkshop-Binding.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Binding an Handheld Device with its Owner.</span>
+                                <span class="authors">Maurício Sousa and Joaquim Jorge.</span>
+                                <span class="venue">Collaboration meets Interactive Surfaces Workshop, ACM Interactive Tabletops and Surfaces (ITS), 2013</span>
+                                <br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/ITS2013-CmISWorkshop-Binding.pdf">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <br />
+                <a class="anchor" id="theses"></a>
+                <h2>Theses</h2>
+
+                <div class="publications">
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/phd.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Perception Manipulation for Seamless Face-to-face Remote Collaboration.</span><br />
+                                <span class="authors">Maurício Sousa.</span><br />
+                                <span class="venue">Ph.D. Thesis. Instituto Superior Técnico, University of Lisbon.</span><br />
+                                <span class="venue">2020</span><br />
+                                <a href="assets/publications/phd-thesis-mauriciosousa.pdf">PDF</a>
+                                - <a href="https://youtu.be/vE94eCm20kQ">Presentation</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column left">
+                            <img src="assets/publications/msc.jpg" alt="">
+                        </div>
+                        <div class="column right">
+                            <div class="pub">
+                                <span class="title">Remote Proxemics for Collaborative Virtual Environments.</span><br />
+                                <span class="authors">Maurício Sousa.</span><br />
+                                <span class="venue">M.Sc. Thesis. Instituto Superior Técnico, University of Lisbon.</span><br />
+                                <span class="venue">2014</span><br />
+                                <a href="http://web.ist.utl.pt/antonio.sousa/publications/MSc-mauriciosousa.pdf">PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                <a class="anchor" id="contact"></a>
+                <h1>Contact</h1>
+
+                <div>
+                    <span style="font-size:14px;">
+                        <p>
+                            dgp Lab <br>
+                            Department of Computer Science<br>
+                            University of Toronto<br>
+                            mauriciosousa <span style="font-family:courier new,courier,monospace;"> [at] </span>acm.org
+                        </p>
+                    </span>
+                </div>
+
             </div>
         </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/icgi_2018-190-191.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Investigating Workspace Awareness in 3D Face-to-Face Remote Collaboration.</b>
-                    <i>Maurício Sousa, Daniel Mendes, Rafael Kuffner dos Anjos, and Joaquim Jorge.</i>
-                    <i>International Conference on Graphics and Interaction (ICGI), 2018</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/danielmendes/papers/2018/icgi_2018-190-191.pdf">Paper</a>&nbsp
-                </p>
-            </div>
+        <div id="footer">
+            <p>footer</p>
         </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/27-0326-mendes.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Using Custom Transformation Axes for Mid-Air Manipulation of 3D Virtual Objects.</b>
-                    <i>Daniel Mendes, Maurício Sousa, Rodrigo Lorena, Alfredo Ferreira, and Joaquim Jorge.</i>
-                    <i>ACM Symposium on Virtual Reality Software and Technology (VRST), 2017</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/27-0326-mendes.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/p191-sousa.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Creepy Tracker Toolkit for Context-aware Interfaces.</b>
-                    <i>Maurício Sousa, Daniel Mendes, Rafael Kuffner dos Anjos, Daniel Medeiros, Alberto Raposo, Alfredo Ferreira, João Pereira, and Joaquim Jorge.</i>
-                    <i>ACM Interactive Surfaces and Spaces (ISS), 2017</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/p191-sousa.pdf">Paper</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>&nbsp
-                    <i class="far fa-file-video"></i>&nbsp<a href="https://youtu.be/4F423Cv-lWE">Video</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>&nbsp
-                    <i class="far fa-file-video"></i>&nbsp<a href="https://youtu.be/N77r8FGO-lw">Presentation</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>&nbsp
-                    <i class="fab fa-github"></i>&nbsp<a href="https://github.com/vimmi3D/CreepyTracker">Code</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/p4057-sousa.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>VRRRRoom: Virtual Reality for Radiologists in the Reading Room.</b>
-                    <i>Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, and Daniel Simões Lopes.</i>
-                    <i>ACM Conference on Human Factors in Computing Systems (CHI), 2017</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/p4057-sousa.pdf">Paper</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>&nbsp
-                    <i class="far fa-file-video"></i>&nbsp<a href="https://youtu.be/7sFT-vO27XQ">Video</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>&nbsp
-                    <i class="far fa-file-video"></i>&nbsp<a href="https://youtu.be/nBl6RPLRKcc">Presentation</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/p237-mendes.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>PRECIOUS! Out-of-reach Selection using Iterative Refinement in VR.</b>
-                    <i>Daniel Mendes, Daniel Medeiros, Eduardo Cordeiro, Maurício Sousa, Alfredo Ferreira, and Joaquim Jorge.</i>
-                    <i>IEEE Symposium on 3D User Interfaces (3DUI), 2017</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/p237-mendes.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/p154-mendes.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Mid-air Modeling with Boolean Operations in VR.</b>
-                    <i>Daniel Mendes, Daniel Medeiros, Maurício Sousa, Ricardo Ferreira, Alberto Barbosa Raposo, Alfredo Ferreira, and Joaquim Jorge.</i>
-                    <i>IEEE Symposium on 3D User Interfaces (3DUI), 2017</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/p154-mendes.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/CoordeiroEPCGI16.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Evaluation of Travel Techniques for Virtual Reality.</b>
-                    <i>Eduardo Cordeiro, Daniel Medeiros, Daniel Mendes, Maurício Sousa, Alberto Raposo, Alfredo Ferreira, and Joaquim Jorge.</i>
-                    <i>Encontro Português de Computação Gráfica (EPCG), 2016</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/CoordeiroEPCGI16.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/327-59-0228-medeiros.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Effects of Speed and Transitions on Target-based Travel Techniques.</b>
-                    <i>Daniel Medeiros, Eduardo Cordeiro, Daniel Mendes, Maurício Sousa, Alberto Raposo, Alfredo Ferreira and Joaquim Jorge.</i>
-                    <i>ACM Symposium on Virtual Reality Software and Technology (VRST), 2016</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/327-59-0228-medeiros.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/237-33-0191-medeiros.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Perceiving Depth: Optical versus Video See-through.</b>
-                    <i>Daniel Medeiros, Maurício Sousa, Daniel Mendes, Alberto Raposo, and Joaquim Jorge.</i>
-                    <i>ACM Symposium on Virtual Reality Software and Technology (VRST), 2016</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/237-33-0191-medeiros.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/iuifp0186-sousaATS.jpg" style="width:200px;" alt="SleeveAR">
-            </div>
-            <div class="content">
-                <p>
-                    <b>SleeveAR: Augmented Reality for Rehabilitation using Realtime Feedback.</b>
-                    <i>Maurício Sousa, João Vieira, Daniel Medeiros, Artur Arsénio and Joaquim Jorge.</i>
-                    <i>ACM Intelligent User Interfaces (IUI), 2016</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/iuifp0186-sousaATS.pdf">Paper</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>&nbsp
-                    <i class="far fa-file-video"></i>&nbsp<a href="https://youtu.be/66jV4I0Pal0">Presentation</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/ecaade2015_181.jpg" style="width:200px;" alt="SleeveAR">
-            </div>
-            <div class="content">
-                <p>
-                    <b>From Tecton to Teknos: Going back to the Classical Roots of Architecture.</b>
-                    <i>Daniel Mateus, Maurício Sousa, Rui de Klerk, Sandra Gama, Joaquim Jorge, and José Duarte.</i>
-                    <i>Education and research in Computer Aided Architectural Design in Europe (eCAADe), 2015</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/ecaade2015_181.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/92980043.jpg" style="width:200px;" alt="SleeveAR">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Eery Space: Facilitating Virtual Meetings Through Remote Proxemics.</b>
-                    <i>Maurício Sousa, Daniel Mendes, Alfredo Ferreira, João Madeiras Pereira, and Joaquim Jorge.</i>
-                    <i>INTERACT, 2015</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/92980043.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/ICAT-EGVE2014-Beyond.jpg" style="width:200px;" alt="SleeveAR">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Beyond Post-It: Structured Multimedia Annotations for Collaborative VEs.</b>
-                    <i>João Guerreiro, Daniel Pires, Maurício Sousa, Daniel Mendes, Ismael Santos, Alberto Raposo, and Joaquim Jorge.</i>
-                    <i>Eurographics Symposium on Virtual Environments (EGVE), 2014</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/ICAT-EGVE2014-Beyond.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/IST2014-ThumbCam.jpg" style="width:200px;" alt="SleeveAR">
-            </div>
-            <div class="content">
-                <p>
-                    <b>ThumbCam: Returning to single touch interactions to explore 3D virtual environments.</b>
-                    <i>Daniel Mendes, Maurício Sousa, Alfredo Ferreira, and Joaquim Jorge.</i>
-                    <i>ACM Interactive Tabletops and Surfaces (ITS), 2014</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/IST2014-ThumbCam.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/EPCG2014-Eery.jpg" style="width:200px;" alt="SleeveAR">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Eery Proxemics: Proximidade à Distância usando Múliplas Superfícies.</b>
-                    <i>Maurício Sousa, Daniel Mendes, João Madeiras Pereira, Alfredo Ferreira and Joaquim Jorge.</i>
-                    <i>Encontro Português de Computação Gráfica (EPCG), 2014</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/EPCG2014-Eery.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
     </div>
-</span>
 
+</body>
 
-
-
-<h2 id="journal"> Journal Articles</h2>
-
-<span style="font-size:14px;">
-    <div class="container">
-
-        <div id="jbiAdaptations" class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/jbiAdaptations.jpg" style="width:200px;" alt="Hologram Space">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Laparoscopy with Augmented Reality Adaptations.</b>
-                    <i>Ezequiel Zorzal, José Miguel Gomes, Maurício Sousa, Pedro Belchior, Pedro G da Silva, Nuno Figueiredo, Daniel S Lopes, and Joaquim A Jorge.</i>
-                    <i>Elsevier Journal of Biomedical Informatics, 2020</i></br>
-
-
-
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="assets/publications/1-s2.0-S1532046420300915-main.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/1-s2.0-S0097849319301578-main.jpg" style="width:200px;" alt="Hologram Space">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Anatomy Studio: a Tool for Virtual Dissection Through Augmented 3D Reconstruction.</b>
-                    <i>Ezequiel Zorzal, Maurício Sousa, Daniel Mendes, Rafael dos Anjos, Daniel Medeiros, Soraia Paulo, Pedro Rodrigues, José Mendes, Vincent Delmas, Jean-Francois Uhl, José Mogorrónd, Joaquim Jorge, and Daniel Simões Lopes.</i>
-                    <i>Computers & Graphics (In Press), 2019</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="/assets/publications/1-s2.0-S0097849319301578-main.pdf">Paper</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>
-                    <i class="far fa-file-video"></i>&nbsp<a href="https://www.youtube.com/watch?v=STGYNL4M5eY">Video</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/08667739.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Magic Carpet: Interaction Fidelity for Flying in VR.</b>
-                    <i>Daniel Medeiros, Maurício Sousa, Alberto Raposo and Joaquim Jorge.</i>
-                    <i>IEEE Transactions on Visualization and Computer Graphics (TVCG), 2019</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="/assets/publications/08667739.pdf">Paper</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>&nbsp
-                    <i class="far fa-file-video"></i>&nbsp<a href="https://www.youtube.com/watch?v=bQxgUVlM-aw">Presentation</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/1-s2.0-S0097849317300778-main.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Design and evaluation of novel out-of-reach selection techniques for VR using iterative refinement.</b>
-                    <i>Daniel Mendes, Daniel Medeiros, Maurício Sousa, Eduardo Cordeiro, Alfredo Ferreira, and Joaquim Jorge.</i>
-                    <i>Computers & Graphics, 2017</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/1-s2.0-S0097849317300778-main.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/1-s2.0-S1071581917300460-main.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Hip-directed walking-in-place using a single depth camera.</b>
-                    <i>Luís Bruno, Maurício Sousa, Alfredo Ferreira, João Madeiras Pereira, and Joaquim Jorge.</i>
-                    <i>International Journal of Human-Computer Studies (IJHCS), Elsevier, 2017</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="/assets/publications/1-s2.0-S1071581917300460-main.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/1-s2.0-S0098300416300334-main.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Expeditious Illustration of Layer-Cake Models On and Above a Tactile Surface.</b>
-                    <i>Daniel S. Lopes, Daniel Mendes, Maurício Sousa, and Joaquim Jorge.</i>
-                    <i>Computers & Geosciences (in press), 2016</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/1-s2.0-S0098300416300334-main.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-    </div>
-</span>
-
-
-
-<h2 id="book"> Book Chapters</h2>
-<span style="font-size:14px;">
-    <div class="container">
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/RemoteProxemics.jpg" style="width:200px;" alt="Hologram Space">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Remote Proxemics.</b>
-                    <i>Maurício Sousa, Daniel Mendes, Daniel Medeiros, Alfredo Ferreira, João Madeiras Pereira and Joaquim Jorge.</i>
-                    <i>Collaboration Meets Interactive Spaces, Springer, 2016</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="/assets/publications/RemoteProxemics.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-    </div>
-</span>
-
-
-
-<h2 id="other"> Other Peer Reviewed Publications</h2>
-<span style="font-size:14px;">
-    <div class="container">
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/demohour.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Demo hour.</b>
-                    <i>Paden Shorey, Audrey Girouard, Sang Ho Yoon, Yunbo Zhang, Ke Huo, Karthik Ramani, Maurício Sousa, Daniel Mendes, Soraia Paulo, Nuno Matela, Joaquim Jorge, Daniel Simões Lopes, Dirk Wenig, Johannes Schöning, Alex Olwal, Mathias Oben, and Rainer Malaka.</i>
-                    <i>Demo hour. interactions 24, 6 (October 2017), 8-11</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/p8-shorey.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/cmis2015-sousa.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Beyond Eery Space: Applying Gradual Engagement to Remote Proxemics.</b>
-                    <i>Maurício Sousa, Daniel Medeiros, Alberto Raposo, and Joaquim Jorge.</i>
-                    <i>Collaboration meets Interactive Surfaces Workshop, ACM Interactive Tabletops and Surfaces(ITS), 2015</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/cmis2015-sousa.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/REAHB2015-SleeveAR.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Augmented Reality for Rehabilitation Using Multimodal Feedback.</b>
-                    <i>João Vieira, Maurício Sousa, Artur Arsénio, and Joaquim Jorge.</i>
-                    <i>REHAB2015 Workshop, 2015</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/REAHB2015-SleeveAR.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/ITS2014-CmISWorkshop-Enabling.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Enabling Remote Proxemics through Multiple Surfaces.</b>
-                    <i>Daniel Mendes, Maurício Sousa, João Madeiras Pereira, Alfredo Ferreira, and Joaquim Jorge.</i>
-                    <i>Collaboration meets Interactive Surfaces Workshop, ACM Interactive Tabletops and Surfaces (ITS), 2014</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/ITS2014-CmISWorkshop-Enabling.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/ITS2013-CmISWorkshop-Binding.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Binding an Handheld Device with its Owner.</b>
-                    <i>Maurício Sousa and Joaquim Jorge.</i>
-                    <i>Collaboration meets Interactive Surfaces Workshop, ACM Interactive Tabletops and Surfaces (ITS), 2013</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/ITS2013-CmISWorkshop-Binding.pdf">Paper</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-    </div>
-</span>
-
-
-
-<h2 id="theses"> Theses</h2>
-<span style="font-size:14px;">
-    <div class="container">
-
-        <div id="phd-doc" class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/phd.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Perception Manipulation for Seamless Face-to-face Remote Collaboration.</b>
-                    <i>Maurício Sousa.</i>
-                    <i>Ph.D. Thesis. Instituto Superior Técnico, University of Lisbon.</i>
-                    <i>2020</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="assets/publications/phd-thesis-mauriciosousa.pdf">Thesis</a>&nbsp
-                    <i class="fas fa-ellipsis-v"></i>&nbsp
-                    <i class="far fa-file-video"></i>&nbsp<a href="https://youtu.be/vE94eCm20kQ">Presentation</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="/assets/publications/msc.jpg" style="width:200px;" alt="Magic Carpet">
-            </div>
-            <div class="content">
-                <p>
-                    <b>Remote Proxemics for Collaborative Virtual Environments.</b>
-                    <i>Maurício Sousa.</i>
-                    <i>M.Sc. Thesis. Instituto Superior Técnico, University of Lisbon.</i>
-                    <i>2014</i></br>
-                    <i class="far fa-file-pdf"></i>&nbsp<a href="http://web.ist.utl.pt/antonio.sousa/publications/MSc-mauriciosousa.pdf">Thesis</a>&nbsp
-                </p>
-            </div>
-        </div>
-
-
-    </div>
-</span>
-
-<br>
-
-<h1 id="contacts"><i class="fas fa-address-book"></i> Contacts</h1>
-
-<div>
-    <span style="font-size:14px;">
-        <p>
-            <!--
-    Visualization and Intelligent MultiModal Interfaces Group - INESC-ID </br>
-    Department of Information Systems and Computer Science </br>
-    Instituto Superior Técnico / University of Lisbon </br>
-    Avenida Professor Cavaco Silva, Room 2-N9.25 2744-016, Porto Salvo, Portugal </br>
-    -->
-            dgp Lab <br>
-            Department of Computer Science<br>
-            University of Toronto<br>
-            <br>
-            <i class="far fa-envelope"></i> <span style="font-family:courier new,courier,monospace;">mauriciosousa <i class="fas fa-at"></i> acm.org</span>
-        </p>
-    </span>
-</div>
+</html>
