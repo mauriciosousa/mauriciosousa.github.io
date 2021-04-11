@@ -101,11 +101,13 @@ body {
     border-bottom: 1px dotted #ffa700;
 }
 
-#content a:hover {
-    color: white;
-    background-color: #ffa700;
-    text-decoration: none;
-    border-bottom: 1px dotted white;
+@media(hover: hover) and (pointer: fine) {
+    #content a:hover {
+        color: white;
+        background-color: #ffa700;
+        text-decoration: none;
+        border-bottom: 1px dotted white;
+    }
 }
 
 #footer a {
@@ -115,11 +117,13 @@ body {
     border-bottom: 1px dotted #ffa700;
 }
 
-#footer a:hover {
-    color: white;
-    background-color: #ffa700;
-    text-decoration: none;
-    border-bottom: 1px dotted white;
+@media(hover: hover) and (pointer: fine) {
+    #footer a:hover {
+        color: white;
+        background-color: #ffa700;
+        text-decoration: none;
+        border-bottom: 1px dotted white;
+    }
 }
 
 #content h1 {
