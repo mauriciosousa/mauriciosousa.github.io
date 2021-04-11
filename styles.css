@@ -219,7 +219,7 @@ a.anchor {
     clear: both;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1170px) {
 
     #container {
         width: 80%;
@@ -278,6 +278,10 @@ a.anchor {
     font-weight: 600;
 }
 
-#myBtn:hover {
-    background-color: #333333;
+@media(hover: hover) and (pointer: fine){
+    #myBtn:hover {
+    background-color: #ff4e00;
+    }
 }
+
+
