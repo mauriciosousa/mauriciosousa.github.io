@@ -34,10 +34,12 @@ body {
     color: #333333;
 }
 
-#header a:hover {
-    color: white;
-    background-color: #ffa700;
-    text-decoration: none;
+@media(hover: hover) and (pointer: fine) {
+    #header a:hover {
+        color: white;
+        background-color: #ffa700;
+        text-decoration: none;
+    }
 }
 
 #header a.logo {
@@ -48,14 +50,6 @@ body {
     text-decoration: none;
 }
 
-
-
-@media(hover: hover) and (pointer: fine) {
-    #header a.logo:hover {
-        color: #333333;
-        background-color: white;
-    }
-}
 
 
 .header-right {
