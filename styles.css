@@ -101,6 +101,11 @@ body {
     color: #ffa700;
 }
 
+#content b {
+    font-weight: 500;
+    color: #333333
+}
+
 #content a {
     font-weight: 500;
     color: #ffa700;
@@ -171,6 +176,8 @@ a.anchor {
     color: #333333;
     font-weight: 300;
 }
+
+
 
 /* Publication cards */
 .publications {
