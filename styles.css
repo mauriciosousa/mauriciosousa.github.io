@@ -221,9 +221,7 @@ a.anchor {
 
 @media screen and (max-width: 1200px) {
 
-    #container,
-    #header,
-    #content {
+    #container {
         width: 80%;
     }
 }
