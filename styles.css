@@ -331,13 +331,11 @@ a.anchor {
 
 .alert {
     padding: 10px;
-    background: rgba(51, 51, 51, 0.28);
     color: #333333;
     border-radius: 5px;
-    border: 1px solid #ffa700;
-    font-size: 12px;
+    border: 2px dotted #ffa700;
+    
 }
-
 
 
 /* this solves the isso of the body text fonts too large in iphone, landscape*/
@@ -350,3 +348,4 @@ a.anchor {
 html {
     -webkit-text-size-adjust: 100%;
 }
+
