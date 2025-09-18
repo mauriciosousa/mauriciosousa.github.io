@@ -45,7 +45,7 @@ body {
 #header a.logo {
     font-size: 36px;
     line-height: 20px;
-    font-weight: 100;
+    font-weight: 600;
     color: #333333;
     text-decoration: none;
 }
@@ -61,6 +61,7 @@ body {
 
 .header-right {
     float: right;
+    font-weight: 300;
 }
 
 #navigation li {
@@ -140,7 +141,7 @@ body {
 
 #content h1 {
     font-size: 26px;
-    font-weight: 300;
+    font-weight: 600;
     margin: 10px;
     color: #333333;
 }
@@ -163,7 +164,7 @@ a.anchor {
 
 #content h2 {
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 500;
     top: 10px;
     margin: 10px;
     color: #333333;
