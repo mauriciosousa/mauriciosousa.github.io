@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Namboku Line — Find a Seat</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #0e1116;
+    font-family: "Hiragino Kaku Gothic ProN", "Helvetica Neue", Arial, sans-serif; color: #fff; }
+  #app { position: fixed; inset: 0; }
+  canvas { display: block; }
+
+  /* HUD */
+  #hud { position: fixed; top: 0; left: 0; right: 0; padding: 14px 18px;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    pointer-events: none; z-index: 5; }
+  .panel { background: rgba(14,17,22,.62); backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.10); border-radius: 12px; padding: 10px 14px; }
+  .line-badge { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; letter-spacing: .5px; }
+  .line-dot { width: 26px; height: 26px; border-radius: 50%; background: #00ac9b;
+    color:#04201d; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;
+    border: 2px solid #fff; }
+  .sub { font-size: 12px; opacity: .7; margin-top: 2px; }
+  #stats { text-align: right; }
+  #seatsLeft { font-size: 30px; font-weight: 800; line-height: 1; color: #00d8c4; }
+  #stats .lbl { font-size: 11px; opacity: .65; text-transform: uppercase; letter-spacing: 1px; }
+  #timer { font-size: 14px; margin-top: 6px; opacity: .85; }
+  #station { position: fixed; top: 84px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,172,155,.92); color:#04201d; font-weight:700; padding: 8px 18px;
+    border-radius: 999px; z-index: 6; opacity: 0; transition: opacity .4s; font-size: 14px; }
+
+  #prompt { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,216,196,.95); color:#04201d; font-weight:700; padding: 10px 22px;
+    border-radius: 999px; z-index: 6; opacity: 0; transition: opacity .2s; font-size: 15px;
+    box-shadow: 0 6px 24px rgba(0,216,196,.4); }
+  #controls { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; opacity: .55; z-index: 5; text-align:center; pointer-events:none; }
+  kbd { background:#1c222b; border:1px solid #333d4a; border-bottom-width:2px; border-radius:5px;
+    padding: 1px 6px; font-size: 11px; font-family: inherit; }
+
+  /* Overlays */
+  .screen { position: fixed; inset: 0; z-index: 20; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; padding: 24px;
+    background: radial-gradient(circle at 50% 35%, rgba(0,172,155,.18), rgba(8,10,14,.92) 60%); }
+  .screen h1 { font-size: clamp(28px, 6vw, 52px); font-weight: 800; letter-spacing: 1px; }
+  .screen h1 .accent { color: #00d8c4; }
+  .screen p { max-width: 540px; margin-top: 14px; opacity: .85; line-height: 1.6; font-size: 15px; }
+  .btn { margin-top: 28px; pointer-events: auto; cursor: pointer; border: none;
+    background: #00ac9b; color: #04201d; font-weight: 800; font-size: 17px; letter-spacing: .5px;
+    padding: 14px 38px; border-radius: 12px; transition: transform .1s, background .15s; }
+  .btn:hover { background: #00d8c4; transform: translateY(-2px); }
+  .hidden { display: none !important; }
+  .keys-row { margin-top: 22px; font-size: 13px; opacity: .8; line-height: 2; }
+  #endTitle.win { color: #00d8c4; }
+  #endTitle.lose { color: #ff6b6b; }
+  .stamp { font-size: 13px; letter-spacing: 3px; opacity:.5; margin-bottom:6px; text-transform:uppercase;}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<!-- HUD -->
+<div id="hud" class="hidden">
+  <div class="panel">
+    <div class="line-badge"><span class="line-dot">N</span> NAMBOKU LINE</div>
+    <div class="sub" id="nextStop">Bound for Akabane-Iwabuchi</div>
+  </div>
+  <div class="panel" id="stats">
+    <div class="lbl">Seats free</div>
+    <div id="seatsLeft">0</div>
+    <div id="timer">Standing: 0.0s</div>
+  </div>
+</div>
+<div id="station">Now arriving</div>
+<div id="prompt">Press <kbd>Space</kbd> to sit</div>
+<div id="controls" class="hidden">
+  <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move &nbsp;·&nbsp; drag mouse to look &nbsp;·&nbsp; <kbd>Space</kbd> sit
+</div>
+
+<!-- Start screen -->
+<div id="startScreen" class="screen">
+  <div class="stamp">Tokyo Metro</div>
+  <h1>NAMBOKU LINE<br><span class="accent">Find a Seat</span></h1>
+  <p>It's rush hour underground. You board a crowded train car and have one goal:
+     <b>grab an empty seat before everyone else does.</b> Passengers pour in at every station —
+     walk fast, read the car, and claim a spot.</p>
+  <div class="keys-row">
+    <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> — walk &nbsp;&nbsp; 🖱️ drag — look around &nbsp;&nbsp; <kbd>Space</kbd> — sit down
+  </div>
+  <button class="btn" id="startBtn">Board the train</button>
+</div>
+
+<!-- End screen -->
+<div id="endScreen" class="screen hidden">
+  <div class="stamp" id="endStamp">Result</div>
+  <h1 id="endTitle">—</h1>
+  <p id="endMsg"></p>
+  <button class="btn" id="againBtn">Ride again</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+"use strict";
+
+// ---------- Config ----------
+const CAR = { len: 18, halfLen: 9, width: 4.6, halfWidth: 2.3, height: 2.5 };
+const AISLE_HALF = 1.0;          // player x clamp
+const Z_CLAMP = CAR.halfLen - 0.7;
+const SEAT_X = 1.62;             // bench seat center distance from middle
+const ACCENT = 0x00ac9b;
+const PLAYER_SPEED = 4.2;        // units / sec
+
+// ---------- Three basics ----------
+const app = document.getElementById('app');
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0c0f14);
+scene.fog = new THREE.Fog(0x0c0f14, 14, 30);
+
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 100);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+app.appendChild(renderer.domElement);
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// ---------- Lights ----------
+scene.add(new THREE.HemisphereLight(0xcfeeff, 0x202830, 0.85));
+const key = new THREE.DirectionalLight(0xffffff, 0.5);
+key.position.set(4, 12, 6); key.castShadow = true;
+key.shadow.mapSize.set(1024,1024);
+key.shadow.camera.left=-12; key.shadow.camera.right=12;
+key.shadow.camera.top=12; key.shadow.camera.bottom=-12;
+scene.add(key);
+
+// Ceiling fluorescent strips (emissive + point lights)
+function addCeilingLights() {
+  const stripMat = new THREE.MeshStandardMaterial({ color:0xffffff, emissive:0xddf5ff, emissiveIntensity:0.9 });
+  for (let z=-CAR.halfLen+1.5; z<=CAR.halfLen-1.5; z+=3) {
+    const strip = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.06, 2.2), stripMat);
+    strip.position.set(0, CAR.height-0.06, z); scene.add(strip);
+    const pl = new THREE.PointLight(0xeaffff, 0.35, 9); pl.position.set(0, CAR.height-0.3, z); scene.add(pl);
+  }
+}
+
+// ---------- Train car ----------
+const carGroup = new THREE.Group();
+scene.add(carGroup);
+
+const matFloor = new THREE.MeshStandardMaterial({ color:0x6f7a83, roughness:0.9 });
+const matWall  = new THREE.MeshStandardMaterial({ color:0xeef2f4, roughness:0.7 });
+const matCeil  = new THREE.MeshStandardMaterial({ color:0xf6f9fb, roughness:0.8 });
+const matAccent= new THREE.MeshStandardMaterial({ color:ACCENT, roughness:0.5, metalness:0.1 });
+const matMetal = new THREE.MeshStandardMaterial({ color:0xbfc6cc, roughness:0.35, metalness:0.7 });
+const matGlass = new THREE.MeshStandardMaterial({ color:0x9fd4e6, transparent:true, opacity:0.28,
+                                                  roughness:0.1, metalness:0.2 });
+
+// Floor
+const floor = new THREE.Mesh(new THREE.BoxGeometry(CAR.width, 0.1, CAR.len), matFloor);
+floor.position.y = -0.05; floor.receiveShadow = true; carGroup.add(floor);
+// accent floor runner down the aisle
+const runner = new THREE.Mesh(new THREE.BoxGeometry(AISLE_HALF*2, 0.02, CAR.len-0.3), matAccent);
+runner.position.y = 0.001; carGroup.add(runner);
+
+// Ceiling
+const ceil = new THREE.Mesh(new THREE.BoxGeometry(CAR.width, 0.1, CAR.len), matCeil);
+ceil.position.y = CAR.height; carGroup.add(ceil);
+
+// End walls
+[-1,1].forEach(s => {
+  const w = new THREE.Mesh(new THREE.BoxGeometry(CAR.width, CAR.height, 0.12), matWall);
+  w.position.set(0, CAR.height/2, s*CAR.halfLen); carGroup.add(w);
+  // end door (accent frame)
+  const d = new THREE.Mesh(new THREE.BoxGeometry(1.0, CAR.height-0.5, 0.06), matAccent);
+  d.position.set(0, (CAR.height-0.5)/2, s*(CAR.halfLen-0.05)); carGroup.add(d);
+});
+
+// Side walls with window band + sliding doors
+function buildSide(side) { // side = +1 (x+) or -1 (x-)
+  const x = side*CAR.halfWidth;
+  // lower wall
+  const low = new THREE.Mesh(new THREE.BoxGeometry(0.1, 1.0, CAR.len), matWall);
+  low.position.set(x, 0.5, 0); carGroup.add(low);
+  // upper wall (above windows)
+  const up = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.5, CAR.len), matWall);
+  up.position.set(x, CAR.height-0.25, 0); carGroup.add(up);
+  // window glass band
+  const glass = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.95, CAR.len-1), matGlass);
+  glass.position.set(x, 1.55, 0); carGroup.add(glass);
+  // window mullions
+  for (let z=-CAR.halfLen+2; z<=CAR.halfLen-2; z+=2.0) {
+    const m = new THREE.Mesh(new THREE.BoxGeometry(0.12,0.95,0.08), matMetal);
+    m.position.set(x,1.55,z); carGroup.add(m);
+  }
+  // accent stripe at floor line
+  const stripe = new THREE.Mesh(new THREE.BoxGeometry(0.11,0.12,CAR.len), matAccent);
+  stripe.position.set(x,0.06,0); carGroup.add(stripe);
+  // doors (visual) at z = ±3
+  [-3,3].forEach(z => {
+    const dr = new THREE.Mesh(new THREE.BoxGeometry(0.07,1.0,1.3),
+              new THREE.MeshStandardMaterial({color:0xdfe6ea, roughness:0.6}));
+    dr.position.set(x+side*0.01,0.5,z); carGroup.add(dr);
+    const dg = new THREE.Mesh(new THREE.BoxGeometry(0.05,0.7,1.2), matGlass);
+    dg.position.set(x+side*0.02,1.5,z); carGroup.add(dg);
+  });
+}
+buildSide(1); buildSide(-1);
+
+// Hand poles (vertical) + horizontal bar with straps
+function buildPoles() {
+  const poleMat = matMetal;
+  for (let z=-CAR.halfLen+2; z<=CAR.halfLen-2; z+=4) {
+    [-1,1].forEach(s=>{
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.035,CAR.height-0.1,12), poleMat);
+      pole.position.set(s*AISLE_HALF*0.95, (CAR.height-0.1)/2, z); carGroup.add(pole);
+    });
+  }
+  // horizontal bars + straps along each side of aisle
+  [-1,1].forEach(s=>{
+    const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,CAR.len-1.5,12), poleMat);
+    bar.rotation.x = Math.PI/2;
+    bar.position.set(s*1.05, CAR.height-0.35, 0); carGroup.add(bar);
+    for (let z=-CAR.halfLen+2; z<=CAR.halfLen-2; z+=1.3) {
+      const strapMat = new THREE.MeshStandardMaterial({color:0xf2c200, roughness:0.6});
+      const strapBar = new THREE.Mesh(new THREE.TorusGeometry(0.07,0.018,8,16), strapMat);
+      strapBar.position.set(s*1.05, CAR.height-0.62, z); carGroup.add(strapBar);
+      const link = new THREE.Mesh(new THREE.BoxGeometry(0.02,0.18,0.02),
+                  new THREE.MeshStandardMaterial({color:0xdddddd}));
+      link.position.set(s*1.05, CAR.height-0.48, z); carGroup.add(link);
+    }
+  });
+}
+buildPoles();
+addCeilingLights();
+
+// ---------- Seats ----------
+const seats = []; // {x,z,side,occupant,mesh,cushion}
+function buildSeats() {
+  const zs = [-7.2,-5.7,-4.2, -1.4,0,1.4, 4.2,5.7,7.2]; // gaps at door zones (~±3)
+  [-1,1].forEach(side=>{
+    const x = side*SEAT_X;
+    zs.forEach(z=>{
+      const g = new THREE.Group();
+      // seat base
+      const base = new THREE.Mesh(new THREE.BoxGeometry(0.85,0.12,1.2),
+                   new THREE.MeshStandardMaterial({color:0x1f6f8b, roughness:0.85}));
+      base.position.set(0,0.42,0); base.castShadow=true; base.receiveShadow=true; g.add(base);
+      // cushion (color changes when occupied)
+      const cushMat = new THREE.MeshStandardMaterial({color:0x2f9ecf, roughness:0.85});
+      const cush = new THREE.Mesh(new THREE.BoxGeometry(0.8,0.1,1.1), cushMat);
+      cush.position.set(0,0.5,0); g.add(cush);
+      // backrest against wall
+      const back = new THREE.Mesh(new THREE.BoxGeometry(0.2,0.85,1.2),
+                   new THREE.MeshStandardMaterial({color:0x1f6f8b, roughness:0.85}));
+      back.position.set(side*0.34,0.85,0); g.add(back);
+      // legs
+      const legMat = matMetal;
+      [[-0.35,-0.5],[0.35,-0.5],[-0.35,0.5],[0.35,0.5]].forEach(p=>{
+        const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.42,8), legMat);
+        leg.position.set(p[0],0.21,p[1]); g.add(leg);
+      });
+      // divider grab between seats
+      const div = new THREE.Mesh(new THREE.TorusGeometry(0.12,0.02,8,16), matMetal);
+      div.rotation.y = Math.PI/2;
+      div.position.set(0,0.95,0.6); g.add(div);
+
+      g.position.set(x,0,z); g.rotation.y = side>0 ? Math.PI/2 : -Math.PI/2;
+      // actually orient so back faces wall: rotate group so seat faces aisle
+      g.rotation.y = 0;
+      carGroup.add(g);
+      seats.push({ x, z, side, occupant:null, group:g, cushMat });
+    });
+  });
+}
+buildSeats();
+
+function freeSeats(){ return seats.filter(s=>s.occupant===null); }
+function updateCushion(seat){
+  if (seat.occupant) seat.cushMat.color.setHex(0x16313b); // taken: dark
+  else seat.cushMat.color.setHex(0x2f9ecf);
+}
+
+// ---------- Character builder ----------
+function makePerson(colors){
+  const g = new THREE.Group();
+  const body = new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.26,0.7,16),
+               new THREE.MeshStandardMaterial({color:colors.body, roughness:0.85}));
+  body.position.y=0.78; body.castShadow=true; g.add(body);
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.17,20,16),
+               new THREE.MeshStandardMaterial({color:colors.skin, roughness:0.8}));
+  head.position.y=1.28; head.castShadow=true; g.add(head);
+  const hair = new THREE.Mesh(new THREE.SphereGeometry(0.18,16,12,0,Math.PI*2,0,Math.PI*0.6),
+               new THREE.MeshStandardMaterial({color:colors.hair, roughness:0.9}));
+  hair.position.y=1.33; g.add(hair);
+  // legs (for bob)
+  const legMat = new THREE.MeshStandardMaterial({color:colors.legs, roughness:0.9});
+  const lL = new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.08,0.5,10), legMat);
+  lL.position.set(-0.1,0.25,0); g.add(lL);
+  const rL = new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.08,0.5,10), legMat);
+  rL.position.set(0.1,0.25,0); g.add(rL);
+  // arms
+  const armMat = new THREE.MeshStandardMaterial({color:colors.body, roughness:0.85});
+  const lA = new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,0.5,8), armMat);
+  lA.position.set(-0.3,0.8,0); g.add(lA);
+  const rA = new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,0.5,8), armMat);
+  rA.position.set(0.3,0.8,0); g.add(rA);
+  g.userData.legs = [lL,rL];
+  return g;
+}
+
+const PALETTES = [
+  {body:0x4a5568, skin:0xf0c8a0, hair:0x2a2118, legs:0x2d3748},
+  {body:0x7b4a3a, skin:0xe8b890, hair:0x171717, legs:0x3a2a22},
+  {body:0x355e7a, skin:0xf2d0b0, hair:0x402a18, legs:0x22303a},
+  {body:0x6b6b6b, skin:0xe0b894, hair:0x1c1c1c, legs:0x333333},
+  {body:0x8a6d3b, skin:0xf0c8a0, hair:0x231a12, legs:0x4a3a22},
+  {body:0x9c3b4f, skin:0xe8c0a0, hair:0x1a1a1a, legs:0x4a2230},
+  {body:0x3b6b5a, skin:0xf0caa0, hair:0x241810, legs:0x223a30},
+];
+
+// ---------- Player ----------
+const player = makePerson({body:0x00ac9b, skin:0xf2d0b0, hair:0x1c140e, legs:0x123c38});
+player.position.set(0,0,-Z_CLAMP+0.5);
+scene.add(player);
+const playerState = { heading: 0, seated:false, seat:null, walkPhase:0 };
+
+// ---------- NPCs ----------
+const npcs = []; // {group, seat, t, fromX, fromZ}
+function spawnNPC(targetSeat){
+  const pal = PALETTES[(Math.random()*PALETTES.length)|0];
+  const g = makePerson(pal);
+  // enter near a door on the seat's side
+  const doorZ = (Math.abs(targetSeat.z) > 1.5 && targetSeat.z<0) ? -3 : (targetSeat.z>1.5?3: (Math.random()<.5?-3:3));
+  g.position.set(targetSeat.side*0.6, 0, doorZ);
+  scene.add(g);
+  targetSeat.occupant = 'npc'; updateCushion(targetSeat);
+  npcs.push({ group:g, seat:targetSeat, phase:0, t:0,
+              from:new THREE.Vector3(targetSeat.side*0.6,0,doorZ),
+              mid:new THREE.Vector3(targetSeat.side*0.9,0,targetSeat.z) });
+}
+
+// Pre-seat some passengers at start, then board over time
+let boardTimer = 0, boardInterval = 2.6;
+let stationTimer = 0, stationInterval = 11;
+const STOPS = ["Yotsuya","Ichigaya","Iidabashi","Korakuen","Todaimae","Hon-Komagome","Komagome","Nishigahara","Oji","Akabane-Iwabuchi"];
+let stopIndex = 0;
+
+function seedPassengers(n){
+  const free = freeSeats();
+  for (let i=0;i<n && free.length;i++){
+    const idx = (Math.random()*free.length)|0;
+    const seat = free.splice(idx,1)[0];
+    const pal = PALETTES[(Math.random()*PALETTES.length)|0];
+    const g = makePerson(pal);
+    placeSeated(g, seat);
+    scene.add(g);
+    seat.occupant='npc'; updateCushion(seat);
+  }
+}
+function placeSeated(g, seat){
+  g.position.set(seat.x - seat.side*0.25, 0, seat.z);
+  g.rotation.y = seat.side>0 ? -Math.PI/2 : Math.PI/2;
+  // lower legs to sitting
+  g.userData.legs.forEach(l=>{ l.rotation.x = -Math.PI/2.3; l.position.y=0.45; l.position.z=0.12; });
+  g.position.y = 0.05;
+}
+
+// ---------- Camera follow ----------
+const camYaw = { v: 0.0, target: 0.0 };
+const camPitch = { v: 0.42 };
+let dragging=false, lastX=0, lastY=0;
+renderer.domElement.addEventListener('mousedown', e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;});
+window.addEventListener('mouseup', ()=>dragging=false);
+window.addEventListener('mousemove', e=>{
+  if(!dragging) return;
+  camYaw.target -= (e.clientX-lastX)*0.005;
+  camPitch.v = Math.min(0.9, Math.max(0.12, camPitch.v + (e.clientY-lastY)*0.003));
+  lastX=e.clientX; lastY=e.clientY;
+});
+// touch
+renderer.domElement.addEventListener('touchstart',e=>{dragging=true;lastX=e.touches[0].clientX;lastY=e.touches[0].clientY;},{passive:true});
+window.addEventListener('touchend',()=>dragging=false);
+window.addEventListener('touchmove',e=>{
+  if(!dragging)return;
+  camYaw.target -= (e.touches[0].clientX-lastX)*0.005;
+  camPitch.v = Math.min(0.9,Math.max(0.12,camPitch.v+(e.touches[0].clientY-lastY)*0.003));
+  lastX=e.touches[0].clientX; lastY=e.touches[0].clientY;
+},{passive:true});
+
+// ---------- Input ----------
+const keys = {};
+window.addEventListener('keydown', e=>{
+  keys[e.code]=true;
+  if(e.code==='Space'){ e.preventDefault(); trySit(); }
+});
+window.addEventListener('keyup', e=>{ keys[e.code]=false; });
+
+// ---------- Game state ----------
+let running=false, gameOver=false, elapsed=0;
+const ui = {
+  hud:document.getElementById('hud'),
+  seatsLeft:document.getElementById('seatsLeft'),
+  timer:document.getElementById('timer'),
+  prompt:document.getElementById('prompt'),
+  station:document.getElementById('station'),
+  nextStop:document.getElementById('nextStop'),
+  controls:document.getElementById('controls'),
+  start:document.getElementById('startScreen'),
+  end:document.getElementById('endScreen'),
+  endTitle:document.getElementById('endTitle'),
+  endMsg:document.getElementById('endMsg'),
+  endStamp:document.getElementById('endStamp'),
+};
+
+function nearestFreeSeat(){
+  let best=null, bd=Infinity;
+  freeSeats().forEach(s=>{
+    const dx = player.position.x - s.x;
+    const dz = player.position.z - s.z;
+    const d = Math.hypot(dx,dz);
+    if(d<bd){bd=d;best=s;}
+  });
+  return {seat:best, dist:bd};
+}
+
+function trySit(){
+  if(!running||gameOver||playerState.seated) return;
+  const {seat,dist} = nearestFreeSeat();
+  if(seat && dist < 1.35){
+    seat.occupant='player'; updateCushion(seat);
+    playerState.seated=true; playerState.seat=seat;
+    // animate player into seat
+    placeSeated(player, seat);
+    win();
+  }
+}
+
+function win(){
+  gameOver=true; running=false;
+  ui.endStamp.textContent="You made it";
+  ui.endTitle.textContent="着席成功 — Seated!";
+  ui.endTitle.className="win";
+  ui.endMsg.innerHTML = `You found a seat in <b>${elapsed.toFixed(1)}s</b> after passing <b>${stopIndex}</b> station${stopIndex===1?'':'s'}. ` +
+    `Sit back and enjoy the ride to Akabane-Iwabuchi. 🍵`;
+  showEnd();
+}
+function lose(){
+  gameOver=true; running=false;
+  ui.endStamp.textContent="満席 — Full car";
+  ui.endTitle.textContent="No seats left!";
+  ui.endTitle.className="lose";
+  ui.endMsg.innerHTML = `Every seat filled up after <b>${elapsed.toFixed(1)}s</b>. ` +
+    `You'll have to stand and hold a strap until the next emptier train. Try again — move faster!`;
+  showEnd();
+}
+function showEnd(){
+  ui.prompt.style.opacity=0;
+  setTimeout(()=>{ ui.end.classList.remove('hidden'); }, 600);
+}
+
+// ---------- Station event ----------
+function arriveStation(){
+  if(stopIndex>=STOPS.length) stopIndex = STOPS.length-1;
+  const name = STOPS[stopIndex];
+  ui.station.textContent = "Now arriving · " + name;
+  ui.station.style.opacity=1;
+  setTimeout(()=>ui.station.style.opacity=0, 2600);
+  ui.nextStop.textContent = stopIndex < STOPS.length-1
+     ? "Next: " + STOPS[stopIndex+1] : "Terminus: Akabane-Iwabuchi";
+  // a burst of boarders take seats
+  const burst = 2 + (Math.random()*2|0);
+  for(let i=0;i<burst;i++){
+    const f=freeSeats();
+    if(f.length<=0) break;
+    // leave at least until truly full; competitive
+    spawnNPC(f[(Math.random()*f.length)|0]);
+  }
+  stopIndex++;
+}
+
+// ---------- Reset / start ----------
+function resetGame(){
+  // remove npcs
+  npcs.forEach(n=>scene.remove(n.group));
+  npcs.length=0;
+  scene.children.filter(c=>c.userData && c.userData.isSeeded).forEach(c=>scene.remove(c));
+  // clear seats
+  seats.forEach(s=>{ s.occupant=null; updateCushion(s); });
+  // remove seeded seated persons (we tagged via group in seedPassengers -> need tracking)
+  seededGroups.forEach(g=>scene.remove(g)); seededGroups.length=0;
+  // reset player
+  player.position.set(0,0,-Z_CLAMP+0.5); player.rotation.set(0,0,0); player.position.y=0;
+  player.userData.legs.forEach(l=>{ l.rotation.x=0; l.position.y=0.25; l.position.z=0; });
+  playerState.seated=false; playerState.seat=null; playerState.heading=0;
+  elapsed=0; boardTimer=0; stationTimer=0; stopIndex=0; gameOver=false;
+  camYaw.v=camYaw.target=0; camPitch.v=0.42;
+  ui.nextStop.textContent="Next: "+STOPS[0];
+  seedPassengers(5);
+}
+const seededGroups=[];
+// wrap seedPassengers to track groups
+const _seed = seedPassengers;
+seedPassengers = function(n){
+  const before = scene.children.length;
+  _seed(n);
+  // track newly added person groups (those just added)
+  for(let i=before;i<scene.children.length;i++) seededGroups.push(scene.children[i]);
+};
+
+function startGame(){
+  resetGame();
+  ui.start.classList.add('hidden');
+  ui.end.classList.add('hidden');
+  ui.hud.classList.remove('hidden');
+  ui.controls.classList.remove('hidden');
+  running=true; gameOver=false;
+}
+document.getElementById('startBtn').onclick=startGame;
+document.getElementById('againBtn').onclick=startGame;
+
+// ---------- Update ----------
+const clock = new THREE.Clock();
+const fwd = new THREE.Vector3(), right = new THREE.Vector3();
+
+function update(dt){
+  if(running && !gameOver && !playerState.seated){
+    elapsed += dt;
+    // movement (camera-relative)
+    const cy = camYaw.v;
+    fwd.set(Math.sin(cy),0,Math.cos(cy));   // forward = into screen
+    right.set(Math.cos(cy),0,-Math.sin(cy));
+    let mx=0, mz=0;
+    if(keys['KeyW']||keys['ArrowUp']){ mx+=fwd.x; mz+=fwd.z; }
+    if(keys['KeyS']||keys['ArrowDown']){ mx-=fwd.x; mz-=fwd.z; }
+    if(keys['KeyA']||keys['ArrowLeft']){ mx-=right.x; mz-=right.z; }
+    if(keys['KeyD']||keys['ArrowRight']){ mx+=right.x; mz+=right.z; }
+    const mag=Math.hypot(mx,mz);
+    if(mag>0.001){
+      mx/=mag; mz/=mag;
+      player.position.x += mx*PLAYER_SPEED*dt;
+      player.position.z += mz*PLAYER_SPEED*dt;
+      playerState.heading = Math.atan2(mx,mz);
+      playerState.walkPhase += dt*10;
+      // leg bob
+      const sw=Math.sin(playerState.walkPhase)*0.4;
+      player.userData.legs[0].rotation.x=sw;
+      player.userData.legs[1].rotation.x=-sw;
+    } else {
+      player.userData.legs[0].rotation.x*=0.8;
+      player.userData.legs[1].rotation.x*=0.8;
+    }
+    // clamp to aisle
+    player.position.x = Math.max(-AISLE_HALF, Math.min(AISLE_HALF, player.position.x));
+    player.position.z = Math.max(-Z_CLAMP, Math.min(Z_CLAMP, player.position.z));
+    // face movement direction smoothly
+    let dy = playerState.heading - player.rotation.y;
+    while(dy>Math.PI)dy-=Math.PI*2; while(dy<-Math.PI)dy+=Math.PI*2;
+    player.rotation.y += dy*Math.min(1,dt*12);
+
+    // boarding over time
+    boardTimer+=dt;
+    if(boardTimer>=boardInterval){
+      boardTimer=0;
+      const f=freeSeats();
+      if(f.length>0) spawnNPC(f[(Math.random()*f.length)|0]);
+      boardInterval = Math.max(1.4, boardInterval*0.97); // ramps up
+    }
+    stationTimer+=dt;
+    if(stationTimer>=stationInterval){ stationTimer=0; arriveStation(); }
+
+    // prompt + lose check
+    const {seat,dist}=nearestFreeSeat();
+    if(seat && dist<1.35){ ui.prompt.style.opacity=1; } else { ui.prompt.style.opacity=0; }
+    if(freeSeats().length===0){ lose(); }
+
+    // HUD
+    ui.seatsLeft.textContent = freeSeats().length;
+    ui.timer.textContent = "Standing: "+elapsed.toFixed(1)+"s";
+  }
+
+  // animate NPCs walking to their seat
+  npcs.forEach(n=>{
+    if(n.phase===2) return;
+    n.t += dt* (n.phase===0?1.6:1.9);
+    if(n.phase===0){
+      // walk in aisle toward seat z
+      const tz = n.seat.z;
+      n.group.position.x += ( (n.seat.side*0.85) - n.group.position.x)*Math.min(1,dt*4);
+      n.group.position.z += (tz - n.group.position.z)*Math.min(1,dt*2.2);
+      // face walking dir
+      n.group.rotation.y = Math.atan2(n.group.position.x - (n.from.x), tz - n.from.z + 0.001);
+      // leg bob
+      const sw=Math.sin(n.t*8)*0.4;
+      n.group.userData.legs[0].rotation.x=sw; n.group.userData.legs[1].rotation.x=-sw;
+      if(Math.abs(n.group.position.z-tz)<0.15 && Math.abs(n.group.position.x-n.seat.side*0.85)<0.2){
+        n.phase=1; n.t=0;
+      }
+    } else if(n.phase===1){
+      // turn and sit
+      placeSeated(n.group, n.seat);
+      n.phase=2;
+    }
+  });
+
+  // ---------- Camera ----------
+  camYaw.v += (camYaw.target - camYaw.v)*Math.min(1,dt*8);
+  const dist = 4.6, h = 2.2*camPitch.v + 1.3;
+  const tx = player.position.x - Math.sin(camYaw.v)*dist;
+  const tz = player.position.z - Math.cos(camYaw.v)*dist;
+  const camTarget = new THREE.Vector3(tx, h, tz);
+  camera.position.lerp(camTarget, Math.min(1,dt*6));
+  // keep camera inside car
+  camera.position.x=Math.max(-CAR.halfWidth+0.3,Math.min(CAR.halfWidth-0.3,camera.position.x));
+  camera.position.y=Math.max(0.8,Math.min(CAR.height-0.1,camera.position.y));
+  camera.position.z=Math.max(-CAR.halfLen+0.3,Math.min(CAR.halfLen-0.3,camera.position.z));
+  camera.lookAt(player.position.x, 1.1, player.position.z);
+
+  // subtle train sway + scrolling tunnel feel via fog flicker
+  carGroup.rotation.z = Math.sin(performance.now()*0.0011)*0.006;
+  carGroup.position.x = Math.sin(performance.now()*0.0017)*0.02;
+}
+
+function animate(){
+  requestAnimationFrame(animate);
+  const dt = Math.min(0.05, clock.getDelta());
+  update(dt);
+  renderer.render(scene,camera);
+}
+
+// initial camera placement
+camera.position.set(0,2.2,-Z_CLAMP-4);
+camera.lookAt(0,1,0);
+animate();
+
+})();
+</script>
+</body>
+</html>
