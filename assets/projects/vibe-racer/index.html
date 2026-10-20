@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Futuristic Drive</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0a0a1a; font-family: system-ui, sans-serif; }
+  #hud {
+    position: fixed; top: 16px; left: 16px; color: #fff; z-index: 10;
+    text-shadow: 0 1px 3px rgba(0,0,0,.8); user-select: none;
+  }
+  #hud .score { font-size: 28px; font-weight: 700; }
+  #hud .hint { font-size: 13px; opacity: .75; margin-top: 4px; }
+  #overlay {
+    position: fixed; inset: 0; z-index: 20; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; color: #fff; text-align: center;
+    background: rgba(5,5,20,.75); backdrop-filter: blur(3px);
+  }
+  #overlay h1 { font-size: 42px; margin: 0 0 8px; letter-spacing: 2px; }
+  #overlay p { opacity: .85; margin: 4px 0; }
+  #overlay button {
+    margin-top: 18px; padding: 12px 28px; font-size: 16px; border: 0; border-radius: 8px;
+    background: #ff9500; color: #1a1a2a; font-weight: 700; cursor: pointer;
+  }
+  #overlay button:hover { background: #ffab33; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div id="hud">
+  <div class="score" id="score">0 m</div>
+  <div class="hint">← → arrow keys (or A / D) to steer</div>
+</div>
+<div id="overlay">
+  <h1>FUTURISTIC DRIVE</h1>
+  <p>The car drives itself forward. You steer.</p>
+  <p>Dodge the other cars. ← → to move left and right.</p>
+  <button id="startBtn">START</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0d0b2a);
+scene.fog = new THREE.Fog(0x0d0b2a, 80, 320);
+
+const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 500);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// ---- Lights ----
+scene.add(new THREE.HemisphereLight(0x8899ff, 0x111133, 0.9));
+const dir = new THREE.DirectionalLight(0xffeedd, 0.8);
+dir.position.set(-20, 40, 20);
+scene.add(dir);
+
+// ---- Road ----
+const ROAD_WIDTH = 12;
+const LANE = 3.2; // half-distance the car can move left/right from center
+const roadGeo = new THREE.PlaneGeometry(ROAD_WIDTH, 400);
+const roadMat = new THREE.MeshStandardMaterial({ color: 0x2a2a33 });
+const road = new THREE.Mesh(roadGeo, roadMat);
+road.rotation.x = -Math.PI/2;
+road.position.z = -120;
+scene.add(road);
+
+// ground on either side
+const groundMat = new THREE.MeshStandardMaterial({ color: 0x141426 });
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), groundMat);
+ground.rotation.x = -Math.PI/2;
+ground.position.set(0, -0.05, -120);
+scene.add(ground);
+
+// road edges (glowing lines)
+const edges = [];
+const edgeMat = new THREE.MeshBasicMaterial({ color: 0xff9500 });
+[-ROAD_WIDTH/2, ROAD_WIDTH/2].forEach(x => {
+  const edge = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.05, 400), edgeMat);
+  edge.position.set(x, 0.02, -120);
+  scene.add(edge);
+  edges.push(edge);
+});
+
+// dashed center lines (recycled as they pass the camera)
+const dashes = [];
+const dashMat = new THREE.MeshBasicMaterial({ color: 0xf5f5f5 });
+for (let i = 0; i < 40; i++) {
+  const dash = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.05, 3), dashMat);
+  dash.position.set(0, 0.02, -i * 8);
+  scene.add(dash);
+  dashes.push(dash);
+}
+
+// ---- Futuristic city skyline (clustered ahead, at the end of the road) ----
+const cityGroup = new THREE.Group();
+const buildingColors = [0x3a3a6e, 0x4a4a8e, 0x2e2e55, 0x5555aa, 0x6a4a9e];
+for (let i = 0; i < 80; i++) {
+  const h = 14 + Math.random() * 46;
+  const w = 2.5 + Math.random() * 4;
+  const b = new THREE.Mesh(
+    new THREE.BoxGeometry(w, h, w),
+    new THREE.MeshStandardMaterial({
+      color: buildingColors[i % buildingColors.length],
+      emissive: 0x2222aa, emissiveIntensity: 0.45
+    })
+  );
+  // cluster around the center horizon (where the road vanishes), a few rows deep
+  const x = (Math.random() - 0.5) * 60;
+  const z = -8 - Math.random() * 45;
+  b.position.set(x, h/2, z);
+  cityGroup.add(b);
+
+  // glowing rooftop beacon
+  const beacon = new THREE.Mesh(
+    new THREE.BoxGeometry(0.6, 0.6, 0.6),
+    new THREE.MeshBasicMaterial({ color: Math.random() < 0.5 ? 0xff5577 : 0x55ffdd })
+  );
+  beacon.position.set(x, h + 0.4, z);
+  cityGroup.add(beacon);
+}
+scene.add(cityGroup);
+
+// stars
+const starGeo = new THREE.BufferGeometry();
+const starPos = [];
+for (let i = 0; i < 400; i++) {
+  starPos.push((Math.random()-0.5)*300, 30 + Math.random()*120, -200 - Math.random()*150);
+}
+starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
+scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.6 })));
+
+// ---- Car factory ----
+function makeCar(bodyColor) {
+  const car = new THREE.Group();
+  const body = new THREE.Mesh(
+    new THREE.BoxGeometry(1.8, 0.7, 3.6),
+    new THREE.MeshStandardMaterial({ color: bodyColor, metalness: 0.4, roughness: 0.4 })
+  );
+  body.position.y = 0.6;
+  car.add(body);
+  const cabin = new THREE.Mesh(
+    new THREE.BoxGeometry(1.5, 0.6, 1.8),
+    new THREE.MeshStandardMaterial({ color: 0x111122, metalness: 0.6, roughness: 0.2 })
+  );
+  cabin.position.set(0, 1.15, -0.2);
+  car.add(cabin);
+  // wheels
+  const wheelGeo = new THREE.CylinderGeometry(0.4, 0.4, 0.3, 12);
+  const wheelMat = new THREE.MeshStandardMaterial({ color: 0x0a0a0a });
+  [[-0.9,1.2],[0.9,1.2],[-0.9,-1.2],[0.9,-1.2]].forEach(([x,z]) => {
+    const w = new THREE.Mesh(wheelGeo, wheelMat);
+    w.rotation.z = Math.PI/2;
+    w.position.set(x, 0.4, z);
+    car.add(w);
+  });
+  return car;
+}
+
+// player car
+const player = makeCar(0xff3b30);
+scene.add(player);
+
+// tail lights glow
+const tailMat = new THREE.MeshBasicMaterial({ color: 0xff5544 });
+[-0.6, 0.6].forEach(x => {
+  const t = new THREE.Mesh(new THREE.BoxGeometry(0.3,0.2,0.1), tailMat);
+  t.position.set(x, 0.7, 1.85);
+  player.add(t);
+});
+
+// ---- Traffic ----
+const traffic = [];
+const trafficColors = [0x33aaff, 0x66ff99, 0xffcc33, 0xff66cc, 0xffffff];
+function spawnTraffic() {
+  const car = makeCar(trafficColors[Math.floor(Math.random()*trafficColors.length)]);
+  const laneX = (Math.floor(Math.random()*3) - 1) * LANE; // -LANE, 0, +LANE
+  car.position.set(laneX, 0, player.position.z - 120 - Math.random()*40);
+  car.rotation.y = Math.PI; // facing toward player
+  scene.add(car);
+  traffic.push(car);
+}
+
+// ---- Input ----
+const keys = {};
+addEventListener('keydown', e => {
+  keys[e.key] = true;
+  if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(e.key)) e.preventDefault();
+});
+addEventListener('keyup', e => keys[e.key] = false);
+
+// ---- Game state ----
+let running = false;
+let speed = 0.6;          // forward speed (world units / frame)
+let targetX = 0;          // desired x of car
+let distance = 0;
+let spawnTimer = 0;
+
+const scoreEl = document.getElementById('score');
+const overlay = document.getElementById('overlay');
+const startBtn = document.getElementById('startBtn');
+
+function reset() {
+  // clear traffic
+  traffic.forEach(c => scene.remove(c));
+  traffic.length = 0;
+  player.position.set(0, 0, 0);
+  targetX = 0;
+  distance = 0;
+  speed = 0.6;
+  spawnTimer = 0;
+}
+
+function start() {
+  reset();
+  overlay.classList.add('hidden');
+  running = true;
+}
+startBtn.addEventListener('click', start);
+
+function gameOver() {
+  running = false;
+  overlay.querySelector('h1').textContent = 'CRASH!';
+  overlay.querySelector('p').textContent = `You drove ${Math.floor(distance)} meters.`;
+  overlay.querySelectorAll('p')[1].textContent = 'Press START to try again.';
+  startBtn.textContent = 'RESTART';
+  overlay.classList.remove('hidden');
+}
+
+// ---- Main loop ----
+const clock = new THREE.Clock();
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+  if (!running) return;
+
+  // steering
+  const steer = 0.18;
+  if (keys['ArrowLeft'] || keys['a'] || keys['A']) targetX -= steer;
+  if (keys['ArrowRight'] || keys['d'] || keys['D']) targetX += steer;
+  targetX = Math.max(-LANE - 1, Math.min(LANE + 1, targetX));
+  // smooth toward target + bank the car visually
+  const prevX = player.position.x;
+  player.position.x += (targetX - player.position.x) * 0.2;
+  player.rotation.z = (prevX - player.position.x) * 1.2;   // lean into turn
+  player.rotation.y = (prevX - player.position.x) * 0.8;
+
+  // move forward (world scrolls toward +z relative to car which sits near origin)
+  distance += speed;
+  speed = Math.min(1.4, speed + 0.00015); // gradual acceleration
+  player.position.z -= speed;
+
+  // camera follows behind & above
+  camera.position.set(player.position.x * 0.4, 5, player.position.z + 11);
+  camera.lookAt(player.position.x * 0.4, 1.5, player.position.z - 10);
+
+  // keep road, ground, edges and city scrolling with the player
+  road.position.z = player.position.z - 120;
+  ground.position.z = player.position.z - 120;
+  edges.forEach(e => e.position.z = player.position.z - 120);
+  cityGroup.position.z = player.position.z - 110;
+
+  // recycle dashes so the dashed center line is endless
+  dashes.forEach(d => {
+    if (d.position.z > player.position.z + 15) d.position.z -= 320;
+  });
+
+  // spawn traffic
+  spawnTimer--;
+  if (spawnTimer <= 0) {
+    spawnTraffic();
+    spawnTimer = 40 + Math.random() * 50;
+  }
+
+  // update traffic + collisions
+  for (let i = traffic.length - 1; i >= 0; i--) {
+    const c = traffic[i];
+    // remove once well behind
+    if (c.position.z > player.position.z + 20) {
+      scene.remove(c);
+      traffic.splice(i, 1);
+      continue;
+    }
+    // collision check (AABB-ish)
+    const dx = Math.abs(c.position.x - player.position.x);
+    const dz = Math.abs(c.position.z - player.position.z);
+    if (dx < 1.7 && dz < 3.4) { gameOver(); return; }
+  }
+
+  scoreEl.textContent = `${Math.floor(distance)} m`;
+}
+animate();
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+</script>
+</body>
+</html>
