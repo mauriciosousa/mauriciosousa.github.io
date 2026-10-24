@@ -250,6 +250,14 @@ a.anchor {
     font-weight: 300;
 }
 
+/* KMD logo above the address in the Contact section */
+#content img.kmd-logo {
+    display: block;
+    height: 56px;
+    width: auto;
+    margin-bottom: 12px;
+}
+
 /* centred row of profile links (top of page and footer) */
 p.links,
 #content p.links {
