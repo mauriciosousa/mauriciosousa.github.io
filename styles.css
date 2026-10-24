@@ -39,10 +39,11 @@ body {
     margin: 0 auto;
     text-align: left;
     width: 50%;
-    min-width: 760px; /* keeps logo, nav and theme toggle on one line on mid-size screens */
+    min-width: 820px; /* keeps logo, nav and theme toggle on one line on mid-size screens */
 }
 
 #header {
+    box-sizing: border-box; /* include the padding in its width, so it never sticks out on phones */
     overflow: hidden;
     background-color: var(--bg);
     padding: 20px 10px;
@@ -155,7 +156,6 @@ html.pride #theme-toggle .icon-pride {
 
 #footer {
     clear: both;
-    width: 100%;
     margin: 10px;
 }
 
@@ -331,7 +331,7 @@ p.links,
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 840px) {
 
     #container,
     #header,
@@ -353,6 +353,12 @@ p.links,
         font-size: 16px;
     }
 
+    /* tighter spacing so the nav and theme toggle fit on one line on phones */
+    #header .header-right a {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
     .header-right {
         float: none;
     }
@@ -366,7 +372,7 @@ p.links,
 }
 
 /* on narrow portrait screens, stack the thumbnail above the text */
-@media screen and (max-width: 800px) and (orientation: portrait) {
+@media screen and (max-width: 840px) and (orientation: portrait) {
 
     .column.left,
     .column.right {
