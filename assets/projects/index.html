@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Class Projects - Mauricio Sousa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Small web projects by Mauricio Sousa, used in class at Keio University Graduate School of Media Design (KMD).">
+    <link rel="shortcut icon" type="image/png" href="../images/favicon.png" />
+    <script>
+        (function() {
+            var theme = null;
+            try { theme = localStorage.getItem('theme'); } catch (e) {}
+            if (theme !== 'light' && theme !== 'dark') {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.classList.add(theme);
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: white; --text: #333333; --muted: #777777; --line: #e6e6e6; --accent: #ffa700; --accent-strong: #ff4e00; color-scheme: light; }
+        html.dark { --bg: #1c1c1e; --text: #dddddd; --muted: #999999; --line: #333336; color-scheme: dark; }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 300; }
+        main { max-width: 720px; margin: 0 auto; padding: 56px 16px 80px; }
+        ul { list-style: none; margin: 0; padding: 0; }
+        li { border-top: 1px solid var(--line); }
+        li:last-child { border-bottom: 1px solid var(--line); }
+        li a { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 22px 4px; color: inherit; text-decoration: none; }
+        li a:hover .name { color: var(--accent-strong); }
+        .name { font-weight: 600; font-size: 20px; transition: color .15s; }
+        .desc { display: block; font-size: 15px; color: var(--muted); margin-top: 6px; }
+        .arrow { color: var(--accent); font-size: 20px; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+    <main>
+
+        <!-- To add a project: copy one <li> block and change the folder name, title and description -->
+        <ul>
+            <li>
+                <a href="flighttracker/">
+                    <span><span class="name">Flight Globe</span><span class="desc">Look up a flight and follow it on a 3D globe.</span></span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </li>
+            <li>
+                <a href="namboku-line/">
+                    <span><span class="name">Namboku Line</span><span class="desc">Find a seat on the Tokyo Metro Namboku Line.</span></span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </li>
+            <li>
+                <a href="vibe-racer/">
+                    <span><span class="name">Futuristic Drive</span><span class="desc">A browser driving game.</span></span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </main>
+</body>
+</html>
