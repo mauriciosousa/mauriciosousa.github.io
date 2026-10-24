@@ -26,14 +26,14 @@
         (function() {
             var theme = null;
             try { theme = localStorage.getItem('theme'); } catch (e) {}
-            if (theme !== 'light' && theme !== 'dark' && theme !== 'pride') {
+            if (theme !== 'light' && theme !== 'dark' && theme !== 'pride' && theme !== 'retro' && theme !== 'paper') {
                 theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             }
             document.documentElement.classList.add(theme);
         })();
     </script>
     <!-- bump the ?v= number whenever styles.css changes, so browsers don't keep an old cached copy -->
-    <link rel="stylesheet" href="styles.css?v=2026-10-24c">
+    <link rel="stylesheet" href="styles.css?v=2026-10-24e">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GW67X6CE9N"></script>
@@ -120,11 +120,11 @@
             document.documentElement.scrollTop = 0;
         }
 
-        /* theme toggle: light -> dark -> pride (rainbow) -> light */
+        /* theme toggle: light -> dark -> pride (rainbow) -> retro (Web 1.0) -> paper (ACM paper) -> light */
         document.addEventListener('DOMContentLoaded', function() {
             var root = document.documentElement;
             var button = document.getElementById('theme-toggle');
-            var themes = ['light', 'dark', 'pride'];
+            var themes = ['light', 'dark', 'pride', 'retro', 'paper'];
             var media = window.matchMedia('(prefers-color-scheme: dark)');
 
             function current() {
@@ -141,6 +141,26 @@
             }
 
             apply(current());
+
+            /* ACM paper theme: figure captions from each paper's short title, and the current year */
+            var rows = document.querySelectorAll('.publications .row');
+            for (var r = 0; r < rows.length; r++) {
+                var t = rows[r].querySelector('.title');
+                var fig = rows[r].querySelector('.column.left');
+                if (t && fig) fig.setAttribute('data-caption', t.textContent.split(':')[0].replace(/[."\s]+$/, '').replace(/^"/, ''));
+            }
+            var years = document.querySelectorAll('.paper-year');
+            for (var y = 0; y < years.length; y++) years[y].textContent = new Date().getFullYear();
+
+            /* Web 1.0 footer: this browser's own visit count, and the page's real last-modified date */
+            var visits = 1;
+            try {
+                visits = (parseInt(localStorage.getItem('visits'), 10) || 0) + 1;
+                localStorage.setItem('visits', visits);
+            } catch (e) {}
+            document.getElementById('retro-counter').textContent = ('000000' + visits).slice(-6);
+            document.getElementById('retro-updated').textContent =
+                new Date(document.lastModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
             button.addEventListener('click', function() {
                 var next = themes[(themes.indexOf(current()) + 1) % themes.length];
@@ -167,7 +187,7 @@
                 <a href="#publications">publications</a>
                 <a href="assets/documents/mauriciosousa-cv.pdf" target="_blank" rel="noopener">cv</a>
                 <a href="#contact">contact</a>
-                <!-- Theme toggle: light -> dark -> pride -> light. Icons: Phosphor Sun, Moon and Rainbow, duotone (MIT), https://phosphoricons.com -->
+                <!-- Theme toggle: light -> dark -> pride -> retro -> paper -> light. Icons: Phosphor Sun, Moon, Rainbow, Floppy Disk and File Text, duotone (MIT), https://phosphoricons.com -->
                 <button type="button" id="theme-toggle" aria-label="Change theme (currently light)" title="Change theme">
                     <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M184,128a56,56,0,1,1-56-56A56,56,0,0,1,184,128Z" opacity="0.2"></path><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path></svg>
                     <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M227.89,147.89A96,96,0,1,1,108.11,28.11,96.09,96.09,0,0,0,227.89,147.89Z" opacity="0.2"></path><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"></path></svg>
@@ -186,8 +206,14 @@
                         <path fill="url(#pride-gradient)" d="M240,168v16H176V168a48,48,0,0,0-96,0v16H16V168a112,112,0,0,1,224,0Z" opacity="0.3"></path>
                         <path fill="url(#pride-gradient)" d="M184,168v16a8,8,0,0,1-16,0V168a40,40,0,0,0-80,0v16a8,8,0,0,1-16,0V168a56,56,0,0,1,112,0ZM128,80a88.1,88.1,0,0,0-88,88v16a8,8,0,0,0,16,0V168a72,72,0,0,1,144,0v16a8,8,0,0,0,16,0V168A88.1,88.1,0,0,0,128,80Zm0-32A120.13,120.13,0,0,0,8,168v16a8,8,0,0,0,16,0V168a104,104,0,0,1,208,0v16a8,8,0,0,0,16,0V168A120.13,120.13,0,0,0,128,48Z"></path>
                     </svg>
+                    <svg class="icon-retro" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,83.31V208a8,8,0,0,1-8,8H176V152a8,8,0,0,0-8-8H88a8,8,0,0,0-8,8v64H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H172.69a8,8,0,0,1,5.65,2.34l35.32,35.32A8,8,0,0,1,216,83.31Z" opacity="0.2"></path><path d="M219.31,72,184,36.69A15.86,15.86,0,0,0,172.69,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V83.31A15.86,15.86,0,0,0,219.31,72ZM168,208H88V152h80Zm40,0H184V152a16,16,0,0,0-16-16H88a16,16,0,0,0-16,16v56H48V48H172.69L208,83.31ZM160,72a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h56A8,8,0,0,1,160,72Z"></path></svg>
+                    <svg class="icon-paper" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M208,88H152V32Z" opacity="0.2"></path><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"></path></svg>
                 </button>
             </div>
+        </div>
+        <!-- Web 1.0 theme only: scrolling welcome banner -->
+        <div class="retro-only retro-marquee" aria-hidden="true">
+            <span>~*~ Welcome to my homepage on the World Wide Web! ~*~ Thanks for stopping by ~*~ Please sign my guestbook (just kidding, email me) ~*~</span>
         </div>
         <div id="content">
             <div>
@@ -226,6 +252,14 @@
                 
                 
 
+
+<!-- ACM paper theme only: author block -->
+<div class="paper-only paper-authors">
+    <div class="paper-author-name">Mauricio Sousa</div>
+    <div>Graduate School of Media Design</div>
+    <div>Keio University</div>
+    <div>mauricio@keio.jp</div>
+</div>
 
 <a class="anchor" id="about"></a>
 <h1>About Me</h1>
@@ -275,6 +309,14 @@
 </p>
 -->
 
+
+                <!-- ACM paper theme only: CCS concepts, keywords and reference format -->
+                <div class="paper-only paper-meta">
+                    <p><span class="paper-label">CCS Concepts:</span> &bull; <b>Human-centered computing</b> &rarr; <b>Human computer interaction (HCI)</b>; Mixed / augmented reality; Haptic devices; Collaborative interaction.</p>
+                    <p><span class="paper-label">Keywords:</span> human&ndash;computer interaction, spatial computing, mixed reality, haptic communication, AI-powered wearables</p>
+                    <p><span class="paper-label">Reference Format:</span><br>
+                    Mauricio Sousa. <span class="paper-year"></span>. Mauricio Sousa: A Personal Homepage. In <i>Proceedings of the World Wide Web</i>. 1 page. https://mauriciosousa.github.io/</p>
+                </div>
 
                 <a class="anchor" id="publications"></a>
                 <h1>Publications</h1>
@@ -1362,6 +1404,20 @@
             </div>
         </div>
         <div id="footer">
+            <!-- ACM paper theme only: first-page footnote -->
+            <div class="paper-only paper-footnote">
+                <p>Permission to read, share and cite this homepage for personal or classroom use is granted without fee, provided that the source is acknowledged. Copies of the PDFs linked here remain subject to their publishers' terms.</p>
+                <p>&copy; <span class="paper-year"></span> Copyright held by the owner/author.</p>
+            </div>
+            <!-- Web 1.0 theme only -->
+            <div class="retro-only retro-footer">
+                <div class="retro-construction">&#9888; This page is under construction &#9888;</div>
+                <p>
+                    You have visited this page <span class="retro-counter" id="retro-counter">000001</span> times.<br>
+                    Last updated: <span id="retro-updated"></span><br>
+                    Best viewed with Netscape Navigator 4.0 at 800 &times; 600.
+                </p>
+            </div>
             <p class="links">
                 <a href="mailto:mauricio@keio.jp">email</a>
                 - <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=3sC4E1cAAAAJ">google scholar</a>
