@@ -1,7 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
 
+/* ---------- colour themes ----------
+   The light theme is the default. html.dark is set by the small script in
+   index.html (saved choice, or the system setting) and by the sun/moon toggle. */
+:root {
+    --bg: white;
+    --text: #333333;
+    --accent: #ffa700;
+    --accent-strong: #ff4e00;
+    --on-accent: white;
+    --award: #f75f9a;
+    color-scheme: light;
+}
+
+html.dark {
+    --bg: #1c1c1e;
+    --text: #dddddd;
+    --accent: #ffa700;
+    --accent-strong: #ff4e00;
+    --on-accent: #1c1c1e;
+    --award: #ff7fae;
+    color-scheme: dark;
+}
+
+/* soften the bright white paper thumbnails a little in dark mode */
+html.dark .publications img {
+    filter: brightness(0.9);
+}
+
 body {
-    background-color: white;
+    background-color: var(--bg);
+    color: var(--text);
     font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
@@ -10,11 +39,12 @@ body {
     margin: 0 auto;
     text-align: left;
     width: 50%;
+    min-width: 720px; /* keeps logo, nav and theme toggle on one line on mid-size screens */
 }
 
 #header {
     overflow: hidden;
-    background-color: white;
+    background-color: var(--bg);
     padding: 20px 10px;
     position: sticky;
     top: 0;
@@ -29,13 +59,13 @@ body {
     line-height: 25px;
     border-radius: 4px;
     font-weight: 300;
-    color: #333333;
+    color: var(--text);
 }
 
 @media(hover: hover) and (pointer: fine) {
     #header a:hover {
-        color: white;
-        background-color: #ffa700;
+        color: var(--on-accent);
+        background-color: var(--accent);
         text-decoration: none;
     }
 }
@@ -44,13 +74,13 @@ body {
     font-size: 36px;
     line-height: 20px;
     font-weight: 600;
-    color: #333333;
+    color: var(--text);
     text-decoration: none;
 }
 
 @media(hover: hover) and (pointer: fine) {
     #header a.logo:hover {
-        color: white;
+        color: var(--on-accent);
         text-decoration: none;
     }
 }
@@ -60,6 +90,46 @@ body {
 .header-right {
     float: right;
     font-weight: 300;
+}
+
+/* light/dark toggle button, sits at the end of the nav */
+#theme-toggle {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    margin: 6px 0 0 6px;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    #theme-toggle:hover {
+        color: var(--on-accent);
+        background-color: var(--accent);
+    }
+}
+
+#theme-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* light theme shows the sun, dark theme shows the moon (same as chu-li.me) */
+#theme-toggle .icon-moon,
+html.dark #theme-toggle .icon-sun {
+    display: none;
+}
+
+html.dark #theme-toggle .icon-moon {
+    display: block;
 }
 
 #content {
@@ -84,43 +154,43 @@ body {
 
 #content strong {
     font-weight: 600;
-    color: #ffa700;
+    color: var(--accent);
 }
 
 #content b {
     font-weight: 400;
-    color: #333333
+    color: var(--text);
 }
 
 #content a {
     font-weight: 500;
-    color: #ffa700;
+    color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px dotted #ffa700;
+    border-bottom: 1px dotted var(--accent);
 }
 
 @media(hover: hover) and (pointer: fine) {
     #content a:hover {
-        color: white;
-        background-color: #ffa700;
+        color: var(--on-accent);
+        background-color: var(--accent);
         text-decoration: none;
-        border-bottom: 1px dotted white;
+        border-bottom: 1px dotted var(--on-accent);
     }
 }
 
 #footer a {
     font-weight: 600;
-    color: #ffa700;
+    color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px dotted #ffa700;
+    border-bottom: 1px dotted var(--accent);
 }
 
 @media(hover: hover) and (pointer: fine) {
     #footer a:hover {
-        color: white;
-        background-color: #ffa700;
+        color: var(--on-accent);
+        background-color: var(--accent);
         text-decoration: none;
-        border-bottom: 1px dotted white;
+        border-bottom: 1px dotted var(--on-accent);
     }
 }
 
@@ -128,7 +198,7 @@ body {
     font-size: 26px;
     font-weight: 600;
     margin: 10px;
-    color: #333333;
+    color: var(--text);
 }
 
 a.anchor {
@@ -152,7 +222,7 @@ a.anchor {
     font-weight: 500;
     top: 10px;
     margin: 10px;
-    color: #333333;
+    color: var(--text);
 }
 
 #content p {
@@ -160,7 +230,7 @@ a.anchor {
     font-size: 12pt;
     line-height: 18pt;
     text-align: justify;
-    color: #333333;
+    color: var(--text);
     font-weight: 300;
 }
 
@@ -196,7 +266,7 @@ p.links,
     font-size: 12pt;
     line-height: 18pt;
     text-align: justify;
-    color: #333333;
+    color: var(--text);
     font-weight: 300;
 }
 
@@ -215,7 +285,7 @@ p.links,
 
 .pub span.award {
     font-style: normal;
-    color: #f75f9a;
+    color: var(--award);
     font-weight: 600;
 }
 
@@ -234,6 +304,7 @@ p.links,
 
     #container {
         width: 80%;
+        min-width: 0;
     }
 }
 
@@ -258,6 +329,13 @@ p.links,
     .header-right {
         float: none;
     }
+
+    #theme-toggle {
+        display: inline-flex;
+        float: none;
+        margin: 0 0 0 4px;
+        vertical-align: middle;
+    }
 }
 
 /* on narrow portrait screens, stack the thumbnail above the text */
@@ -279,8 +357,8 @@ p.links,
     font-size: 18px;
     border: none;
     outline: none;
-    background-color: #ffa700;
-    color: white;
+    background-color: var(--accent);
+    color: var(--on-accent);
     cursor: pointer;
     padding: 15px;
     border-radius: 4px;
@@ -290,16 +368,16 @@ p.links,
 
 @media(hover: hover) and (pointer: fine) {
     #myBtn:hover {
-        background-color: #ff4e00;
+        background-color: var(--accent-strong);
     }
 }
 
 
 .alert {
     padding: 10px;
-    color: #333333;
+    color: var(--text);
     border-radius: 5px;
-    border: 2px dotted #ffa700;
+    border: 2px dotted var(--accent);
 }
 
 
