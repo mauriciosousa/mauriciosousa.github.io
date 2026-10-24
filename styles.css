@@ -122,14 +122,30 @@ body {
     outline-offset: 2px;
 }
 
-/* light theme shows the sun, dark theme shows the moon (same as chu-li.me) */
+/* the icon shows the current theme: sun (light), moon (dark), rainbow (pride) */
 #theme-toggle .icon-moon,
-html.dark #theme-toggle .icon-sun {
+#theme-toggle .icon-pride,
+html.dark #theme-toggle .icon-sun,
+html.pride #theme-toggle .icon-sun {
     display: none;
 }
 
-html.dark #theme-toggle .icon-moon {
+html.dark #theme-toggle .icon-moon,
+html.pride #theme-toggle .icon-pride {
     display: block;
+}
+
+/* the rainbow glyph is wider than tall, so draw it a little larger to match the sun and moon */
+#theme-toggle .icon-pride {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+/* keep the rainbow icon visible on hover */
+@media(hover: hover) and (pointer: fine) {
+    html.pride #theme-toggle:hover {
+        background-color: #f1ecf7;
+    }
 }
 
 #content {
@@ -345,6 +361,129 @@ p.links,
     .column.right {
         width: 100%;
     }
+}
+
+/* ---------- pride theme (third click of the toggle) ----------
+   Six-stripe rainbow flag. --pride-* are the true flag colours used for
+   stripes; --pride-text-* are slightly deeper versions that stay readable
+   as text on white. */
+html.pride {
+    --bg: #ffffff;
+    --text: #333333;
+    --accent: #732982;
+    --accent-strong: #e40303;
+    --on-accent: white;
+    --award: #e40303;
+    color-scheme: light;
+
+    --pride-red: #e40303;
+    --pride-orange: #ff8c00;
+    --pride-yellow: #ffed00;
+    --pride-green: #008026;
+    --pride-blue: #24408e;
+    --pride-violet: #732982;
+    --pride-stripes: linear-gradient(90deg,
+        #e40303 0 16.66%, #ff8c00 0 33.33%, #ffed00 0 50%,
+        #008026 0 66.66%, #24408e 0 83.33%, #732982 0);
+    --pride-smooth: linear-gradient(90deg, #e40303, #ff8c00, #e6c200, #008026, #24408e, #732982);
+
+    --pride-text-1: #d00000;
+    --pride-text-2: #d96a00;
+    --pride-text-3: #a88600;
+    --pride-text-4: #007a24;
+    --pride-text-5: #24408e;
+    --pride-text-6: #732982;
+}
+
+/* a flag stripe across the top of the page and under the sticky header */
+html.pride body {
+    border-top: 8px solid transparent;
+    border-image: var(--pride-stripes) 1;
+}
+
+html.pride #header {
+    border-bottom: 4px solid transparent;
+    border-image: var(--pride-stripes) 1;
+}
+
+/* rainbow name and section titles */
+html.pride #content h1 {
+    width: fit-content;
+}
+
+html.pride #header a.logo,
+html.pride #content h1 {
+    background-image: var(--pride-smooth);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+html.pride #header a.logo:hover {
+    background-color: transparent;
+    color: transparent;
+}
+
+/* nav links each get a flag colour on hover */
+@media(hover: hover) and (pointer: fine) {
+    html.pride #header .header-right a:nth-of-type(1):hover { background-color: var(--pride-red); }
+    html.pride #header .header-right a:nth-of-type(2):hover { background-color: var(--pride-orange); }
+    html.pride #header .header-right a:nth-of-type(3):hover { background-color: var(--pride-green); }
+}
+
+/* rainbow frame around the header photo */
+html.pride #content img.splash {
+    box-sizing: border-box;
+    border: 5px solid transparent;
+    border-radius: 0;
+    border-image: var(--pride-stripes) 1;
+}
+
+/* links cycle through the six colours */
+html.pride #content a:nth-of-type(6n+1), html.pride #footer a:nth-of-type(6n+1) { color: var(--pride-text-1); border-bottom-color: var(--pride-text-1); }
+html.pride #content a:nth-of-type(6n+2), html.pride #footer a:nth-of-type(6n+2) { color: var(--pride-text-2); border-bottom-color: var(--pride-text-2); }
+html.pride #content a:nth-of-type(6n+3), html.pride #footer a:nth-of-type(6n+3) { color: var(--pride-text-3); border-bottom-color: var(--pride-text-3); }
+html.pride #content a:nth-of-type(6n+4), html.pride #footer a:nth-of-type(6n+4) { color: var(--pride-text-4); border-bottom-color: var(--pride-text-4); }
+html.pride #content a:nth-of-type(6n+5), html.pride #footer a:nth-of-type(6n+5) { color: var(--pride-text-5); border-bottom-color: var(--pride-text-5); }
+html.pride #content a:nth-of-type(6n),   html.pride #footer a:nth-of-type(6n)   { color: var(--pride-text-6); border-bottom-color: var(--pride-text-6); }
+
+@media(hover: hover) and (pointer: fine) {
+    html.pride #content a:hover,
+    html.pride #footer a:hover {
+        color: white;
+        background-image: var(--pride-smooth);
+        border-bottom-color: white;
+    }
+}
+
+/* each paper's title takes the next colour of the flag, with a matching stripe */
+html.pride .publications .row:nth-child(6n+1) { --row-colour: var(--pride-text-1); }
+html.pride .publications .row:nth-child(6n+2) { --row-colour: var(--pride-text-2); }
+html.pride .publications .row:nth-child(6n+3) { --row-colour: var(--pride-text-3); }
+html.pride .publications .row:nth-child(6n+4) { --row-colour: var(--pride-text-4); }
+html.pride .publications .row:nth-child(6n+5) { --row-colour: var(--pride-text-5); }
+html.pride .publications .row:nth-child(6n)   { --row-colour: var(--pride-text-6); }
+
+html.pride .pub span.title {
+    color: var(--row-colour);
+}
+
+html.pride .pub {
+    border-left: 4px solid var(--row-colour);
+    margin-left: 10px;
+}
+
+html.pride .pub span.award {
+    background-image: var(--pride-smooth);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* rainbow "Top" button */
+html.pride #myBtn {
+    background-image: var(--pride-smooth);
+    color: white;
 }
 
 /* go top button */
