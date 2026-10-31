@@ -1,0 +1,1258 @@
+/* Fun copy of the homepage stylesheet with all five themes (light, dark, pride, retro, paper).
+   Used only by themes.html; the real site uses styles.css. */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+/* ---------- colour themes ----------
+   The light theme is the default. html.dark is set by the small script in
+   index.html (saved choice, or the system setting) and by the sun/moon toggle. */
+:root {
+    --bg: white;
+    --text: #333333;
+    --accent: #ffa700;
+    --accent-strong: #ff4e00;
+    --on-accent: white;
+    --award: #f75f9a;
+    color-scheme: light;
+}
+
+html.dark {
+    --bg: #1c1c1e;
+    --text: #dddddd;
+    --accent: #ffa700;
+    --accent-strong: #ff4e00;
+    --on-accent: #1c1c1e;
+    --award: #ff7fae;
+    color-scheme: dark;
+}
+
+/* soften the bright white paper thumbnails a little in dark mode */
+html.dark .publications img {
+    filter: brightness(0.9);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+#container {
+    margin: 0 auto;
+    text-align: left;
+    width: 50%;
+    min-width: 820px; /* keeps logo, nav and theme toggle on one line on mid-size screens */
+}
+
+#header {
+    box-sizing: border-box; /* include the padding in its width, so it never sticks out on phones */
+    overflow: hidden;
+    background-color: var(--bg);
+    padding: 20px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10; /* stay above the page while scrolling: dark mode's dimmed thumbnails (filter) get their own layer and would otherwise paint over the header */
+}
+
+#header a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+    font-weight: 300;
+    color: var(--text);
+}
+
+/* all hovers (nav, logo, theme toggle, content and footer links) use
+   --accent-strong, the same orange as the "Top" button */
+@media(hover: hover) and (pointer: fine) {
+    #header a:hover {
+        color: var(--on-accent);
+        background-color: var(--accent-strong);
+        text-decoration: none;
+    }
+}
+
+#header a.logo {
+    font-size: 36px;
+    line-height: 20px;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    #header a.logo:hover {
+        color: var(--on-accent);
+        text-decoration: none;
+    }
+}
+
+
+
+.header-right {
+    float: right;
+    font-weight: 300;
+}
+
+/* light/dark toggle button, sits at the end of the nav */
+#theme-toggle {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    margin: 6px 0 0 6px;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    #theme-toggle:hover {
+        color: var(--on-accent);
+        background-color: var(--accent-strong);
+    }
+}
+
+#theme-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* the icon shows the current theme: sun (light), moon (dark), rainbow (pride), floppy disk (retro), page (paper) */
+#theme-toggle .icon-moon,
+#theme-toggle .icon-pride,
+#theme-toggle .icon-retro,
+#theme-toggle .icon-paper,
+html.dark #theme-toggle .icon-sun,
+html.pride #theme-toggle .icon-sun,
+html.retro #theme-toggle .icon-sun,
+html.paper #theme-toggle .icon-sun {
+    display: none;
+}
+
+html.dark #theme-toggle .icon-moon,
+html.pride #theme-toggle .icon-pride,
+html.retro #theme-toggle .icon-retro,
+html.paper #theme-toggle .icon-paper {
+    display: block;
+}
+
+/* the rainbow glyph is wider than tall, so draw it a little larger to match the sun and moon */
+#theme-toggle .icon-pride {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+/* keep the rainbow icon visible on hover */
+@media(hover: hover) and (pointer: fine) {
+    html.pride #theme-toggle:hover {
+        background-color: #f1ecf7;
+    }
+}
+
+#content {
+    width: 100%;
+    margin: inherit;
+}
+
+#footer {
+    clear: both;
+    margin: 10px;
+}
+
+
+
+
+#content img.splash {
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+#content strong {
+    font-weight: 600;
+    color: var(--accent);
+}
+
+#content b {
+    font-weight: 400;
+    color: var(--text);
+}
+
+#content a {
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+}
+
+@media(hover: hover) and (pointer: fine) {
+    #content a:hover {
+        color: var(--on-accent);
+        background-color: var(--accent-strong);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--on-accent);
+    }
+}
+
+#footer a {
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+}
+
+@media(hover: hover) and (pointer: fine) {
+    #footer a:hover {
+        color: var(--on-accent);
+        background-color: var(--accent-strong);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--on-accent);
+    }
+}
+
+#content h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 10px;
+    color: var(--text);
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -100px;
+    visibility: hidden;
+}
+
+@media screen and (max-width: 1000px) {
+    a.anchor {
+        display: block;
+        position: relative;
+        top: -240px;
+        visibility: hidden;
+    }
+}
+
+#content h2 {
+    font-size: 20px;
+    font-weight: 500;
+    top: 10px;
+    margin: 10px;
+    color: var(--text);
+}
+
+#content p {
+    margin: 10px;
+    font-size: 12pt;
+    line-height: 18pt;
+    text-align: justify;
+    color: var(--text);
+    font-weight: 300;
+}
+
+/* KMD logo above the address in the Contact section */
+#content img.kmd-logo {
+    display: block;
+    height: 56px;
+    width: auto;
+    margin-bottom: 12px;
+}
+
+/* centred row of profile links (top of page and footer) */
+p.links,
+#content p.links {
+    text-align: center;
+}
+
+
+
+/* Publication cards */
+.publications {
+    margin: 10px;
+}
+
+.publications img {
+    width: 100%;
+}
+
+.column.left {
+    float: left;
+    width: 40%;
+}
+
+.column.right {
+    float: left;
+    width: 60%;
+}
+
+.pub {
+    padding-left: 10px;
+    font-size: 12pt;
+    line-height: 18pt;
+    text-align: justify;
+    color: var(--text);
+    font-weight: 300;
+}
+
+.pub span.title {
+    font-weight: 600;
+}
+
+.pub span.authors {
+    font-style: oblique;
+}
+
+.pub span.venue {
+    font-style: normal;
+    font-weight: 400;
+}
+
+.pub span.award {
+    font-style: normal;
+    color: var(--award);
+    font-weight: 600;
+}
+
+.row {
+    padding-top: 20px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+@media screen and (max-width: 1170px) {
+
+    #container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 840px) {
+
+    #container,
+    #header,
+    #content {
+        width: 100%;
+    }
+
+    #container {
+        min-width: 0;
+    }
+
+    #header {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .pub {
+        text-align: left;
+    }
+
+    #header a {
+        float: none;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    /* tighter spacing so the nav and theme toggle fit on one line on phones */
+    #header .header-right a {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .header-right {
+        float: none;
+    }
+
+    #theme-toggle {
+        display: inline-flex;
+        float: none;
+        margin: 0 0 0 4px;
+        vertical-align: middle;
+    }
+}
+
+/* on narrow portrait screens, stack the thumbnail above the text */
+@media screen and (max-width: 840px) and (orientation: portrait) {
+
+    .column.left,
+    .column.right {
+        width: 100%;
+    }
+}
+
+/* ---------- pride theme (third click of the toggle) ----------
+   Six-stripe rainbow flag. --pride-* are the true flag colours used for
+   stripes; --pride-text-* are slightly deeper versions that stay readable
+   as text on white. */
+html.pride {
+    --bg: #ffffff;
+    --text: #333333;
+    --accent: #732982;
+    --accent-strong: #e40303;
+    --on-accent: white;
+    --award: #e40303;
+    color-scheme: light;
+
+    --pride-red: #e40303;
+    --pride-orange: #ff8c00;
+    --pride-yellow: #ffed00;
+    --pride-green: #008026;
+    --pride-blue: #24408e;
+    --pride-violet: #732982;
+    --pride-stripes: linear-gradient(90deg,
+        #e40303 0 16.66%, #ff8c00 0 33.33%, #ffed00 0 50%,
+        #008026 0 66.66%, #24408e 0 83.33%, #732982 0);
+    --pride-smooth: linear-gradient(90deg, #e40303, #ff8c00, #e6c200, #008026, #24408e, #732982);
+
+    --pride-text-1: #d00000;
+    --pride-text-2: #d96a00;
+    --pride-text-3: #a88600;
+    --pride-text-4: #007a24;
+    --pride-text-5: #24408e;
+    --pride-text-6: #732982;
+}
+
+/* a flag stripe across the top of the page and under the sticky header */
+html.pride body {
+    border-top: 8px solid transparent;
+    border-image: var(--pride-stripes) 1;
+}
+
+html.pride #header {
+    border-bottom: 4px solid transparent;
+    border-image: var(--pride-stripes) 1;
+}
+
+/* rainbow name and section titles */
+html.pride #content h1 {
+    width: fit-content;
+}
+
+html.pride #header a.logo,
+html.pride #content h1 {
+    background-image: var(--pride-smooth);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+html.pride #header a.logo:hover {
+    background-color: transparent;
+    color: transparent;
+}
+
+/* nav links each get a flag colour on hover */
+@media(hover: hover) and (pointer: fine) {
+    html.pride #header .header-right a:nth-of-type(1):hover { background-color: var(--pride-red); }
+    html.pride #header .header-right a:nth-of-type(2):hover { background-color: var(--pride-orange); }
+    html.pride #header .header-right a:nth-of-type(3):hover { background-color: var(--pride-green); }
+    html.pride #header .header-right a:nth-of-type(4):hover { background-color: var(--pride-blue); }
+}
+
+/* rainbow frame around the header photo */
+html.pride #content img.splash {
+    box-sizing: border-box;
+    border: 5px solid transparent;
+    border-radius: 0;
+    border-image: var(--pride-stripes) 1;
+}
+
+/* links cycle through the six colours */
+html.pride #content a:nth-of-type(6n+1), html.pride #footer a:nth-of-type(6n+1) { color: var(--pride-text-1); border-bottom-color: var(--pride-text-1); }
+html.pride #content a:nth-of-type(6n+2), html.pride #footer a:nth-of-type(6n+2) { color: var(--pride-text-2); border-bottom-color: var(--pride-text-2); }
+html.pride #content a:nth-of-type(6n+3), html.pride #footer a:nth-of-type(6n+3) { color: var(--pride-text-3); border-bottom-color: var(--pride-text-3); }
+html.pride #content a:nth-of-type(6n+4), html.pride #footer a:nth-of-type(6n+4) { color: var(--pride-text-4); border-bottom-color: var(--pride-text-4); }
+html.pride #content a:nth-of-type(6n+5), html.pride #footer a:nth-of-type(6n+5) { color: var(--pride-text-5); border-bottom-color: var(--pride-text-5); }
+html.pride #content a:nth-of-type(6n),   html.pride #footer a:nth-of-type(6n)   { color: var(--pride-text-6); border-bottom-color: var(--pride-text-6); }
+
+@media(hover: hover) and (pointer: fine) {
+    html.pride #content a:hover,
+    html.pride #footer a:hover {
+        color: white;
+        background-image: var(--pride-smooth);
+        border-bottom-color: white;
+    }
+}
+
+/* each paper's title takes the next colour of the flag, with a matching stripe */
+html.pride .publications .row:nth-child(6n+1) { --row-colour: var(--pride-text-1); }
+html.pride .publications .row:nth-child(6n+2) { --row-colour: var(--pride-text-2); }
+html.pride .publications .row:nth-child(6n+3) { --row-colour: var(--pride-text-3); }
+html.pride .publications .row:nth-child(6n+4) { --row-colour: var(--pride-text-4); }
+html.pride .publications .row:nth-child(6n+5) { --row-colour: var(--pride-text-5); }
+html.pride .publications .row:nth-child(6n)   { --row-colour: var(--pride-text-6); }
+
+html.pride .pub span.title {
+    color: var(--row-colour);
+}
+
+html.pride .pub {
+    border-left: 4px solid var(--row-colour);
+    margin-left: 10px;
+}
+
+html.pride .pub span.award {
+    background-image: var(--pride-smooth);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* rainbow "Top" button */
+html.pride #myBtn {
+    background-image: var(--pride-smooth);
+    color: white;
+}
+
+/* ---------- Web 1.0 theme (fourth click of the toggle) ----------
+   A homepage from around 1997: grey background, Times New Roman, blue
+   underlined links, bevelled Windows-95 buttons, <hr>-style dividers, a
+   scrolling marquee, an under-construction sign and a visit counter.
+   The .retro-only elements in index.html are hidden in every other theme. */
+.retro-only {
+    display: none;
+}
+
+html.retro {
+    --bg: #c0c0c0;
+    --text: #000000;
+    --accent: #0000ee;
+    --accent-strong: #800000;
+    --on-accent: white;
+    --award: #ff0000;
+    color-scheme: light;
+    --bevel-out: #ffffff #808080 #808080 #ffffff;
+    --bevel-in: #808080 #ffffff #ffffff #808080;
+}
+
+html.retro body {
+    background-color: #c0c0c0;
+    background-image: radial-gradient(#b3b3b3 1px, transparent 1px);
+    background-size: 4px 4px;
+}
+
+html.retro body,
+html.retro #header a,
+html.retro #content p,
+html.retro .pub,
+html.retro #myBtn {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: normal;
+    color: #000000;
+}
+
+html.retro #header {
+    background-color: #c0c0c0;
+    border-bottom: 2px groove #ffffff;
+}
+
+html.retro #header a.logo {
+    font-weight: bold;
+    color: #000080;
+    text-shadow: 2px 2px 0 #808080;
+    letter-spacing: 1px;
+}
+
+html.retro #header a.logo:hover {
+    background-color: transparent;
+    color: #000080;
+}
+
+/* nav links and the theme toggle become bevelled grey buttons */
+html.retro #header .header-right a,
+html.retro #theme-toggle {
+    background-color: #c0c0c0;
+    border: 2px solid;
+    border-color: var(--bevel-out);
+    border-radius: 0;
+    color: #000000;
+    padding: 4px 10px;
+    margin: 8px 2px 0 2px;
+    line-height: 24px;
+    font-size: 17px;
+}
+
+html.retro #theme-toggle {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    font-size: 20px;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    html.retro #header .header-right a:hover,
+    html.retro #theme-toggle:hover {
+        background-color: #d4d0c8;
+        color: #000000;
+    }
+}
+
+html.retro #header .header-right a:active,
+html.retro #theme-toggle:active {
+    border-color: var(--bevel-in);
+}
+
+/* scrolling welcome banner */
+html.retro .retro-marquee {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 10px 0 0 0;
+    padding: 4px 0;
+    background-color: #000080;
+    border: 2px solid;
+    border-color: var(--bevel-in);
+    color: #ffff00;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+html.retro .retro-marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: retro-marquee 22s linear infinite;
+    animation-delay: -7s; /* start with the text already on screen */
+}
+
+@keyframes retro-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+/* plain old links */
+html.retro #content a,
+html.retro #footer a {
+    color: #0000ee;
+    font-weight: normal;
+    text-decoration: underline;
+    border-bottom: none;
+}
+
+html.retro #content a:visited,
+html.retro #footer a:visited {
+    color: #551a8b;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    html.retro #content a:hover,
+    html.retro #footer a:hover {
+        color: #ff0000;
+        background-color: transparent;
+        border-bottom: none;
+    }
+}
+
+html.retro #content h1 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: #000080;
+    border-bottom: 2px groove #ffffff;
+    padding-bottom: 4px;
+}
+
+html.retro #content h2 {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: #800000;
+}
+
+html.retro #content b,
+html.retro #content strong {
+    font-weight: bold;
+    color: #000000;
+}
+
+/* images get the classic sunken frame; paper thumbnails get the blue "this is a link" border */
+html.retro #content img.splash {
+    box-sizing: border-box;
+    border: 3px solid;
+    border-color: var(--bevel-in);
+    border-radius: 0;
+}
+
+html.retro .publications img {
+    box-sizing: border-box;
+    border: 2px solid #0000ee;
+}
+
+/* every paper is separated by an <hr>-style groove */
+html.retro .row {
+    border-top: 2px groove #ffffff;
+    margin-top: 16px;
+}
+
+html.retro .pub span.title {
+    font-weight: bold;
+}
+
+html.retro .pub span.award {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+/* a blinking NEW! on the newest paper */
+html.retro #content h2:first-of-type + .publications .row:first-child .title::before {
+    content: "NEW! ";
+    color: #ff0000;
+    font-weight: bold;
+    animation: retro-blink 1s steps(1) infinite;
+}
+
+@keyframes retro-blink {
+    50% { visibility: hidden; }
+}
+
+/* footer extras */
+html.retro .retro-footer {
+    display: block;
+    text-align: center;
+    margin: 20px 0 10px 0;
+    font-size: 15px;
+}
+
+html.retro .retro-construction {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: #ffff00;
+    color: #000000;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 8px solid transparent;
+    border-image: repeating-linear-gradient(45deg, #000000 0 10px, #ffcc00 10px 20px) 8;
+}
+
+html.retro .retro-footer p {
+    margin: 12px 0;
+    line-height: 1.6;
+}
+
+html.retro .retro-counter {
+    display: inline-block;
+    padding: 0 6px;
+    background-color: #000000;
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    letter-spacing: 3px;
+    border: 2px solid;
+    border-color: var(--bevel-in);
+}
+
+html.retro #myBtn {
+    background-color: #c0c0c0;
+    background-image: none;
+    color: #000000;
+    border: 2px solid;
+    border-color: var(--bevel-out);
+    border-radius: 0;
+    padding: 8px 14px;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    html.retro #myBtn:hover {
+        background-color: #d4d0c8;
+    }
+}
+
+/* smaller buttons on phones so the nav and floppy disk fit on one line under the name */
+@media screen and (max-width: 840px) {
+    html.retro #header .header-right {
+        margin-top: 14px;
+    }
+
+    html.retro #header .header-right a {
+        padding: 3px 6px;
+        margin: 0 1px;
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    html.retro #theme-toggle {
+        width: 32px;
+        height: 32px;
+        margin: 0 0 0 1px;
+        font-size: 18px;
+    }
+}
+
+/* no scrolling or blinking for people who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html.retro .retro-marquee {
+        text-align: center;
+        white-space: normal;
+    }
+
+    html.retro .retro-marquee span {
+        animation: none;
+        padding-left: 0;
+    }
+
+    html.retro #content h2:first-of-type + .publications .row:first-child .title::before {
+        animation: none;
+    }
+}
+
+/* ---------- ACM paper theme (fifth click of the toggle) ----------
+   The page typeset like an ACM conference paper (acmart "sigconf"):
+   Libertinus Serif/Sans (open versions of Linux Libertine/Biolinum, OFL,
+   files in assets/fonts), numbered section headings, indented paragraphs,
+   figure captions, CCS concepts and a first-page footnote.
+   The .paper-only elements in index.html are hidden in every other theme. */
+@font-face {
+    font-family: "Libertinus Serif";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("assets/fonts/libertinus-serif-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Libertinus Serif";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("assets/fonts/libertinus-serif-latin-400-italic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Libertinus Serif";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("assets/fonts/libertinus-serif-latin-700-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Libertinus Serif";
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url("assets/fonts/libertinus-serif-latin-700-italic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("assets/fonts/libertinus-sans-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("assets/fonts/libertinus-sans-latin-700-normal.woff2") format("woff2");
+}
+
+.paper-only {
+    display: none;
+}
+
+html.paper {
+    --bg: #ffffff;
+    --text: #000000;
+    --accent: #1f4e9c;
+    --accent-strong: #6b2c91;
+    --on-accent: white;
+    --award: #000000;
+    color-scheme: light;
+    --paper-serif: "Libertinus Serif", "Linux Libertine O", "Linux Libertine", Georgia, serif;
+    --paper-sans: "Libertinus Sans", "Linux Biolinum O", "Linux Biolinum", "Gill Sans", sans-serif;
+}
+
+html.paper body,
+html.paper #content p,
+html.paper .pub,
+html.paper #myBtn {
+    font-family: var(--paper-serif);
+    font-weight: normal;
+    color: #000000;
+}
+
+html.paper #content p,
+html.paper .pub {
+    font-size: 17px;
+    line-height: 1.45;
+}
+
+/* title and navigation */
+html.paper #header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #000000;
+}
+
+html.paper #header a.logo {
+    font-family: var(--paper-sans);
+    font-weight: 700;
+    color: #000000;
+}
+
+html.paper #header .header-right a {
+    font-family: var(--paper-serif);
+    font-variant: small-caps;
+    font-size: 19px;
+    color: #000000;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    html.paper #header a:hover,
+    html.paper #header a.logo:hover,
+    html.paper #theme-toggle:hover {
+        background-color: #eeeeee;
+        color: #000000;
+    }
+}
+
+html.paper #content img.splash {
+    border-radius: 0;
+}
+
+/* author block, centred under the teaser like acmart */
+html.paper .paper-authors {
+    display: block;
+    text-align: center;
+    margin: 18px 0 8px 0;
+    font-family: var(--paper-serif);
+    font-size: 16px;
+    line-height: 1.35;
+}
+
+html.paper .paper-author-name {
+    font-family: var(--paper-sans);
+    font-size: 21px;
+    margin-bottom: 2px;
+}
+
+/* links: ACM-style coloured, no underline */
+html.paper #content a,
+html.paper #footer a {
+    font-weight: normal;
+    color: var(--accent);
+    border-bottom: none;
+}
+
+html.paper #content a[href^="#"] {
+    color: var(--accent-strong);
+}
+
+@media(hover: hover) and (pointer: fine) {
+    html.paper #content a:hover,
+    html.paper #footer a:hover {
+        background-color: transparent;
+        color: var(--accent);
+        text-decoration: underline;
+        border-bottom: none;
+    }
+}
+
+html.paper #content b,
+html.paper #content strong {
+    font-weight: 700;
+    color: #000000;
+}
+
+/* section headings: ABSTRACT (unnumbered), then 1 PUBLICATIONS, 2 CONTACT */
+html.paper #content h1 {
+    font-family: var(--paper-sans);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 28px 10px 8px 10px;
+}
+
+html.paper #about + h1 {
+    font-size: 0;
+    letter-spacing: 0;
+}
+
+html.paper #about + h1::before {
+    content: "Abstract";
+    font-size: 18px;
+    letter-spacing: 0.04em;
+}
+
+html.paper #publications + h1::before {
+    content: "1\00a0\00a0";
+}
+
+html.paper #contact + h1::before {
+    content: "2\00a0\00a0";
+}
+
+/* subsections 1.1 Conference Papers, 1.2 Journal Articles, ... */
+html.paper #content {
+    counter-reset: subsection figure;
+}
+
+html.paper #content h2 {
+    font-family: var(--paper-sans);
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+    counter-increment: subsection;
+}
+
+html.paper #content h2::before {
+    content: "1." counter(subsection) "\00a0\00a0";
+}
+
+/* body paragraphs: no gap, first line indented, like LaTeX */
+html.paper #content p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+html.paper #content p + p {
+    text-indent: 1.5em;
+}
+
+html.paper #content p.links {
+    margin: 10px;
+    text-indent: 0;
+}
+
+/* CCS concepts, keywords and reference format */
+html.paper .paper-meta {
+    display: block;
+    margin: 16px 0 0 0;
+}
+
+html.paper #content .paper-meta p {
+    margin: 6px 10px;
+    font-size: 15px;
+    text-indent: 0;
+    text-align: left;
+}
+
+html.paper .paper-label {
+    font-family: var(--paper-sans);
+    font-weight: 700;
+}
+
+/* each thumbnail becomes a numbered figure with a caption */
+html.paper .publications img {
+    border: 1px solid #dddddd;
+    box-sizing: border-box;
+}
+
+html.paper .publications .row {
+    counter-increment: figure;
+}
+
+html.paper .publications .column.left::after {
+    content: "Figure " counter(figure) ": Teaser of " attr(data-caption) ".";
+    display: block;
+    margin: 4px 4px 0 4px;
+    font-family: var(--paper-sans);
+    font-size: 14px;
+    line-height: 1.3;
+    text-align: center;
+    color: #000000;
+}
+
+html.paper .pub span.title {
+    font-weight: 700;
+}
+
+html.paper .pub span.authors {
+    font-style: italic;
+}
+
+html.paper .pub span.award {
+    font-variant: small-caps;
+    font-weight: 700;
+    color: #000000;
+}
+
+/* first-page footnote: short rule, small print */
+html.paper .paper-footnote {
+    display: block;
+    margin: 30px 10px 10px 10px;
+    padding-top: 6px;
+    border-top: 1px solid #000000;
+    width: 40%;
+    min-width: 260px;
+    text-align: left;
+    font-family: var(--paper-serif);
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+html.paper .paper-footnote p {
+    margin: 0 0 4px 0;
+}
+
+html.paper #myBtn {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 0;
+    font-weight: normal;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    html.paper #myBtn:hover {
+        background-color: #eeeeee;
+    }
+}
+
+/* go top button */
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: var(--accent);
+    color: var(--on-accent);
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    #myBtn:hover {
+        background-color: var(--accent-strong);
+    }
+}
+
+
+.alert {
+    padding: 10px;
+    color: var(--text);
+    border-radius: 5px;
+    border: 2px dotted var(--accent);
+}
+
+
+/* this solves the issue of the body text fonts too large in iphone, landscape*/
+@media only screen and (min-width : 320px) and (max-width : 560px) {
+    body {
+        -webkit-text-size-adjust: none;
+    }
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+
+/* CV download button, styled like the "Top" button (#myBtn).
+   The "#content a." prefix is needed to beat the generic #content a link styles. */
+#content a.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--accent);
+    color: var(--on-accent);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-indent: 0;
+    transition: background-color 0.15s ease;
+}
+
+#content a.btn-download svg {
+    width: 1.15em;
+    height: 1.15em;
+    flex-shrink: 0;
+    stroke-width: 2;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    #content a.btn-download:hover {
+        background-color: var(--accent-strong);
+        color: var(--on-accent);
+    }
+}
+
+#content a.btn-download:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* pride: rainbow, like the Top button */
+html.pride #content a.btn-download {
+    background-image: var(--pride-smooth);
+    color: white;
+}
+
+/* Web 1.0: bevelled grey button */
+html.retro #content a.btn-download {
+    background-color: #c0c0c0;
+    color: #000000;
+    border: 2px solid;
+    border-color: var(--bevel-out);
+    border-radius: 0;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: 0;
+    text-transform: none;
+    text-decoration: none;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    html.retro #content a.btn-download:hover {
+        background-color: #d4d0c8;
+        color: #000000;
+    }
+}
+
+html.retro #content a.btn-download:active {
+    border-color: var(--bevel-in);
+}
+
+/* ACM paper: plain boxed button */
+html.paper #content a.btn-download {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 0;
+    font-family: var(--paper-serif);
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    html.paper #content a.btn-download:hover {
+        background-color: #eeeeee;
+        color: #000000;
+        text-decoration: none;
+    }
+}
