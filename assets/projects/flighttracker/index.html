@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>Flight Globe</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,6 +45,8 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--amber);outline-
 .status[data-k="air"] .dot{background:var(--good);box-shadow:0 0 0 0 var(--good);animation:ping 2s infinite}
 .status[data-k="landed"] .dot{background:var(--amber)}
 .status[data-k="bad"] .dot{background:var(--warn)}
+.status[data-k="ground"] .dot{background:var(--ink)}
+.status[data-k="unknown"]{color:var(--dim)}
 @keyframes ping{0%{box-shadow:0 0 0 0 rgba(115,215,166,.6)}100%{box-shadow:0 0 0 .7em rgba(115,215,166,0)}}
 .sec h2{margin:0;background:var(--amber);color:var(--amber-ink);font-family:var(--f-display);font-weight:700;font-size:1.05em;letter-spacing:.02em;padding:.45em 1.1em}
 .rows{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
@@ -54,6 +57,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--amber);outline-
 .muted{color:var(--dim);font-weight:400}
 .note{font-size:.78em;color:var(--dim);padding:.2em .3em;line-height:1.5}
 .note a{color:var(--amber)}
+.note.warn{color:var(--warn);background:var(--panel);border:1px solid rgba(255,148,102,.35);border-radius:10px;padding:.6em .8em}
 
 /* route strip */
 #strip{position:fixed;left:max(16px,calc(env(safe-area-inset-left,0px) + 1.6em));bottom:calc(env(safe-area-inset-bottom,0px) + 1.4em);right:calc(clamp(340px,27vw,620px) + 4.4em);max-width:62em;background:var(--panel);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:12px;padding:1em 1.3em;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.4em 1.2em;align-items:center}
@@ -84,7 +88,8 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--amber);outline-
 details{font-size:.82em;color:var(--dim);text-align:left}
 details summary{cursor:pointer;text-align:center}
 details label{display:block;margin:.8em 0 .3em}
-details input{width:100%;box-sizing:border-box;background:rgba(8,17,26,.9);border:1px solid var(--line);border-radius:8px;color:var(--ink);font-family:var(--f-mono);padding:.5em .7em}
+.entry details input{width:100%;box-sizing:border-box;background:rgba(8,17,26,.9);border:1px solid var(--line);border-radius:8px;color:var(--ink);font-family:var(--f-mono);font-weight:400;font-size:1em;letter-spacing:0;text-transform:none;text-align:left;padding:.5em .7em}
+.entry details input::placeholder{letter-spacing:0}
 details a{color:var(--amber)}
 
 @media (max-width:760px){
@@ -113,18 +118,23 @@ details a{color:var(--amber)}
 <div id="entry">
   <div class="entry">
     <h1>Which flight?</h1>
-    <p>Enter a flight number, such as CZ607 or NH211. Live position comes from ADS‑B receivers; schedule details need an AeroDataBox key.</p>
+    <p id="intro">Enter a flight number, such as CZ607 or NH211. The plane's live position comes from ADS‑B receivers through the local helper (serve.py); schedule details need an AeroDataBox key.</p>
     <form id="f" autocomplete="off">
       <input id="code" maxlength="8" placeholder="CZ607" aria-label="Flight number" spellcheck="false">
       <button class="go" id="gobtn">Track</button>
     </form>
     <div id="msg" class="ok" role="status"></div>
     <div class="examples"><button type="button" data-c="CZ607">CZ607</button><button type="button" data-c="NH211">NH211</button><button type="button" data-c="JL43">JL43</button><button type="button" data-c="TP1360">TP1360</button></div>
-    <details>
-      <summary>Schedule data (optional)</summary>
-      <label for="key">AeroDataBox API key (RapidAPI). Adds scheduled and actual times, terminals, gates and aircraft. Saved in this browser only.</label>
+    <details id="srcs">
+      <summary>Data sources</summary>
+      <div id="relayRow" hidden>
+        <label for="relay">Live data relay URL. Leave empty to use the local helper: double-click “Start Flight Globe.command” (or run python3 serve.py) in the tracker's folder.</label>
+        <input id="relay" placeholder="local helper (serve.py)" spellcheck="false" inputmode="url">
+      </div>
+      <label for="key" id="keyLabel">AeroDataBox API key (RapidAPI). Adds scheduled and actual times, terminals, gates, aircraft and periodic position reports. Saved in this browser only.</label>
       <input id="key" placeholder="paste key" spellcheck="false">
-      <p style="margin:.6em 0 0">Free tier at <a href="https://rapidapi.com/aedbx-aedbx/api/aerodatabox" target="_blank" rel="noopener">rapidapi.com/aedbx-aedbx/api/aerodatabox</a>.</p>
+      <p style="margin:.6em 0 0">Free Basic plan at <a href="https://rapidapi.com/aedbx-aedbx/api/aerodatabox/pricing" target="_blank" rel="noopener">rapidapi.com/aedbx-aedbx/api/aerodatabox</a>: 400 units a month, 2 per lookup. To set the key on another screen, open the tracker once with <code>?key=</code> and your key at the end of the address.</p>
+      <p id="adbUse" style="margin:.4em 0 0"></p>
     </details>
   </div>
 </div>
@@ -142,6 +152,25 @@ const AIRLINES={"10":["CNN","Canadian World"],"12":["N12","12 North"],"13":["EAV
 "use strict";
 // ---------- storage helpers ----------
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+// ---------- live data relay ----------
+// adsb.lol and airplanes.live send no CORS headers, so a web page (a local file included) can only read
+// them through a relay. Opened from disk or from localhost, the page uses the local helper, serve.py.
+// For a hosted copy, put a relay URL in RELAY_DEFAULT, under "Data sources", or open the page once with ?relay=<url>.
+const RELAY_DEFAULT='';
+const LOCAL_HELPER='http://127.0.0.1:8765/relay';
+const IS_LOCAL=location.protocol==='file:'||/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+try{const q=new URLSearchParams(location.search).get('relay');if(q)store.set('relay',q.trim());}catch(e){}
+function relayBase(){return ((store.get('relay')||RELAY_DEFAULT||'').trim()||(IS_LOCAL?LOCAL_HELPER:'')).replace(/\/+$/,'');}
+// ?key=<AeroDataBox key> stores the key in this browser (handy on a TV), then is removed from the address bar.
+try{const u=new URL(location.href),k=u.searchParams.get('key');if(k){store.set('adb_key',k.trim());u.searchParams.delete('key');history.replaceState(null,'',u.pathname+(u.search||'')+u.hash);}}catch(e){}
+
+// Corrections to the embedded OpenFlights airline table, which is out of date for some carriers.
+// (Codes are resolved through adsbdb first; this table is the fallback.)
+Object.assign(AIRLINES,{LH:['DLH','Lufthansa'],SQ:['SIA','Singapore Airlines'],MM:['APJ','Peach Aviation'],GK:['JJP','Jetstar Japan'],
+  ZG:['TZP','ZIPAIR Tokyo'],JX:['SJX','STARLUX Airlines'],VJ:['VJC','VietJet Air'],Z2:['APG','Philippines AirAsia'],'9C':['CQH','Spring Airlines'],
+  G3:['GLO','GOL Linhas Aéreas'],GS:['GCR','Tianjin Airlines'],W9:['WUK','Wizz Air UK'],JL:['JAL','Japan Airlines'],TP:['TAP','TAP Air Portugal'],
+  S4:['RZO','Azores Airlines'],TR:['TGW','Scoot'],LA:['LAN','LATAM Airlines']});
 
 // ---------- geo math ----------
 const D2R=Math.PI/180, R_KM=6371;
@@ -255,18 +284,31 @@ function buildRoute(){
 function mkLabel(ap){const d=document.createElement('div');d.className='pin';d.innerHTML=`<b>${esc(ap.iata)}</b><span>${esc(ap.city||ap.name)}</span>`;labelsEl.appendChild(d);return d;}
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 
-// position along route: returns {frac, posDir(unit vec), source}
+// position along route: returns {frac, p (unit vec), src: 'live' | 'fix' | 'est'}
+const FRESH=20*60e3;      // an ADS-B fix this recent counts as live
+const KEEP=14*3600e3;     // an older airborne fix is carried along the route for up to this long
 function currentPosition(now){
   if(!geom)return null;
-  const L=F.live;
-  if(L&&L.lat!=null&&now-L.at<20*60e3){
-    // dead-reckon from last ADS-B fix
+  const L=F.live,t0s=F.dep.actual||F.dep.est||F.dep.sched;
+  if(L&&L.lat!=null&&now-L.at<KEEP&&!(t0s&&L.at<t0s-30*60e3)){ // ignore a report from before this flight's departure
     let p=ll2v(L.lat,L.lon);
-    if(L.gs&&L.track!=null&&L.alt!=='ground'){const dt=(now-L.at)/3600e3,distRad=L.gs*1.852*dt/R_KM;
-      const north=new THREE.Vector3(0,1,0).sub(p.clone().multiplyScalar(p.y)).normalize(),east=new THREE.Vector3().crossVectors(north,p).normalize();
-      const dir=north.multiplyScalar(Math.cos(L.track*D2R)).add(east.multiplyScalar(Math.sin(L.track*D2R)));
-      p=p.multiplyScalar(Math.cos(distRad)).add(dir.multiplyScalar(Math.sin(distRad))).normalize();}
-    const a=geom.A.angleTo(p),b=p.angleTo(geom.B);return{frac:a/(a+b),p,src:'live'};
+    if(now-L.at<FRESH){
+      // dead-reckon a few minutes from the last ADS-B fix along its heading
+      if(L.gs&&L.track!=null&&L.alt!=='ground'){const dt=(now-L.at)/3600e3,distRad=L.gs*1.852*dt/R_KM;
+        const north=new THREE.Vector3(0,1,0).sub(p.clone().multiplyScalar(p.y)).normalize(),east=new THREE.Vector3().crossVectors(north,p).normalize();
+        const dir=north.multiplyScalar(Math.cos(L.track*D2R)).add(east.multiplyScalar(Math.sin(L.track*D2R)));
+        p=p.multiplyScalar(Math.cos(distRad)).add(dir.multiplyScalar(Math.sin(distRad))).normalize();}
+      const a=geom.A.angleTo(p),b=p.angleTo(geom.B);return{frac:a/(a+b||1),p,src:'live'};
+    }
+    if(L.alt!=='ground'&&L.gs>80){
+      // older report (out of receiver range, or between AeroDataBox updates): keep flying along the route at the last ground speed
+      const toB=p.angleTo(geom.B),kmh=L.gs*1.852,tArr=L.at+toB*R_KM/kmh*3600e3;
+      const t1s=F.arr.actual||F.arr.est||F.arr.sched,hold=!F.arr.actual&&t1s>now; // schedule says it hasn't landed yet
+      if(now<tArr+60*60e3||hold){ // a report whose estimated arrival is over an hour old belongs to an earlier flight
+        const adv=Math.min(toB*(hold?0.995:1),kmh*((now-L.at)/3600e3)/R_KM),q=toB>1e-6?slerp(p,geom.B,adv/toB):geom.B.clone();
+        const a=geom.A.angleTo(q),b=q.angleTo(geom.B);return{frac:a/(a+b||1),p:q,src:'fix',arrived:now>=tArr&&!hold,tArr};
+      }
+    }
   }
   const t0=F.dep.actual||F.dep.est||F.dep.sched,t1=F.arr.actual||F.arr.est||F.arr.sched;
   if(t0&&t1){const fr=Math.min(1,Math.max(0,(now-t0)/(t1-t0)));return{frac:fr,p:slerp(geom.A,geom.B,fr),src:'est'};}
@@ -289,8 +331,7 @@ function updateRoute(now){
   geom.rest.geometry.dispose();geom.rest.geometry=new THREE.BufferGeometry().setFromPoints(pathPoints(P,s,1,nR));geom.rest.computeLineDistances();
   const gp=pathPoints(P,0,1,240).map(v=>v.normalize().multiplyScalar(1.002));
   geom.shadow.geometry.dispose();geom.shadow.geometry=new THREE.BufferGeometry().setFromPoints(gp);
-  const inAir=posInfo&&s>0.0005&&s<0.9995&&statusKind()!=='landed';
-  plane.visible=!!posInfo&&inAir;
+  plane.visible=!!posInfo&&statusKind()==='air'&&s<0.9995;
   if(posInfo){
     const ds=0.002,p0=pathPoints(P,Math.max(0,s-ds),Math.min(1,s+ds),1);
     const pos=pathPoints(P,s,s,1)[0];
@@ -369,52 +410,122 @@ const KNOWN={
            aircraft:'Boeing 787-9',previous:'China Southern Airlines (CZ) 3367'}
 };
 
+// ---------- AeroDataBox (RapidAPI) ----------
+// Free Basic plan: 400 units a month, 2 units per flight-status call. Calls are spaced by flight phase
+// (adbEvery) and answers are cached in this browser, so reloading the page doesn't spend quota.
+function adbUsage(){const m=new Date().toISOString().slice(0,7);try{const u=JSON.parse(store.get('adb_usage')||'null');return u&&u.m===m?u:{m,n:0};}catch(e){return{m,n:0};}}
+function showUsage(){const el=document.getElementById('adbUse');if(!el)return;const n=adbUsage().n;
+  el.textContent=n?`This browser has made ${n} AeroDataBox lookup${n>1?'s':''} this month, about ${n*2} of the 400 free units.`:'';}
+function countAdb(){const u=adbUsage();u.n++;store.set('adb_usage',JSON.stringify(u));showUsage();}
+function adbEvery(o){ // how long an AeroDataBox answer stays good enough, by flight phase
+  const now=Date.now(),s=(o.status||'').toLowerCase(),d=o.dep||{},a=o.arr||{};
+  if(/arrived|landed|cancel|divert/.test(s)||a.actual)return 6*3600e3;
+  const t0=d.actual||d.est||d.sched,t1=a.est||a.sched;
+  if(!t0)return 60*60e3;
+  if(!d.actual&&now>t0-60*60e3&&now<t0+90*60e3)return 15*60e3;        // around departure, until takeoff is reported
+  if(t1&&now>t1-45*60e3)return now>t1+3*3600e3?6*3600e3:15*60e3;     // approach and landing
+  if(now<t0-6*3600e3)return 3*3600e3;                                // still hours away
+  return 60*60e3;                                                    // before departure, or cruising
+}
+async function adbGet(path,key){
+  const c=new AbortController(),id=setTimeout(()=>c.abort(),12000);
+  try{const r=await fetch('https://aerodatabox.p.rapidapi.com'+path,{headers:{'X-RapidAPI-Key':key,'X-RapidAPI-Host':'aerodatabox.p.rapidapi.com'},signal:c.signal});
+    if(r.ok)countAdb();
+    if(r.status===204)return{status:204,list:[]};
+    let j=null;try{j=await r.json();}catch(e){}
+    return{status:r.status,list:Array.isArray(j)?j:(j&&j.number?[j]:[])};
+  }catch(e){return{status:0,list:[]};}finally{clearTimeout(id);}
+}
+// Returns the flight record, null when AeroDataBox has no such flight, or {issue:'key'|'quota'|'offline'}.
 async function fromAeroDataBox(code,key){
-  const id=code.iata+code.num,today=new Date(),days=[0,-1].map(o=>new Date(today.getTime()+o*864e5).toISOString().slice(0,10));
+  const id=code.iata+code.num,now=Date.now(),ck='adb:'+id;
+  try{const c=JSON.parse(store.get(ck)||'null');if(c&&now-c.at<adbEvery(c.out))return{...c.out,at:c.at};}catch(e){}
+  const score=f=>{const a=tParse(f.departure?.scheduledTime?.utc),b=tParse(f.arrival?.scheduledTime?.utc)||a;if(!a)return 1e15;if(now>=a-3*3600e3&&now<=b+2*3600e3)return 0;return Math.min(Math.abs(now-a),Math.abs(now-b));};
+  const bad=r=>r.status===401||r.status===403?{issue:'key'}:r.status===429?{issue:'quota'}:r.status===0?{issue:'offline'}:null;
+  const q='?withLocation=true&withAircraftImage=false';
   let list=[];
-  for(const d of days){try{const r=await getJSON(`https://aerodatabox.p.rapidapi.com/flights/number/${id}/${d}?withLocation=true&withAircraftImage=false`,{headers:{'X-RapidAPI-Key':key,'X-RapidAPI-Host':'aerodatabox.p.rapidapi.com'}});if(Array.isArray(r))list=list.concat(r);}catch(e){}}
+  // "nearest" picks the current or next flight with this number in one call
+  if(store.get('adb_nearest')!=='no'){const r=await adbGet(`/flights/number/${id}${q}`,key);const b=bad(r);if(b)return b;
+    list=r.list;if(r.status===400||r.status===404)store.set('adb_nearest','no');else if(r.status===204)return null;}
+  // fallback by date: the local date can be a day ahead of UTC (Asia mornings) or behind it (Americas evenings)
+  if(!list.length)for(const o of [0,1,-1]){const d=new Date(now+o*864e5).toISOString().slice(0,10);
+    const r=await adbGet(`/flights/number/${id}/${d}${q}`,key);const b=bad(r);if(b)return b;list=list.concat(r.list);
+    if(list.some(f=>score(f)===0))break;}
   if(!list.length)return null;
-  const now=Date.now(),score=f=>{const a=tParse(f.departure?.scheduledTime?.utc),b=tParse(f.arrival?.scheduledTime?.utc)||a;if(!a)return 1e15;if(now>=a-3*3600e3&&now<=b+2*3600e3)return 0;return Math.min(Math.abs(now-a),Math.abs(now-b));};
   const f=list.sort((x,y)=>score(x)-score(y))[0];
   const side=s=>{const ap=s.airport||{};const base=apFromIata(ap.iata)||{iata:ap.iata||ap.icao||'?',name:ap.name,city:ap.municipalityName||ap.shortName,lat:ap.location?.lat,lon:ap.location?.lon};
     return{ap:base,sched:tParse(s.scheduledTime?.utc),est:tParse(s.revisedTime?.utc||s.predictedTime?.utc),actual:tParse(s.runwayTime?.utc),
       terminal:s.terminal,gate:s.gate,belt:s.baggageBelt,off:offParse(s.scheduledTime?.local||s.revisedTime?.local)};};
-  const out={dep:side(f.departure||{}),arr:side(f.arrival||{}),status:f.status,aircraft:f.aircraft?.model,reg:f.aircraft?.reg,airline:f.airline?.name,src:'AeroDataBox'};
+  const out={dep:side(f.departure||{}),arr:side(f.arrival||{}),status:f.status,aircraft:f.aircraft?.model,reg:f.aircraft?.reg,airline:f.airline?.name,callsign:(f.callSign||'').trim()||null,src:'AeroDataBox'};
   if(f.location?.lat!=null)out.live={lat:f.location.lat,lon:f.location.lon,alt:f.location.altitude?.feet,gs:f.location.groundSpeed?.kt,track:f.location.trueTrack?.deg,at:tParse(f.location.reportedAtUtc)||now,src:'AeroDataBox'};
-  return out;
+  store.set(ck,JSON.stringify({at:now,out}));
+  return{...out,at:now};
 }
-async function fromAdsbdb(cs){
-  try{const r=await getJSON(`https://api.adsbdb.com/v0/callsign/${cs}`);const fr=r?.response?.flightroute;if(!fr)return null;
+async function fromAdsbdb(q){ // accepts IATA (LH716) or ICAO (DLH716) and answers with the real ICAO callsign and route
+  try{let r;
+    try{r=await getJSON(`https://api.adsbdb.com/v0/callsign/${q}`,{},8000);}
+    catch(e){if(!(e instanceof TypeError)||relayBase()!==LOCAL_HELPER)throw e; // blocked or offline: try through the local helper
+      r=await getJSON(`${LOCAL_HELPER}/adsbdb/v0/callsign/${q}`,{},8000);}
+    const fr=r?.response?.flightroute;if(!fr)return null;
     const side=o=>apFromIata(o.iata_code)||{iata:o.iata_code||o.icao_code,name:o.name,city:o.municipality,lat:o.latitude,lon:o.longitude};
-    return{dep:{ap:side(fr.origin)},arr:{ap:side(fr.destination)},airline:fr.airline?.name};}catch(e){return null;}
+    return{dep:{ap:side(fr.origin)},arr:{ap:side(fr.destination)},airline:fr.airline?.name,callsign:fr.callsign_icao||null,
+      iata:fr.airline?.iata||null,icao:fr.airline?.icao||null,src:'adsbdb route'};}catch(e){return null;}
 }
+async function fromHexdb(cs){ // route only, as plain text like "HND-LHR"; used when adsbdb doesn't know the callsign
+  try{const c=new AbortController(),id=setTimeout(()=>c.abort(),8000);
+    const r=await fetch(`https://hexdb.io/callsign-route-iata?callsign=${encodeURIComponent(cs)}`,{signal:c.signal});clearTimeout(id);if(!r.ok)return null;
+    const legs=(await r.text()).trim().split('-').filter(x=>/^[A-Z0-9]{3}$/.test(x));if(legs.length<2)return null;
+    const a=apFromIata(legs[0]),b=apFromIata(legs[legs.length-1]);return a&&b?{dep:{ap:a},arr:{ap:b},callsign:cs,src:'hexdb route'}:null;}catch(e){return null;}
+}
+async function resolveRoute(code){
+  const tries=[...new Set([(code.iata||'')+code.num,(code.icao||'')+code.num])].filter(s=>s.length>=4&&/^[A-Z]/.test(s));
+  for(const t of tries){const r=await fromAdsbdb(t);if(r)return r;}
+  return code.icao?fromHexdb(code.icao+code.num):null;
+}
+// Live position. Returns {fix} or {issue: 'norelay' | 'relay' | 'notfound'}.
 async function fromAdsb(cs){
-  for(const [url,name] of [[`https://api.adsb.lol/v2/callsign/${cs}`,'adsb.lol'],[`https://api.airplanes.live/v2/callsign/${cs}`,'airplanes.live']]){
-    try{const r=await getJSON(url,{},8000);const a=(r.ac||[]).find(x=>x.lat!=null);if(a){const age=(a.seen_pos||a.seen||0)*1000;
-      return{lat:a.lat,lon:a.lon,alt:a.alt_baro,gs:a.gs,track:a.track??a.true_heading,type:a.t,reg:a.r,at:Date.now()-age,src:name};}}catch(e){}
+  const relay=relayBase();if(!relay)return{issue:'norelay'}; // without a relay or the local helper the browser blocks these services
+  const srcs=[[`${relay}/adsb.lol/v2/callsign/${cs}`,'adsb.lol'],[`${relay}/airplanes.live/v2/callsign/${cs}`,'airplanes.live']];
+  let answered=false;
+  for(const [url,name] of srcs){
+    try{const r=await getJSON(url,{},8000);answered=true;
+      for(const a of (r.ac||[])){ // a stale position comes back under lastPosition instead of lat/lon
+        const lp=a.lat!=null?{lat:a.lat,lon:a.lon,seen:a.seen_pos??a.seen??0}:a.lastPosition?.lat!=null?{lat:a.lastPosition.lat,lon:a.lastPosition.lon,seen:a.lastPosition.seen_pos??0}:null;
+        if(lp)return{fix:{lat:lp.lat,lon:lp.lon,alt:a.alt_baro,gs:a.gs,track:a.track??a.true_heading,type:a.t,reg:a.r,at:Date.now()-lp.seen*1000,src:name}};}
+    }catch(e){}
   }
-  return null;
+  return{issue:answered?'notfound':(relay?'relay':'norelay')};
 }
+// The last fix is kept per flight so a reload, or a long gap over an ocean, doesn't lose the plane.
+function saveFix(label,fix){try{if(fix&&fix.src!=='AeroDataBox')store.set('fix:'+label,JSON.stringify(fix));}catch(e){}}
+function loadFix(label){try{const f=JSON.parse(store.get('fix:'+label)||'null');return f&&Date.now()-f.at<KEEP?f:null;}catch(e){return null;}}
 
 async function lookup(raw){
   const code=parseCode(raw);if(!code)throw new Error('That doesn\'t look like a flight number. Try airline code + number, like CZ607.');
-  const label=(code.iata||code.icao)+code.num, cs=(code.icao||'')+code.num;
-  const rec={code,label,callsign:cs,airline:code.airline,dep:{},arr:{},sources:[]};
   const key=store.get('adb_key');
-  const [adb,route,live]=await Promise.all([
-    key&&code.iata?fromAeroDataBox(code,key):null,
-    code.icao?fromAdsbdb(cs):null,
-    code.icao?fromAdsb(cs):null]);
-  if(adb){Object.assign(rec.dep,adb.dep);Object.assign(rec.arr,adb.arr);rec.status=adb.status;rec.aircraft=adb.aircraft;rec.reg=adb.reg;rec.airline=adb.airline||rec.airline;if(adb.live)rec.live=adb.live;rec.sources.push('AeroDataBox');}
-  if(route){if(!rec.dep.ap)rec.dep.ap=route.dep.ap;if(!rec.arr.ap)rec.arr.ap=route.arr.ap;rec.airline=rec.airline||route.airline;rec.sources.push('adsbdb route');}
+  // the airline's IATA code is needed for AeroDataBox; when only an ICAO code was typed, resolve it first
+  const route0=!code.iata&&key?await resolveRoute(code):undefined;if(route0?.iata)code.iata=route0.iata;
+  const [adbRes,route]=await Promise.all([key&&code.iata?fromAeroDataBox(code,key):null,route0!==undefined?route0:resolveRoute(code)]);
+  const adb=adbRes&&!adbRes.issue?adbRes:null;
+  if(route){code.iata=code.iata||route.iata;if(route.icao)code.icao=route.icao;}
+  const label=(code.iata||code.icao)+code.num;
+  const cs=adb?.callsign||route?.callsign||(code.icao?code.icao+code.num:null);
+  const rec={code,label,callsign:cs,airline:code.airline,dep:{},arr:{},sources:[]};
+  rec.adbIssue=!key?null:adbRes?.issue||(adb?null:'none');
+  if(adb){Object.assign(rec.dep,adb.dep);Object.assign(rec.arr,adb.arr);rec.status=adb.status;rec.aircraft=adb.aircraft;rec.reg=adb.reg;rec.airline=adb.airline||rec.airline;if(adb.live)rec.live=adb.live;rec.adbAt=adb.at;rec.sources.push('AeroDataBox');}
+  if(route){if(!rec.dep.ap)rec.dep.ap=route.dep.ap;if(!rec.arr.ap)rec.arr.ap=route.arr.ap;rec.airline=adb?.airline||route.airline||rec.airline;rec.sources.push(route.src);}
   const k=KNOWN[label];
-  if(k&&!adb){const kd=k.dep,ka=k.arr;
+  if(k&&!adb&&Math.abs(Date.now()-tParse(k.dep.sched))<20*3600e3){const kd=k.dep,ka=k.arr; // the snapshot only describes that one day's flight
     rec.dep={ap:apFromIata(kd.iata),sched:tParse(kd.sched),actual:tParse(kd.actual),terminal:kd.terminal,gate:kd.gate,off:kd.off};
     rec.arr={ap:apFromIata(ka.iata),sched:tParse(ka.sched),est:tParse(ka.est),terminal:ka.terminal,off:ka.off};
     rec.aircraft=k.aircraft;rec.previous=k.previous;rec.sources.push('flightview snapshot, 21 Oct');}
-  if(live){rec.live=live;rec.aircraft=rec.aircraft||live.type;rec.reg=rec.reg||live.reg;rec.sources.push(live.src+' ADS‑B');}
-  if(!rec.dep.ap||!rec.arr.ap)throw new Error(`No route found for ${label}. Live lookups need internet access from this browser; for schedules, add an AeroDataBox key below.`);
-  rec.fetched=Date.now();
+  if(!rec.dep.ap||!rec.arr.ap)throw new Error(`No route found for ${label}. Check the flight number; for less common flights, add an AeroDataBox key under Data sources.`);
+  const lv=cs?await fromAdsb(cs):{issue:'nocs'};
+  if(lv.fix){if(!rec.live||lv.fix.at>rec.live.at)rec.live=lv.fix;saveFix(label,lv.fix);rec.aircraft=rec.aircraft||lv.fix.type;rec.reg=rec.reg||lv.fix.reg;rec.sources.push(lv.fix.src+' ADS‑B');}
+  else{rec.liveIssue=lv.issue==='norelay'&&key?null:lv.issue; // on a hosted page with a key, AeroDataBox is the position source
+    const saved=loadFix(label),t0=rec.dep.actual||rec.dep.est||rec.dep.sched;
+    if(saved&&!(t0&&saved.at<t0-30*60e3)&&(!rec.live||saved.at>rec.live.at)){rec.live=saved;rec.sources.push(saved.src+' ADS‑B (last fix)');}}
+  rec.fetched=rec.checked=Date.now();
   return rec;
 }
 
@@ -423,24 +534,49 @@ const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','De
 function fmtT(ms,off){if(!ms)return '—';if(off==null){const d=new Date(ms);return `${String(d.getUTCHours()).padStart(2,'0')}:${String(d.getUTCMinutes()).padStart(2,'0')} UTC`;}
   const d=new Date(ms+off*60e3);let h=d.getUTCHours();const ap=h>=12?'PM':'AM';h=h%12||12;return `${h}:${String(d.getUTCMinutes()).padStart(2,'0')} ${ap}, ${MON[d.getUTCMonth()]} ${d.getUTCDate()}`;}
 function fmtDur(ms){if(ms==null||isNaN(ms))return '—';const m=Math.max(0,Math.round(ms/60e3));return `${Math.floor(m/60)} hr ${m%60} min`;}
+function fmtAgo(ms){const m=Math.max(0,Math.round(ms/60e3));return m<60?`${m} min`:fmtDur(ms);}
 function statusKind(){
-  if(!F)return 'sched';const now=Date.now(),s=(F.status||'').toLowerCase();
+  if(!F)return 'sched';const now=Date.now(),s=(F.status||'').toLowerCase().replace(/\s/g,'');
   if(/cancel|divert/.test(s))return 'bad';
   if(/arrived|landed/.test(s))return 'landed';
+  const L=F.live;
+  if(L&&L.lat!=null&&now-L.at<FRESH){
+    if(L.alt!=='ground')return 'air';
+    if(geom){const p=ll2v(L.lat,L.lon);return p.angleTo(geom.B)<p.angleTo(geom.A)?'landed':'ground';} // on the ground: at which end?
+    return 'ground';
+  }
   const t1=F.arr.actual||F.arr.est||F.arr.sched,t0=F.dep.actual||F.dep.est||F.dep.sched;
   if(F.arr.actual||(t1&&now>t1))return 'landed';
-  if(F.live&&F.live.alt!=='ground'&&now-F.live.at<20*60e3)return 'air';
-  if(/enroute|departed|approaching/.test(s.replace(/\s/g,'')))return 'air';
+  if(posInfo&&posInfo.src==='fix')return posInfo.arrived?'landed':'air';
+  if(/enroute|departed|approaching/.test(s))return 'air';
   if(t0&&now>=t0)return 'air';
-  return 'sched';
+  return t0?'sched':'unknown';
 }
-const STATUS_TXT={sched:'Scheduled',air:'In Air',landed:'Landed',bad:'Cancelled / Diverted'};
+const STATUS_TXT={sched:'Scheduled',air:'In Air',landed:'Landed',ground:'On the Ground',bad:'Cancelled / Diverted',unknown:'No Live Signal'};
+function adbText(issue){
+  if(issue==='key')return 'AeroDataBox refused the key. Check it under Change flight → Data sources, and that it is subscribed to the free Basic plan on RapidAPI.';
+  if(issue==='quota')return 'AeroDataBox quota or rate limit reached (the free plan allows 400 units a month). The plane keeps moving from the last data it got.';
+  if(issue==='offline')return 'AeroDataBox could not be reached. Check the internet connection; the tracker will try again.';
+  if(issue==='none')return 'AeroDataBox has no schedule for this flight number around today.';
+  return '';
+}
+function issueText(issue,cs){
+  if(issue==='norelay')return 'To see the plane here, add your AeroDataBox key under Change flight → Data sources. (Live ADS‑B positions without a key only work when the tracker runs on your Mac through “Start Flight Globe.command”.)';
+  if(issue==='relay')return relayBase()===LOCAL_HELPER
+    ?'No live position: the local helper isn’t running. Double-click “Start Flight Globe.command” in the tracker’s folder (or run python3 serve.py there), then reload this page.'
+    :'The live data relay did not answer. Check its URL under Change flight → Data sources.';
+  if(issue==='notfound')return `${esc(cs)} isn’t visible to ADS‑B receivers right now. It may still be at the gate, outside receiver coverage (oceans, parts of Russia and China), or flying under a different callsign.`;
+  if(issue==='nocs')return 'Unknown airline code, so the live callsign can’t be worked out.';
+  return '';
+}
 const PLANE_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>';
 function row(k,v){return `<div>${k}</div><div>${v==null||v===''?'<span class="muted">—</span>':v}</div>`;}
 function renderPanel(){
   const now=Date.now(),k=statusKind(),d=F.dep,a=F.arr;
   const airline=F.airline||F.code.iata||F.code.icao;
   const arrBest=a.actual||a.est||a.sched;
+  // without schedule times, estimate what's left from the remaining distance and the last ground speed
+  const remain=arrBest?arrBest-now:(posInfo&&geom&&F.live?.gs>80?geom.total*(1-posInfo.frac)*R_KM/(F.live.gs*1.852)*3600e3:null);
   const apName=ap=>`${esc(ap.name.replace(/ International Airport| Airport/,''))} (${esc(ap.iata)})`;
   let html=`<section class="card head"><h1>${esc(airline)} (${esc(F.code.iata||F.code.icao)}) ${esc(F.code.num)}</h1>
     <div class="kicker">Flight status</div><div class="status" data-k="${k}"><span class="dot"></span>${STATUS_TXT[k]}</div></section>`;
@@ -449,14 +585,22 @@ function renderPanel(){
     row('Duration',d.sched&&a.sched?fmtDur(a.sched-d.sched):null)+`</div></section>`;
   html+=`<section class="card sec"><h2>Arrival</h2><div class="rows">${row('Airport',apName(a.ap))}${row('Scheduled Time',a.sched&&fmtT(a.sched,a.off))}`+
     (a.actual?row('Landed',fmtT(a.actual,a.off)):row('Estimated Time',a.est&&fmtT(a.est,a.off)))+
-    row('Time Remaining',k==='air'&&arrBest?fmtDur(arrBest-now):(k==='landed'?'Arrived':null))+row('Terminal',esc(a.terminal))+(a.gate?row('Gate',esc(a.gate)):'')+(a.belt?row('Baggage',esc(a.belt)):'')+`</div></section>`;
+    row('Time Remaining',k==='air'&&remain!=null?fmtDur(remain)+(arrBest?'':' <span class="muted">est.</span>'):(k==='landed'?'Arrived':null))+row('Terminal',esc(a.terminal))+(a.gate?row('Gate',esc(a.gate)):'')+(a.belt?row('Baggage',esc(a.belt)):'')+`</div></section>`;
   html+=`<section class="card sec"><h2>Flight Details</h2><div class="rows">${row('Aircraft',esc(F.aircraft))}${F.reg?row('Registration',esc(F.reg)):''}${row('Callsign',esc(F.callsign))}</div></section>`;
   if(F.previous)html+=`<section class="card sec"><h2>Aircraft's Previous Flight</h2><div class="rows">${row('Previous Flight',esc(F.previous))}</div></section>`;
-  const age=Math.round((now-F.fetched)/60e3);
-  html+=`<div class="note">Sources: ${esc(F.sources.join(', '))}. Updated ${age<1?'just now':age+' min ago'}${F.live?'':'; position estimated from times'}. Times are local to each airport.</div>`;
+  const age=Math.round((now-(F.checked||F.fetched))/60e3),src=posInfo?.src;
+  const pos=src==='live'?`Live position from ${esc(F.live.src)}.`
+    :src==='fix'?(F.live.src==='AeroDataBox'?`Last position report ${fmtAgo(now-F.live.at)} ago (AeroDataBox); moved along the route at its last speed since then.`
+      :`Out of receiver range for ${fmtAgo(now-F.live.at)}; position estimated from the last fix at its last speed.`)
+    :src==='est'&&k!=='sched'?'Position estimated from departure and arrival times.':'';
+  const warn=[];
+  if(/key|quota|offline/.test(F.adbIssue||''))warn.push(adbText(F.adbIssue));
+  if(k!=='landed'&&(!posInfo||src==='est')){if(!posInfo&&F.adbIssue==='none')warn.push(adbText('none'));else if(F.liveIssue)warn.push(issueText(F.liveIssue,F.callsign));}
+  const nextAdb=F.adbAt?Math.max(1,Math.round((F.adbAt+adbEvery(F)-now)/60e3)):null;
+  html+=warn.map(w=>`<div class="note warn">${w}</div>`).join('')+`<div class="note">${pos} Sources: ${esc(F.sources.join(', '))}. Checked ${age<1?'just now':age+' min ago'}${nextAdb?`; next AeroDataBox update in ${nextAdb} min`:''}. Times are local to each airport.</div>`;
   const B=document.getElementById('board');if(B.dataset.h!==html){B.innerHTML=html;B.dataset.h=html;}
   // strip
-  const fr=posInfo?posInfo.frac:0,tot=geom?geom.total*R_KM:0,L=F.live,liveFresh=L&&now-L.at<20*60e3;
+  const fr=posInfo?posInfo.frac:0,tot=geom?geom.total*R_KM:0,L=F.live,liveFresh=L&&now-L.at<FRESH;
   const facts=[`<span>Distance <b>${Math.round(tot).toLocaleString()} km</b></span>`,
     posInfo?`<span>Flown <b>${Math.round(tot*fr).toLocaleString()} km</b></span><span>To go <b>${Math.round(tot*(1-fr)).toLocaleString()} km</b></span>`:'',
     liveFresh&&L.alt!=null?`<span>Altitude <b>${L.alt==='ground'?'ground':Math.round(L.alt).toLocaleString()+' ft'}</b></span>`:'',
@@ -477,12 +621,18 @@ const $=id=>document.getElementById(id);
 const entry=$('entry'),msg=$('msg');
 $('key').value=store.get('adb_key')||'';
 $('key').addEventListener('change',e=>store.set('adb_key',e.target.value.trim()));
+$('relay').value=store.get('relay')||RELAY_DEFAULT;
+$('relay').addEventListener('change',e=>store.set('relay',e.target.value.trim()));
+$('relayRow').hidden=!(store.get('relay')||RELAY_DEFAULT); // only shown once a custom relay is in use
+if(!IS_LOCAL&&!relayBase())$('intro').textContent='Enter a flight number, such as CZ607 or NH211. Times, gates and the plane’s position come from AeroDataBox, so add your key below.';
+if(!relayBase()&&!store.get('adb_key'))$('srcs').open=true;
+showUsage();
 document.querySelectorAll('.examples button').forEach(b=>b.addEventListener('click',()=>{$('code').value=b.dataset.c;submit();}));
 $('f').addEventListener('submit',e=>{e.preventDefault();submit();});
 let refreshTimer=null,busy=false;
 async function submit(){
   const v=$('code').value.trim();if(!v||busy)return;busy=true;
-  store.set('adb_key',$('key').value.trim());
+  store.set('adb_key',$('key').value.trim());if(!$('relayRow').hidden)store.set('relay',$('relay').value.trim());
   msg.className='ok';msg.textContent=`Looking up ${v.toUpperCase()}…`;$('gobtn').disabled=true;
   try{F=await lookup(v);store.set('last_flight',F.label);showFlight();}
   catch(e){msg.className='';msg.textContent=e.message;}
@@ -492,9 +642,15 @@ function showFlight(){
   entry.hidden=true;$('top').hidden=false;$('board').hidden=false;$('strip').hidden=false;$('strip').innerHTML='';$('board').dataset.h='';
   earth.rotation.y=0;buildRoute();resize();updateRoute(Date.now());renderPanel();lastInteract=0;flyTo(frameTarget());
   clearInterval(refreshTimer);
-  refreshTimer=setInterval(async()=>{ // live refresh: position every minute, full record every 10 min
-    try{if(Date.now()-F.fetched>10*60e3){const r=await lookup(F.label);F=r;buildRoute();}
-      else if(F.callsign){const l=await fromAdsb(F.callsign);if(l){F.live=l;F.fetched=Date.now();}}}catch(e){}
+  refreshTimer=setInterval(async()=>{ // ADS-B position every minute when a relay or the local helper is there;
+    // the full record when the AeroDataBox answer is due (adbEvery), or every 10 min without a key (adsbdb is free)
+    try{const now=Date.now(),key=store.get('adb_key');
+      const due=key?(F.adbAt?now-F.adbAt>=adbEvery(F):now-F.fetched>=(F.adbIssue==='none'?3*3600e3:15*60e3)):now-F.fetched>=10*60e3;
+      if(due){const r=await lookup(F.label);F=r;buildRoute();}
+      else if(F.callsign&&relayBase()){const l=await fromAdsb(F.callsign);
+        if(l.fix){F.live=l.fix;F.liveIssue=null;saveFix(F.label,l.fix);if(!F.sources.some(x=>x.includes('ADS')))F.sources.push(l.fix.src+' ADS‑B');}
+        else F.liveIssue=l.issue;
+        F.checked=Date.now();}}catch(e){}
   },60e3);
 }
 $('change').addEventListener('click',()=>{entry.hidden=false;$('code').select();});
